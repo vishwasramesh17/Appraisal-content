@@ -136,17 +136,9 @@ const slides = [
     subtitle: "",
     content: (
       <div className="intro-slide">
-        <h1 className="intro-title text-gradient">Vishwas R</h1>
-        <p className="intro-subtitle">Graduate Analyst (Business) • Steam-A • 2025–2026</p>
+        <h1 className="intro-title text-gradient">Performance Appraisal</h1>
+        <p className="intro-subtitle">Vishwas R • Graduate Analyst (Business) • Steam-A • 2025–2026</p>
         <div className="intro-divider"></div>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-8 text-xl text-gray-400 italic max-w-2xl font-light"
-        >
-          "Translating Product Thinking into Scalable Outcomes."
-        </motion.p>
       </div>
     )
   },
@@ -460,6 +452,9 @@ const slides = [
             <h3><Briefcase size={24}/> Strategic Positioning</h3>
             <p className="text-lg text-white font-medium leading-relaxed">Operating with a mindset that connects product decisions to business outcomes.</p>
             <p className="text-[#00f2fe] mt-3 font-semibold tracking-wide">Ready to take on broader product ownership and strategic responsibility.</p>
+            <div className="mt-4 pt-4 border-t border-[rgba(0,242,254,0.2)]">
+              <p className="text-gray-400 italic font-light">"Translating Product Thinking into Scalable Outcomes."</p>
+            </div>
           </motion.div>
         </div>
         
@@ -517,8 +512,7 @@ function App() {
         <div className="logo-container">
           <div className="logo-mark">V</div>
           <div className="logo-text">
-            <h2>VISHWAS.R</h2>
-            <p>Self Appraisal</p>
+            <h2>Vishwas R</h2>
           </div>
         </div>
         <div className="slide-dots">
