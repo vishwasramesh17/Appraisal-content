@@ -373,6 +373,40 @@
   line-height: 1.5;
 }
 
+/* Support Slide */
+.support-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.badge {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #e5e7eb;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  cursor: default;
+  text-align: center;
+}
+
+.badge:hover {
+  background: linear-gradient(90deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+  border-color: rgba(0, 242, 254, 0.3);
+  transform: scale(1.02);
+  color: white;
+}
+
 /* Alert Box */
 .alert-box {
   background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 142, 83, 0.1));
