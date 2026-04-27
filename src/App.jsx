@@ -46,8 +46,9 @@ const IntroSlideTemplate = ({ currentSlide }) => (
         <motion.h1 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}
           className="iris-title"
+          style={{ fontFamily: '"Varela Round", sans-serif', letterSpacing: '-0.02em', fontSize: '7.5rem' }}
         >
-          <span style={{color: '#00F5D4'}}>IrI</span><span style={{color: '#00BFFF'}}>S</span>
+          <span style={{color: '#00F5D4'}}>ırI</span><span style={{color: '#00BFFF'}}>S</span>
         </motion.h1>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
@@ -126,7 +127,7 @@ const Slide1Learning = () => (
     {/* Timeline Arc */}
     <div className="flex justify-between items-center relative py-4">
       <div className="absolute left-0 right-0 h-1 bg-gray-200 top-1/2 -z-10"></div>
-      {['Aug 2025', 'Nov 2025', 'Feb 2026', 'Apr 2026'].map((date, i) => (
+      {['Aug 1 2025', 'Nov 2025', 'Mid Feb 2026', 'Apr 28 2026'].map((date, i) => (
         <div key={i} className="flex flex-col items-center bg-white px-4">
           <div className="w-4 h-4 rounded-full bg-[#00B0B0] mb-2 border-2 border-white shadow-sm"></div>
           <span className="font-bold text-gray-600 text-sm">{date}</span>
@@ -136,22 +137,22 @@ const Slide1Learning = () => (
     
     <div className="grid grid-cols-3 gap-6">
       <div className="content-box border-t-4 border-t-[#00B0B0]">
-        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 1: Zwiz Testing<br/><span className="text-xs text-gray-400 font-normal">(Aug–Nov)</span></h4>
+        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 1: Zwiz Testing<br/><span className="text-xs text-gray-400 font-normal">(Aug 1 2025 – Nov 2025)</span></h4>
         <p className="text-sm text-gray-600">Built strong foundation in testing, edge case thinking, and system validation</p>
       </div>
       <div className="content-box border-t-4 border-t-[#00B0B0]">
-        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 2: Tivolt + BA<br/><span className="text-xs text-gray-400 font-normal">(Nov–Feb)</span></h4>
+        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 2: Tivolt Testing + BA<br/><span className="text-xs text-gray-400 font-normal">(Nov 2025 – Mid Feb 2026)</span></h4>
         <p className="text-sm text-gray-600">Started contributing to requirement understanding, workflows, and client discussions</p>
       </div>
       <div className="content-box border-t-4 border-t-[#00B0B0]">
-        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 3: Full BA Role<br/><span className="text-xs text-gray-400 font-normal">(Feb–Apr)</span></h4>
-        <p className="text-sm text-gray-600">Took ownership of Network module, backlog, and client-facing responsibilities</p>
+        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 3: Full-Fledged BA Work<br/><span className="text-xs text-gray-400 font-normal">(Mid Feb 2026 – Apr 2026)</span></h4>
+        <p className="text-sm text-gray-600">Took complete ownership of Network module, backlog, and client-facing responsibilities</p>
       </div>
     </div>
 
     <div className="flex gap-8 mt-4 flex-1">
-      <div className="flex-1 content-box bg-gray-50 flex flex-col justify-center">
-        <h3 className="box-title mb-6"><BarChart size={20}/> Journey Gantt</h3>
+      <div className="flex-1 content-box bg-gray-50 flex flex-col justify-center border-l-4 border-[#00B0B0]">
+        <h3 className="box-title mb-6 text-xl"><BarChart size={24}/> Journey Gantt Chart</h3>
         <div className="flex flex-col gap-6">
           <div className="flex items-center text-sm">
             <span className="w-1/3 font-semibold text-gray-600">Zwiz Testing</span>
@@ -175,15 +176,20 @@ const Slide1Learning = () => (
           </div>
         </div>
       </div>
-      <div className="flex-1 impact-box-highlight rounded-xl p-8 flex flex-col justify-center shadow-lg">
-        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3"><Rocket size={28}/> Outcomes Delivered</h3>
-        <ul className="box-list text-white space-y-3">
-          <li className="text-white before:text-white font-medium">Owned <strong>9 sprints</strong> in Network as BA</li>
-          <li className="text-white before:text-white font-medium">Worked on 40+ stories | Created 30+ stories</li>
-          <li className="text-white before:text-white font-medium">Delivered <strong>25+ stories</strong> to production (stable)</li>
-          <li className="text-white before:text-white font-medium">Reported 35+ critical bugs</li>
-        </ul>
-      </div>
+    </div>
+  </div>
+);
+
+const Slide1Outcomes = () => (
+  <div className="flex flex-col justify-center h-full max-w-4xl mx-auto gap-6 mt-8">
+    <div className="impact-box-highlight rounded-xl p-10 flex flex-col justify-center shadow-lg">
+      <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3"><Rocket size={36}/> Outcomes Delivered</h3>
+      <ul className="box-list text-white space-y-6 text-xl">
+        <li className="text-white before:text-white font-medium flex items-center gap-4"><CheckCircle size={28} className="shrink-0 text-cyan-200"/> Been a BA in Network for <strong>9 sprints</strong> (owned)</li>
+        <li className="text-white before:text-white font-medium flex items-center gap-4"><CheckCircle size={28} className="shrink-0 text-cyan-200"/> <strong>Worked on 40+</strong> Stories | <strong>Created 30+</strong> Stories</li>
+        <li className="text-white before:text-white font-medium flex items-center gap-4"><CheckCircle size={28} className="shrink-0 text-cyan-200"/> <strong>25+ Stories</strong> have been moved to production and are working fine currently</li>
+        <li className="text-white before:text-white font-medium flex items-center gap-4"><CheckCircle size={28} className="shrink-0 text-cyan-200"/> Reported <strong>35+ bugs</strong> in Network</li>
+      </ul>
     </div>
   </div>
 );
@@ -448,9 +454,15 @@ const slides = [
   { id: "intro" },
   
   {
-    id: "learning-outcomes",
-    title: "1. Learning to Impact",
+    id: "learning",
+    title: "1. Learning Journey & Transition",
     content: <Slide1Learning />
+  },
+
+  {
+    id: "outcomes",
+    title: "1.1 Outcomes Delivered",
+    content: <Slide1Outcomes />
   },
 
   {
@@ -487,15 +499,16 @@ const slides = [
 
   {
     id: "ownership",
-    title: "2.2 Ownership Beyond Role",
+    title: "2.2 Ownership & Leadership",
     content: (
       <LayoutTimeline 
-        skills={["Ownership & Leadership", "Stakeholder Management"]}
-        content={<p>Took ownership beyond BA scope by ensuring alignment, clarity, and continuity across teams.</p>}
+        skills={["Ownership & Leadership", "Stakeholder Management", "Scrum Master"]}
+        content={<p>Took complete ownership of the Network module, feature backlog, and client-facing network service support.</p>}
         applied={[
-          "Conducted KT sessions for Dev & QA teams, covering use cases, edge cases, and system behavior",
-          "Stayed actively involved during execution to resolve ambiguities in real-time",
-          "Represented product in external forums and discussions"
+          "Started acting as Scrum Master for execution tracking and alignment",
+          "Delivered Network Demo for Flex Energy to external stakeholders",
+          "Prepared scenario-wise PPTs to explain Tivolt payment flows directly to Tivolt",
+          "Conducted KT sessions for Dev & QA teams, resolving ambiguities in real-time"
         ]}
         impact={[
           "Reduced dependency on repeated clarifications and improved onboarding speed",
@@ -536,12 +549,13 @@ const slides = [
 
   {
     id: "resolving-complexity",
-    title: "2.4 Handling Complexity",
+    title: "2.4 Handling Clients & Complexity",
     content: (
       <LayoutSplit 
         skills={["Stakeholder Management", "Analytical Problem Solving", "Technical Depth"]}
-        content={<p>Managed conflicting stakeholder scenarios using data-backed analysis and structured communication.</p>}
+        content={<p>Actively handling 7+ clients and resolving day-to-day operational issues for 4+ clients directly.</p>}
         applied={[
+          "Managed OCPP compatibility and integrations with OEMs like ACS Energy and Cubenz",
           "Resolved Tivolt reconciliation issues by consolidating multiple financial data sources",
           "Identified root cause in MAK Controls issue via deep OCPP log analysis + joint testing",
           "Collaborated with OEMs and clients for real-world validation"
@@ -561,14 +575,14 @@ const slides = [
 
   {
     id: "workflows",
-    title: "2.5 Process Improvements",
+    title: "2.5 Process & Workflow",
     content: (
       <LayoutHorizontal 
         skills={["Product Thinking", "Systems Thinking", "Ownership"]}
-        content={<p>Introduced structured workflows to reduce reliance on ad-hoc explanations and improve consistency.</p>}
+        content={<p>Introduced structured workflows, flowcharts, and documentation to improve consistency and alignment.</p>}
         applied={[
-          "Created Business Process Models for session flows",
-          "Designed payment flow diagrams for client communication",
+          "Created Business Process Model Notation (BPMN) for Tivolt Payment",
+          "Built Flow charts for Tivolt session flow and OCPP message flow",
           "Drafted SOPs for interrupted & suspicious sessions",
           "Built OCPP operational documentation & failure analysis guide",
           "Applied RICE prioritization for backlog"
@@ -619,7 +633,7 @@ const slides = [
         skills={["Product Thinking", "Analytical Modelling", "Ownership"]}
         content={<p>Connected product decisions with commercial viability and resource planning.</p>}
         applied={[
-          "Built commercial models for OCPP & OCPI clients",
+          "Built commercial models for both OCPP and OCPI clients",
           "Projected connector growth, revenue, and break-even timelines",
           "Estimated resource and lifecycle costs"
         ]}
@@ -642,8 +656,8 @@ const slides = [
     content: (
       <div className="eval-container">
         <div className="flex justify-between items-center mb-2 pb-4 border-b border-gray-100">
-           <div className="text-gray-500 font-semibold uppercase tracking-wider">Self Evaluation</div>
-           <div className="text-4xl font-bold text-[#00B0B0]">8.7<span className="text-xl text-gray-400 font-normal"> / 10 Overall</span></div>
+           <div className="text-gray-500 font-semibold uppercase tracking-wider text-sm">Evaluation</div>
+           <div className="text-4xl font-bold text-[#00B0B0]">8.7<span className="text-xl text-gray-400 font-normal"> / 10 OVERALL SCORE</span></div>
         </div>
         <div className="score-grid mt-4">
           <ScoreBar label="Courage to Promise" score={9} max={10} delay={0.1} text={<>Realistic estimation backed by <span className="highlight-text">cross-team alignment</span>.</>} />
