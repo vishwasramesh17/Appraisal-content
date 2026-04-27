@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ChevronRight, ChevronLeft, Target, BarChart, HeartHandshake, 
   Rocket, Briefcase, BrainCircuit, ShieldAlert, Award, 
-  CheckCircle, Database, Settings, Star, Zap, TrendingUp, Compass
+  CheckCircle, Database, Settings, Compass, Zap, TrendingUp
 } from 'lucide-react';
 import './App.css';
 import './index.css';
 
-// SVG Background Pattern
+// --- SVGs & Brand Elements ---
+
 const Waves = () => (
   <div className="wave-container">
     {[...Array(20)].map((_, i) => (
@@ -27,16 +28,16 @@ const Waves = () => (
   </div>
 );
 
-// Steam-A Logo
 const SteamLogo = ({ dark }) => (
   <div className={`steam-logo ${dark ? 'dark-logo' : ''}`}>
-    Powered by <span style={{fontWeight: 'bold'}}>steam<span style={{color: '#00B0B0', fontWeight: 'bold'}}>a</span></span>
+    <div className="powered-by">Powered by</div>
+    <div className="steam-text">steam<span className="steam-a">a</span></div>
   </div>
 );
 
 // --- Layout Templates ---
 
-const IntroSlideTemplate = ({ currentSlide, slidesLength }) => (
+const IntroSlideTemplate = ({ currentSlide }) => (
   <div className="slide intro-layout">
     <Waves />
     <SteamLogo />
@@ -72,7 +73,7 @@ const IntroSlideTemplate = ({ currentSlide, slidesLength }) => (
   </div>
 );
 
-const OutroSlideTemplate = ({ currentSlide, slidesLength }) => (
+const OutroSlideTemplate = ({ currentSlide }) => (
   <div className="slide outro-layout">
     <Waves />
     <SteamLogo />
@@ -92,7 +93,7 @@ const OutroSlideTemplate = ({ currentSlide, slidesLength }) => (
   </div>
 );
 
-const ContentSlideTemplate = ({ title, children, currentSlide, slidesLength }) => (
+const ContentSlideTemplate = ({ title, children, currentSlide }) => (
   <div className="slide content-layout">
     <SteamLogo dark />
     <div className="content-header">
@@ -110,96 +111,133 @@ const ContentSlideTemplate = ({ title, children, currentSlide, slidesLength }) =
   </div>
 );
 
-// --- Component Blocks ---
+// --- Visual Storytelling Components ---
 
-const ImpactSlide = ({ skills, content, applied, impact, strategicAlignment }) => (
-  <div className="impact-grid">
+const LayoutSplit = ({ skills, content, applied, impact, strategicAlignment }) => (
+  <div className="layout-split">
     <div className="impact-left">
       <div className="skill-tags">
-        {skills.map((skill, idx) => (
-          <motion.span 
-            key={idx} 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1 * idx, duration: 0.3 }}
-            className="skill-tag"
-          >
-            {skill}
-          </motion.span>
-        ))}
+        {skills.map((s, i) => <motion.span key={i} initial={{opacity:0, scale:0.8}} animate={{opacity:1, scale:1}} transition={{delay:0.1*i}} className="skill-tag">{s}</motion.span>)}
       </div>
-      <motion.div 
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="content-box"
-      >
+      <motion.div initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.2}} className="content-box">
         <div className="text-lg leading-relaxed">{content}</div>
       </motion.div>
-      
+    </div>
+    <div className="impact-right">
+      <motion.div initial={{opacity:0, x:20}} animate={{opacity:1, x:0}} transition={{delay:0.3}} className="applied-box">
+        <div className="box-title"><Zap size={20} /> How I Applied It</div>
+        <ul className="box-list">{applied.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+      </motion.div>
+      <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.5}} className="impact-box">
+        <div className="box-title"><Target size={20} /> Impact</div>
+        <ul className="box-list">{impact.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+      </motion.div>
       {strategicAlignment && (
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="why-box"
-        >
+        <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.6}} className="why-box">
           <div className="box-title"><Compass size={20} /> Strategic Alignment</div>
-          <ul className="box-list">
-            {strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}
-          </ul>
+          <ul className="box-list">{strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
         </motion.div>
       )}
-    </div>
-    
-    <div className="impact-right">
-      <motion.div 
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="applied-box"
-      >
-        <div className="box-title"><Zap size={20} /> How I Applied It</div>
-        <ul className="box-list">
-          {applied.map((item, idx) => <li key={idx}>{item}</li>)}
-        </ul>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="impact-box"
-      >
-        <div className="box-title"><Target size={20} /> Impact</div>
-        <ul className="box-list">
-          {impact.map((item, idx) => <li key={idx}>{item}</li>)}
-        </ul>
-      </motion.div>
     </div>
   </div>
 );
 
+const LayoutHorizontal = ({ skills, content, applied, impact, strategicAlignment }) => (
+  <div className="layout-horizontal">
+    <div className="layout-horizontal-top">
+      <motion.div initial={{opacity:0, y:-20}} animate={{opacity:1, y:0}} transition={{delay:0.1}} className="content-box">
+        <div className="text-lg leading-relaxed">{content}</div>
+      </motion.div>
+      <div className="skill-tags">
+        {skills.map((s, i) => <motion.span key={i} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.1*i}} className="skill-tag">{s}</motion.span>)}
+      </div>
+    </div>
+    <div className="layout-horizontal-bottom">
+      <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.2}} className="applied-box">
+        <div className="box-title"><Zap size={20} /> How I Applied It</div>
+        <ul className="box-list">{applied.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+      </motion.div>
+      <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.3}} className="impact-box">
+        <div className="box-title"><Target size={20} /> Impact</div>
+        <ul className="box-list">{impact.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+      </motion.div>
+      {strategicAlignment && (
+        <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.4}} className="why-box">
+          <div className="box-title"><Compass size={20} /> Strategic Alignment</div>
+          <ul className="box-list">{strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+        </motion.div>
+      )}
+    </div>
+  </div>
+);
+
+const LayoutCards = ({ skills, content, applied, impact, strategicAlignment }) => (
+  <div className="layout-cards">
+    <motion.div initial={{opacity:0, scale:0.95}} animate={{opacity:1, scale:1}} transition={{delay:0.1}} className="layout-cards-top content-box">
+      <div className="skill-tags">
+        {skills.map((s, i) => <span key={i} className="skill-tag">{s}</span>)}
+      </div>
+      <div className="text-xl leading-relaxed max-w-4xl">{content}</div>
+    </motion.div>
+    <motion.div initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.2}} className="applied-box">
+      <div className="box-title"><Zap size={20} /> How I Applied It</div>
+      <ul className="box-list">{applied.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+    </motion.div>
+    <div className="flex flex-col gap-6">
+      <motion.div initial={{opacity:0, x:20}} animate={{opacity:1, x:0}} transition={{delay:0.3}} className="impact-box flex-1">
+        <div className="box-title"><Target size={20} /> Impact</div>
+        <ul className="box-list">{impact.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+      </motion.div>
+      {strategicAlignment && (
+        <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.4}} className="why-box">
+          <div className="box-title"><Compass size={20} /> Strategic Alignment</div>
+          <ul className="box-list">{strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+        </motion.div>
+      )}
+    </div>
+  </div>
+);
+
+const LayoutTimeline = ({ skills, content, applied, impact, strategicAlignment }) => (
+  <div className="layout-timeline">
+    <div className="timeline-left">
+      <div className="skill-tags">
+        {skills.map((s, i) => <motion.span key={i} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.1*i}} className="skill-tag">{s}</motion.span>)}
+      </div>
+      <motion.div initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.2}} className="content-box timeline-step">
+        <div className="text-lg leading-relaxed">{content}</div>
+      </motion.div>
+      <motion.div initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.3}} className="applied-box timeline-step">
+        <div className="box-title"><Zap size={20} /> How I Applied It</div>
+        <ul className="box-list">{applied.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+      </motion.div>
+    </div>
+    <div className="timeline-right">
+      <motion.div initial={{opacity:0, scale:0.95}} animate={{opacity:1, scale:1}} transition={{delay:0.4}} className="impact-box impact-box-highlight">
+        <div className="box-title"><Target size={20} /> Impact</div>
+        <ul className="box-list">{impact.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+      </motion.div>
+      {strategicAlignment && (
+        <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.5}} className="why-box">
+          <div className="box-title"><Compass size={20} /> Strategic Alignment</div>
+          <ul className="box-list">{strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+        </motion.div>
+      )}
+    </div>
+  </div>
+);
+
+// Evaluation Sub-Components
 const ScoreBar = ({ label, score, max, text, delay }) => {
   const percentage = (score / max) * 100;
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.4 }}
-      className="score-bar"
-    >
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay, duration: 0.4 }} className="score-bar">
       <div className="score-labels">
         <span className="score-label">{label}</span>
         <span className="score-value">{score}<span className="score-max">/{max}</span></span>
       </div>
       <div className="score-track">
-        <motion.div 
-          initial={{ width: 0 }}
-          animate={{ width: `${percentage}%` }}
-          transition={{ delay: delay + 0.2, duration: 0.8, ease: "easeOut" }}
-          className="score-fill"
-        />
+        <motion.div initial={{ width: 0 }} animate={{ width: `${percentage}%` }} transition={{ delay: delay + 0.2, duration: 0.8, ease: "easeOut" }} className="score-fill"/>
       </div>
       {text && <div className="score-subtext">{text}</div>}
     </motion.div>
@@ -207,17 +245,12 @@ const ScoreBar = ({ label, score, max, text, delay }) => {
 };
 
 const Badge = ({ text, delay }) => (
-  <motion.div 
-    initial={{ opacity: 0, scale: 0.9 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ delay, duration: 0.4 }}
-    className="badge"
-  >
+  <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay, duration: 0.4 }} className="badge">
     {text}
   </motion.div>
 );
 
-// --- Content ---
+// --- Slides Content Array ---
 
 const slides = [
   { id: "intro" },
@@ -226,7 +259,7 @@ const slides = [
     id: "req-analysis",
     title: "1. Requirement Analysis",
     content: (
-      <ImpactSlide 
+      <LayoutSplit 
         skills={["Product Thinking", "Analytical Problem Solving", "Technical Depth"]}
         content={<p>Applied product-first thinking by analyzing requirements from both <strong>end-user and CPO operational perspectives</strong>, ensuring real-world usability and scalability.</p>}
         applied={[
@@ -252,7 +285,7 @@ const slides = [
     id: "ownership",
     title: "2. Ownership Beyond Role",
     content: (
-      <ImpactSlide 
+      <LayoutTimeline 
         skills={["Ownership & Leadership", "Stakeholder Management"]}
         content={<p>Took ownership beyond BA scope by ensuring alignment, clarity, and continuity across teams.</p>}
         applied={[
@@ -277,7 +310,7 @@ const slides = [
     id: "req-clarity",
     title: "3. Requirement Quality",
     content: (
-      <ImpactSlide 
+      <LayoutCards 
         skills={["Analytical Problem Solving", "Ownership"]}
         content={<p>Ensured requirements were structured, complete, and unambiguous <strong>before development</strong>.</p>}
         applied={[
@@ -301,7 +334,7 @@ const slides = [
     id: "resolving-complexity",
     title: "4. Handling Complex Stakeholder Scenarios",
     content: (
-      <ImpactSlide 
+      <LayoutSplit 
         skills={["Stakeholder Management", "Analytical Problem Solving", "Technical Depth"]}
         content={<p>Managed conflicting stakeholder scenarios using data-backed analysis and structured communication.</p>}
         applied={[
@@ -326,7 +359,7 @@ const slides = [
     id: "workflows",
     title: "5. Process & Workflow Improvements",
     content: (
-      <ImpactSlide 
+      <LayoutHorizontal 
         skills={["Product Thinking", "Systems Thinking", "Ownership"]}
         content={<p>Introduced structured workflows to reduce reliance on ad-hoc explanations and improve consistency.</p>}
         applied={[
@@ -353,7 +386,7 @@ const slides = [
     id: "data-truth",
     title: "6. Data-Driven Decision Making",
     content: (
-      <ImpactSlide 
+      <LayoutCards 
         skills={["Analytical Problem Solving", "Technical Depth"]}
         content={<p>Used data not just for insights, but as a validation layer for system correctness.</p>}
         applied={[
@@ -378,7 +411,7 @@ const slides = [
     id: "business-impact",
     title: "7. Business Impact",
     content: (
-      <ImpactSlide 
+      <LayoutHorizontal 
         skills={["Product Thinking", "Analytical Modelling", "Ownership"]}
         content={<p>Connected product decisions with commercial viability and resource planning.</p>}
         applied={[
@@ -434,7 +467,7 @@ const slides = [
     id: "direction",
     title: "10. Professional Direction",
     content: (
-      <ImpactSlide 
+      <LayoutTimeline 
         skills={["Product Thinking", "Ownership", "Stakeholder Influence"]}
         content={<p>Moving towards a Senior BA / Product-oriented role, expanding from execution to <strong>outcome ownership</strong>.</p>}
         applied={[
@@ -543,11 +576,11 @@ function App() {
           className="slide-container-full"
         >
           {slide.id === 'intro' ? (
-            <IntroSlideTemplate currentSlide={currentSlide} slidesLength={slides.length} />
+            <IntroSlideTemplate currentSlide={currentSlide} />
           ) : slide.id === 'outro' ? (
-            <OutroSlideTemplate currentSlide={currentSlide} slidesLength={slides.length} />
+            <OutroSlideTemplate currentSlide={currentSlide} />
           ) : (
-            <ContentSlideTemplate title={slide.title} currentSlide={currentSlide} slidesLength={slides.length}>
+            <ContentSlideTemplate title={slide.title} currentSlide={currentSlide}>
               {slide.content}
             </ContentSlideTemplate>
           )}

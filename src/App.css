@@ -44,27 +44,39 @@
 .steam-logo {
   position: absolute;
   top: 1.5rem;
-  right: 2rem;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
+  right: 2.5rem;
   text-align: right;
   z-index: 10;
   font-family: 'IBM Plex Sans', sans-serif;
-  letter-spacing: 0.05em;
+  line-height: 1;
 }
 
-.steam-logo span {
-  font-size: 1.4rem;
-  color: white;
-  display: block;
-  letter-spacing: 0;
-}
-
-.steam-logo.dark-logo {
+.powered-by {
+  font-size: 0.65rem;
   color: #9ca3af;
+  margin-bottom: 0.2rem;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
-.steam-logo.dark-logo span {
+.steam-text {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  letter-spacing: -0.02em;
+}
+
+.steam-a {
+  color: #00B0B0;
+  font-size: 1.1rem;
+  position: absolute;
+  top: -0.1rem;
+  right: -0.75rem;
+  font-weight: 600;
+}
+
+.steam-logo.dark-logo .steam-text {
   color: #1f2937;
 }
 
@@ -211,21 +223,117 @@
   font-family: 'IBM Plex Mono', monospace;
 }
 
-/* ImpactSlide Layout & Components */
-.impact-grid {
+/* Visual Storytelling Layouts */
+
+/* Layout A: Split */
+.layout-split {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1.4fr;
   gap: 2rem;
-  height: 100%;
+  align-items: start;
+}
+.layout-split .impact-left,
+.layout-split .impact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.impact-left, .impact-right {
+/* Layout B: Horizontal */
+.layout-horizontal {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   height: 100%;
 }
+.layout-horizontal-top {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.layout-horizontal-top .content-box {
+  flex: 2;
+}
+.layout-horizontal-top .skill-tags {
+  flex: 1;
+  justify-content: flex-end;
+}
+.layout-horizontal-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  flex-grow: 1;
+}
 
+/* Layout C: Cards */
+.layout-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 1.5rem;
+  height: 100%;
+}
+.layout-cards-top {
+  grid-column: 1 / -1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.layout-cards-top .skill-tags {
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Layout D: Timeline */
+.layout-timeline {
+  display: flex;
+  gap: 3rem;
+  height: 100%;
+}
+.timeline-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.timeline-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.timeline-step {
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline-step::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: -1.5rem;
+  width: 4px;
+  background: rgba(0, 176, 176, 0.2);
+  border-radius: 4px;
+}
+.timeline-step:last-child::before {
+  bottom: 0;
+}
+.timeline-step::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 1.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #00B0B0;
+  border: 2px solid white;
+}
+
+/* Reusable UI Components */
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
@@ -259,6 +367,24 @@
   background: #f9fafb;
 }
 
+.impact-box-highlight {
+  background: linear-gradient(135deg, #00B0B0, #008b8b);
+  border: none;
+  color: white;
+}
+.impact-box-highlight:hover {
+  background: linear-gradient(135deg, #008b8b, #007070);
+}
+.impact-box-highlight .box-title {
+  color: white;
+}
+.impact-box-highlight .box-list li {
+  color: rgba(255, 255, 255, 0.9);
+}
+.impact-box-highlight .box-list li::before {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .why-box {
   background: linear-gradient(135deg, rgba(0, 176, 176, 0.02), rgba(0, 176, 176, 0.06));
   border: 1px solid rgba(0, 176, 176, 0.2);
@@ -266,7 +392,6 @@
   border-radius: 16px;
   padding: 1.5rem;
   transition: all 0.3s;
-  margin-top: auto;
 }
 
 .why-box:hover {
@@ -469,7 +594,7 @@
 /* Nav Controls */
 .nav-controls {
   position: absolute;
-  bottom: 6%; /* Adjust to sit above footer */
+  bottom: 6%;
   right: 2rem;
   z-index: 20;
   display: flex;
