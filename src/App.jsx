@@ -435,7 +435,12 @@ const ScoreBar = ({ label, score, max, text, delay }) => {
 };
 
 const Badge = ({ text, delay }) => (
-  <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay, duration: 0.4 }} className="badge p-6 w-full text-center text-xl font-medium text-[#008b8b] bg-white rounded-xl shadow-sm border border-gray-100 mb-4">
+  <motion.div
+    initial={{ opacity: 0, x: -20 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ delay, duration: 0.4 }}
+    className="badge"
+  >
     {text}
   </motion.div>
 );
@@ -647,11 +652,11 @@ const slides = [
     title: "3. The 6 Qualities of a Steam-A Professional",
     content: (
       <div className="eval-container">
-        <div className="flex justify-between items-center mb-2 pb-4 border-b border-gray-100">
-           <div className="text-gray-500 font-semibold uppercase tracking-wider text-sm">Evaluation</div>
-           <div className="text-4xl font-bold text-[#00B0B0]">8.7<span className="text-xl text-gray-400 font-normal"> / 10 OVERALL SCORE</span></div>
+        <div className="eval-header">
+          <span className="eval-header-label">Self Evaluation</span>
+          <div className="overall-score">8.7<span>/ 10 Overall Score</span></div>
         </div>
-        <div className="score-grid mt-4">
+        <div className="score-grid">
           <ScoreBar label="Courage to Promise" score={9} max={10} delay={0.1} text={<>Realistic estimation backed by <span className="highlight-text">cross-team alignment</span>.</>} />
           <ScoreBar label="Commitment to Deliver" score={9} max={10} delay={0.2} text={<>Continuous tracking and proactive blocker resolution.</>} />
           <ScoreBar label="Attention to Detail" score={9.5} max={10} delay={0.3} text={<>Caught edge cases pre-prod. Validated AI against <span className="highlight-text">raw logs</span>.</>} />
@@ -667,7 +672,7 @@ const slides = [
     id: "support",
     title: "4. Support Required to Reach 10/10",
     content: (
-      <div className="support-container flex flex-col justify-center h-full max-w-4xl mx-auto items-center">
+      <div className="support-container">
         <Badge text="Ownership of end-to-end features" delay={0.1} />
         <Badge text="Mentorship on product thinking" delay={0.2} />
         <Badge text="Feedback on decision-making" delay={0.3} />
