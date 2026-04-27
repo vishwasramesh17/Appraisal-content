@@ -4,7 +4,7 @@ import {
   ChevronRight, ChevronLeft, Target, BarChart, HeartHandshake, 
   Rocket, Lightbulb, Zap, TrendingUp, Presentation, Briefcase, 
   BrainCircuit, ShieldAlert, Award, Compass, MessagesSquare, Users, 
-  LineChart, CheckCircle, Database, Activity, Globe, Car, Settings
+  LineChart, CheckCircle, Database, Activity, Globe, Car, Settings, Star
 } from 'lucide-react';
 import './App.css';
 import './index.css';
@@ -23,7 +23,7 @@ const Card = ({ title, icon, children, delay }) => (
   </motion.div>
 );
 
-const ImpactSlide = ({ skills, content, applied, impact }) => (
+const ImpactSlide = ({ skills, content, applied, impact, whyItMatters }) => (
   <div className="impact-grid">
     <div className="impact-left">
       <div className="skill-tags">
@@ -47,6 +47,20 @@ const ImpactSlide = ({ skills, content, applied, impact }) => (
       >
         {content}
       </motion.div>
+      
+      {whyItMatters && (
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="why-box"
+        >
+          <div className="box-title"><Star size={20} /> Why it Matters to Steam-A</div>
+          <ul className="box-list">
+            {whyItMatters.map((item, idx) => <li key={idx}>{item}</li>)}
+          </ul>
+        </motion.div>
+      )}
     </div>
     
     <div className="impact-right">
@@ -56,7 +70,7 @@ const ImpactSlide = ({ skills, content, applied, impact }) => (
         transition={{ delay: 0.3, duration: 0.5 }}
         className="applied-box"
       >
-        <div className="box-title"><Zap size={20} /> Applied Through</div>
+        <div className="box-title"><Zap size={20} /> How I Applied It</div>
         <ul className="box-list">
           {applied.map((item, idx) => <li key={idx}>{item}</li>)}
         </ul>
@@ -75,23 +89,6 @@ const ImpactSlide = ({ skills, content, applied, impact }) => (
       </motion.div>
     </div>
   </div>
-);
-
-const OutcomeRow = ({ icon, title, desc, delay }) => (
-  <motion.div 
-    initial={{ opacity: 0, x: -20 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ delay, duration: 0.5 }}
-    className="outcome-row"
-  >
-    <div className="outcome-icon">
-      {icon}
-    </div>
-    <div className="outcome-text">
-      <h4>{title}</h4>
-      <p>{desc}</p>
-    </div>
-  </motion.div>
 );
 
 const ScoreBar = ({ label, score, max, text, delay }) => {
@@ -148,185 +145,214 @@ const slides = [
           transition={{ delay: 0.6, duration: 0.8 }}
           className="mt-8 text-xl text-gray-400 italic max-w-2xl font-light"
         >
-          "Bridging Business Analysis and Quality Assurance to deliver data-driven, highly reliable EV charging experiences."
+          "Translating Product Thinking into Scalable Outcomes."
         </motion.p>
       </div>
     )
   },
 
-  // --- SECTION 1: WHAT I HAVE LEARNT & OUTCOMES DELIVERED ---
-
+  // Slide 1
   {
     id: "req-analysis",
-    title: "1. What I've Learnt: Requirement Analysis",
-    subtitle: "Driving Meaningful Product Outcomes",
+    title: "1. Requirement Analysis",
+    subtitle: "Translating Product Thinking into Scalable Outcomes",
     icon: <Target size={40} color="#00f2fe" />,
     content: (
       <ImpactSlide 
-        skills={["Product Thinking", "Systems Thinking", "Technical Depth (EV/OCPP)"]}
-        content={<p>Approached requirement analysis from both <strong>end-user and CPO operational perspectives</strong>, ensuring practical usability and scalability from day one. Identified edge cases early, reducing downstream ambiguity and rework.</p>}
+        skills={["Product Thinking", "Analytical Problem Solving", "Technical Depth"]}
+        content={<p>Applied product-first thinking by analyzing requirements from both <strong>end-user and CPO operational perspectives</strong>, ensuring real-world usability and scalability.</p>}
         applied={[
-          "Introduced Bulk Closure of Interrupted Sessions → reduced manual effort by ~75%",
-          "Contributed to Automatic Session Closure via Boot Notification → eliminated manual intervention (~100% effort reduction)",
-          "Enabled Google-based station reviews → improved feedback loop for service quality",
-          "Worked on Smart Charging Profiles → optimized power usage, prevented EB penalties",
-          "Built Live SoC visibility → improved user decision-making & station transparency"
+          "Drove Bulk Closure of Interrupted Sessions → reduced manual effort by ~75%",
+          "Enabled Automatic Session Closure via Boot Notification → eliminated manual intervention (~100% effort reduction)",
+          "Built Live SoC visibility & Google-based reviews → improved transparency and feedback loops",
+          "Implemented Smart Charging Profiles → optimized power usage and prevented EB penalties"
         ]}
         impact={[
-          "Reduced operational load for CPO teams",
-          "Improved charger utilization and user trust",
-          "Strengthened product’s ability to handle real-world scenarios at scale"
+          "Reduced operational overhead and repetitive workflows",
+          "Improved decision-making for users and operators",
+          "Increased system efficiency and reliability"
+        ]}
+        whyItMatters={[
+          "Strengthens platform scalability for growing CPO networks",
+          "Improves customer experience while reducing operational cost"
         ]}
       />
     )
   },
 
-  {
-    id: "workflows",
-    title: "Structuring Workflows",
-    subtitle: "Reducing Ambiguity at Scale",
-    icon: <Settings size={40} color="#4facfe" />,
-    content: (
-      <ImpactSlide 
-        skills={["Systems Thinking", "Process Design", "Product Thinking"]}
-        content={<p>Focused on building <strong>structured workflows</strong> to reduce dependency on verbal explanations and eliminate confusion in edge-case handling.</p>}
-        applied={[
-          "Created Business Process Models (BPMs) for session flows",
-          "Designed payment flow diagrams for client clarity",
-          "Drafted SOPs for interrupted & suspicious sessions",
-          "Built OCPP operational documentation",
-          "Introduced session failure analysis guide",
-          "Performed RICE prioritization for Suite backlog"
-        ]}
-        impact={[
-          "Improved cross-team alignment and faster decision-making",
-          "Reduced confusion in edge-case handling",
-          "Enabled more structured client communication and onboarding"
-        ]}
-      />
-    )
-  },
-
-  {
-    id: "req-clarity",
-    title: "Requirement Clarity",
-    subtitle: "Predictable & Faster Delivery",
-    icon: <CheckCircle size={40} color="#00f2fe" />,
-    content: (
-      <ImpactSlide 
-        skills={["Analytical Problem Solving", "Execution Discipline"]}
-        content={<p>Focused on creating structured, complete, and unambiguous requirements <strong>before development kickoff</strong> to guarantee seamless execution.</p>}
-        applied={[
-          "Defined edge cases, expected behaviors, and scenarios within story tickets",
-          "Ensured complete alignment between Business and Technical teams before development kickoff"
-        ]}
-        impact={[
-          "Reduced requirement-related gaps and avoidable bugs",
-          "Enabled smoother QA testing cycles",
-          "Supported consistent monthly production releases with minimal rework"
-        ]}
-      />
-    )
-  },
-
-  {
-    id: "data-truth",
-    title: "Using Data as Ground Truth",
-    subtitle: "Ensuring Product Reliability",
-    icon: <Database size={40} color="#4facfe" />,
-    content: (
-      <ImpactSlide 
-        skills={["Data-Driven Thinking", "Technical Validation (QA/BA)"]}
-        content={<p>Used raw data as a definitive validation layer, not just for post-analysis but for <strong>ensuring technical correctness</strong> before features hit production.</p>}
-        applied={[
-          "Validated AI-based session failure analysis outputs against raw OCPP logs (source of truth)",
-          "Identified mismatches in AI failure reasons, timestamps, and formats",
-          "Collaborated hands-on with teams to correct logic issues pre-production"
-        ]}
-        impact={[
-          "Prevented inaccurate insights from reaching CPOs and clients",
-          "Protected the credibility of our very first AI-driven feature",
-          "Ensured critical operational decisions made by CPOs are based on reliable data"
-        ]}
-      />
-    )
-  },
-
-  // --- SECTION 2: PROFESSIONAL HIGHPOINTS ---
-
-  {
-    id: "business-impact",
-    title: "2. Professional Highpoints: Better Business Decisions",
-    subtitle: "Revenue & Cost Awareness",
-    icon: <TrendingUp size={40} color="#00f2fe" />,
-    content: (
-      <ImpactSlide 
-        skills={["Product Thinking", "Business Acumen", "Analytical Modelling"]}
-        content={<p>Contributed deeply to commercial decision-making frameworks, <strong>linking technical product capabilities directly to revenue outcomes</strong>.</p>}
-        applied={[
-          "Built comprehensive commercial models for OCPP & OCPI clients",
-          "Projected connector growth and revenue across extended timelines",
-          "Estimated break-even points and long-term resource requirements"
-        ]}
-        impact={[
-          "Enabled highly informed, data-backed client onboarding decisions",
-          "Improved management visibility into cost vs revenue trade-offs",
-          "Supported strategic focus on high-potential clients for sustainable growth"
-        ]}
-      />
-    )
-  },
-
-  {
-    id: "resolving-complexity",
-    title: "Resolving Complexity",
-    subtitle: "Data-Driven Stakeholder Alignment",
-    icon: <ShieldAlert size={40} color="#4facfe" />,
-    content: (
-      <ImpactSlide 
-        skills={["Stakeholder Management", "Analytical Problem Solving"]}
-        content={<p>Successfully navigated highly conflicting stakeholder scenarios through <strong>data-backed reasoning and structured communication</strong>.</p>}
-        applied={[
-          "Resolved Tivolt reconciliation issues by consolidating multiple data sources (CTR, Razorpay, settlements)",
-          "Identified root cause in MAK Controls escalation via deep OCPP log analysis + joint hands-on testing",
-          "Collaborated directly with OEMs and clients for real-world validation"
-        ]}
-        impact={[
-          "Reduced ambiguity in critical financial and operational tracking",
-          "Prevented misdirected escalations and unnecessary system changes",
-          "Significantly strengthened trust across both internal and external stakeholders"
-        ]}
-      />
-    )
-  },
-
+  // Slide 2
   {
     id: "ownership",
-    title: "Ownership Beyond Role",
-    subtitle: "Enabling Team & Product Clarity",
+    title: "2. Ownership Beyond Role",
+    subtitle: "Enabling Clarity Across Teams",
     icon: <Award size={40} color="#00f2fe" />,
     content: (
       <ImpactSlide 
-        skills={["Ownership & Leadership", "Stakeholder Enablement"]}
-        content={<p>Stepped beyond the traditional Graduate Analyst scope by taking extreme ownership of <strong>team alignment, mentorship, and external knowledge flow</strong>.</p>}
+        skills={["Ownership & Leadership", "Stakeholder Management"]}
+        content={<p>Took ownership beyond BA scope by ensuring alignment, clarity, and continuity across teams.</p>}
         applied={[
-          "Conducted extensive KT sessions for Dev & QA teams → improved initial understanding of use cases & edge conditions",
-          "Actively supported technical teams during execution → eliminated dependency bottlenecks",
-          "Represented the product passionately in external events & discussions → strengthened product communication"
+          "Conducted KT sessions for Dev & QA teams, covering use cases, edge cases, and system behavior",
+          "Stayed actively involved during execution to resolve ambiguities in real-time",
+          "Represented product in external forums and discussions"
         ]}
         impact={[
-          "Faster onboarding and drastically reduced repetitive clarifications",
-          "Smoother, friction-free collaboration between business and technical teams",
-          "Improved external visibility, personal branding, and stakeholder confidence"
+          "Reduced dependency on repeated clarifications and improved onboarding speed",
+          "Enabled smoother collaboration and reduced execution friction",
+          "Strengthened product understanding internally and externally"
+        ]}
+        whyItMatters={[
+          "Improves team efficiency and reduces communication gaps as teams scale",
+          "Builds stronger product positioning with external stakeholders"
         ]}
       />
     )
   },
 
-  // --- SECTION 3: 6 QUALITIES ---
+  // Slide 3
+  {
+    id: "req-clarity",
+    title: "3. Requirement Quality",
+    subtitle: "Driving Predictable Delivery",
+    icon: <CheckCircle size={40} color="#00f2fe" />,
+    content: (
+      <ImpactSlide 
+        skills={["Analytical Problem Solving", "Ownership"]}
+        content={<p>Ensured requirements were structured, complete, and unambiguous <strong>before development</strong>.</p>}
+        applied={[
+          "Defined edge cases, expected behaviors, and failure scenarios within story tickets",
+          "Aligned teams early to eliminate interpretation gaps"
+        ]}
+        impact={[
+          "Noticeable reduction in requirement-related bugs and rework",
+          "Smoother QA cycles with fewer iterations",
+          "Enabled consistent monthly production releases"
+        ]}
+        whyItMatters={[
+          "Improves delivery predictability and release confidence",
+          "Reduces engineering effort spent on rework"
+        ]}
+      />
+    )
+  },
+
+  // Slide 4
+  {
+    id: "resolving-complexity",
+    title: "4. Handling Complex Stakeholder Scenarios",
+    subtitle: "Resolving Complexity with Data",
+    icon: <ShieldAlert size={40} color="#4facfe" />,
+    content: (
+      <ImpactSlide 
+        skills={["Stakeholder Management", "Analytical Problem Solving", "Technical Depth"]}
+        content={<p>Managed conflicting stakeholder scenarios using data-backed analysis and structured communication.</p>}
+        applied={[
+          "Resolved Tivolt reconciliation issues by consolidating multiple financial data sources",
+          "Identified root cause in MAK Controls issue via deep OCPP log analysis + joint testing",
+          "Collaborated with OEMs and clients for real-world validation"
+        ]}
+        impact={[
+          "Reduced back-and-forth cycles and ambiguity across teams",
+          "Prevented misaligned decisions and unnecessary escalations",
+          "Improved clarity in financial and operational workflows"
+        ]}
+        whyItMatters={[
+          "Builds trust with clients and partners",
+          "Ensures faster and more accurate issue resolution in production environments"
+        ]}
+      />
+    )
+  },
+
+  // Slide 5
+  {
+    id: "workflows",
+    title: "5. Process & Workflow Improvements",
+    subtitle: "Structuring Workflows for Scale",
+    icon: <Settings size={40} color="#4facfe" />,
+    content: (
+      <ImpactSlide 
+        skills={["Product Thinking", "Systems Thinking", "Ownership"]}
+        content={<p>Introduced structured workflows to reduce reliance on ad-hoc explanations and improve consistency.</p>}
+        applied={[
+          "Created Business Process Models for session flows",
+          "Designed payment flow diagrams for client communication",
+          "Drafted SOPs for interrupted & suspicious sessions",
+          "Built OCPP operational documentation & failure analysis guide",
+          "Applied RICE prioritization for backlog"
+        ]}
+        impact={[
+          "Reduced ambiguity in operations and edge-case handling",
+          "Improved cross-team alignment and faster decision-making",
+          "Enabled clearer client onboarding and communication"
+        ]}
+        whyItMatters={[
+          "Supports scaling operations without increasing complexity",
+          "Improves internal efficiency and external clarity"
+        ]}
+      />
+    )
+  },
+
+  // Slide 6
+  {
+    id: "data-truth",
+    title: "6. Data-Driven Decision Making",
+    subtitle: "Data as Ground Truth → Ensuring Product Reliability",
+    icon: <Database size={40} color="#4facfe" />,
+    content: (
+      <ImpactSlide 
+        skills={["Analytical Problem Solving", "Technical Depth"]}
+        content={<p>Used data not just for insights, but as a validation layer for system correctness.</p>}
+        applied={[
+          "Validated AI-based failure analysis against OCPP logs (source of truth)",
+          "Identified mismatches in failure reasons, timestamps, and formats",
+          "Worked with teams to correct issues before production"
+        ]}
+        impact={[
+          "Prevented incorrect insights from reaching clients",
+          "Improved reliability of AI-driven features",
+          "Reduced potential confusion and escalations"
+        ]}
+        whyItMatters={[
+          "Protects product credibility, especially in new AI capabilities",
+          "Ensures decisions made by CPOs are based on accurate data"
+        ]}
+      />
+    )
+  },
+
+  // Slide 7
+  {
+    id: "business-impact",
+    title: "7. Business Impact",
+    subtitle: "Linking Product to Business Outcomes",
+    icon: <TrendingUp size={40} color="#00f2fe" />,
+    content: (
+      <ImpactSlide 
+        skills={["Product Thinking", "Analytical Modelling", "Ownership"]}
+        content={<p>Connected product decisions with commercial viability and resource planning.</p>}
+        applied={[
+          "Built commercial models for OCPP & OCPI clients",
+          "Projected connector growth, revenue, and break-even timelines",
+          "Estimated resource and lifecycle costs"
+        ]}
+        impact={[
+          "Enabled informed client onboarding decisions",
+          "Improved visibility into revenue vs cost trade-offs",
+          "Supported focus on high-potential clients"
+        ]}
+        whyItMatters={[
+          "Strengthens business decision-making",
+          "Aligns product growth with financial sustainability"
+        ]}
+      />
+    )
+  },
+
+  // Slide 8 - The 6 Qualities
   {
     id: "evaluation",
-    title: "3. The 6 Qualities of a Steam-A Professional",
+    title: "8. The 6 Qualities of a Steam-A Professional",
     subtitle: "Self Evaluation: 8.7/10 Overall",
     icon: <BarChart size={40} color="#4facfe" />,
     content: (
@@ -361,10 +387,10 @@ const slides = [
     )
   },
 
-  // --- SECTION 4: SUPPORT REQUIRED ---
+  // Slide 9 - Support Required
   {
     id: "support",
-    title: "4. Support Required to Reach 10/10",
+    title: "9. Support Required to Reach 10/10",
     subtitle: "Empowerment & Skill Growth",
     icon: <HeartHandshake size={40} color="#00f2fe" />,
     content: (
@@ -378,28 +404,81 @@ const slides = [
     )
   },
 
-  // --- SECTION 5: ASPIRATIONS ---
+  // Slide 10 - Professional Direction
   {
-    id: "aspirations",
-    title: "5. Professional Aspirations for 2026",
-    subtitle: "The Next Horizon",
+    id: "direction",
+    title: "10. Professional Direction",
+    subtitle: "Transitioning Towards Product Ownership",
     icon: <Rocket size={40} color="#4facfe" />,
     content: (
-      <div className="grid-2 h-full items-center">
-        <Card title="Role Evolution: Senior BA / PM" icon={<Briefcase size={24} />} delay={0.1}>
-          <p>Transition from a strong execution-oriented Graduate Analyst role to a strategic, <span className="highlight-text">Product-driven role</span>.</p>
-          <p>Dive deep into problem discovery, solution definition, and precise outcome measurement.</p>
-        </Card>
-        <Card title="Building the 'Wow' Factor" icon={<Lightbulb size={24} />} delay={0.2}>
-          <p>Actively identify, propose, and own <span className="highlight-text">high-impact differentiator features</span> (MVPs).</p>
-          <p>Focus obsessively on solving real user problems and creating immediate, measurable value.</p>
-        </Card>
-        <Card title="Mastering the Narrative" icon={<Presentation size={24} />} delay={0.3}>
-          <p>Elevate storytelling and client management to ensure seamless <span className="highlight-text">stakeholder alignment</span>.</p>
-        </Card>
-        <Card title="The Promise Wall (Personal)" icon={<Car size={24} />} delay={0.4}>
-          <p>Having successfully purchased my own vehicle this year through consistent hard work, I aim to set and smash even <span className="highlight-text">bigger financial and professional milestones</span> next year.</p>
-        </Card>
+      <ImpactSlide 
+        skills={["Product Thinking", "Ownership", "Stakeholder Influence"]}
+        content={<p>Moving towards a Senior BA / Product-oriented role, expanding from execution to <strong>outcome ownership</strong>.</p>}
+        applied={[
+          "Strengthen understanding of user behavior, business impact, and product metrics",
+          "Contribute to problem discovery, solution definition, and outcome measurement",
+          "Identify high-impact features and differentiators (MVPs / wow factors)",
+          "Improve storytelling and client influence"
+        ]}
+        impact={[
+          "Drive decisions based on user value and business outcomes, not just requirements",
+          "Transform execution into measurable business success"
+        ]}
+        whyItMatters={[
+          "Enables stronger product direction and innovation",
+          "Bridges gap between execution and strategy"
+        ]}
+      />
+    )
+  },
+
+  // Slide 11 - Synthesis
+  {
+    id: "synthesis",
+    title: "11. Synthesis: Overall Contribution",
+    subtitle: "From Execution to Product Impact",
+    icon: <BrainCircuit size={40} color="#00f2fe" />,
+    content: (
+      <div className="synthesis-grid">
+        <div className="synthesis-col">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="synthesis-card"
+          >
+            <h3 className="text-xl font-bold text-[#4facfe] mb-3 flex items-center gap-2"><Settings size={20}/> Integrated Capability</h3>
+            <p className="text-gray-300 leading-relaxed mb-3">Progressed from requirement execution to <strong>product-oriented thinking</strong>.</p>
+            <p className="text-gray-300 leading-relaxed">Consistently applied product, analytical, and stakeholder skills across problem spaces to enable improvements across efficiency, reliability, and business decision-making.</p>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="synthesis-highlight"
+          >
+            <h3><Briefcase size={24}/> Strategic Positioning</h3>
+            <p className="text-lg text-white font-medium leading-relaxed">Operating with a mindset that connects product decisions to business outcomes.</p>
+            <p className="text-[#00f2fe] mt-3 font-semibold tracking-wide">Ready to take on broader product ownership and strategic responsibility.</p>
+          </motion.div>
+        </div>
+        
+        <div className="synthesis-col">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="synthesis-card h-full"
+          >
+            <h3 className="text-xl font-bold text-[#4facfe] mb-4 flex items-center gap-2"><Target size={20}/> Key Outcomes</h3>
+            <ul className="box-list">
+              <li><strong>Reduced operational effort</strong> through automation and workflow design.</li>
+              <li><strong>Improved delivery predictability</strong> and system reliability.</li>
+              <li><strong>Strengthened stakeholder trust</strong> through data-driven clarity.</li>
+              <li><strong>Contributed to revenue awareness</strong> and scalable product design.</li>
+            </ul>
+          </motion.div>
+        </div>
       </div>
     )
   }
