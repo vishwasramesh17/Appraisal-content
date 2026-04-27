@@ -44,7 +44,7 @@ const IntroSlideTemplate = ({ currentSlide }) => (
     <div className="intro-top">
       <div className="intro-text-container">
         <motion.div initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}>
-          <img src="/iris-logo.png" alt="IrIS Logo" className="h-[120px] object-contain mb-6" style={{marginLeft: '-10px'}} />
+          <img src={`${import.meta.env.BASE_URL}iris-logo.png`} alt="iris" style={{height: '110px', objectFit: 'contain', display: 'block', marginBottom: '1.5rem'}} />
         </motion.div>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
@@ -113,45 +113,46 @@ const ContentSlideTemplate = ({ title, children, currentSlide }) => (
 // --- New Visual Storytelling Components ---
 
 const Slide1Learning = () => (
-  <div className="flex flex-col gap-6 h-full w-full max-w-5xl mx-auto justify-center">
-    
-    <div className="content-box bg-white flex flex-col justify-center border-l-8 border-[#00B0B0] shadow-xl p-10 h-[60%]">
-      <h3 className="text-2xl font-bold text-gray-800 mb-10 flex items-center gap-3 border-b pb-4"><BarChart size={28} className="text-[#00B0B0]"/> Role Transition Gantt Chart (Aug '25 - Apr '26)</h3>
-      
-      {/* Timeline Labels */}
-      <div className="flex justify-between text-sm font-bold text-gray-500 mb-4 px-2">
-        <span>Aug 1, 2025</span>
-        <span>Nov 2025</span>
-        <span>Mid Feb 2026</span>
-        <span>Apr 28, 2026</span>
+  <div className="gantt-slide">
+    <h3 className="gantt-header">Aug 2025 → Apr 2026</h3>
+    {/* Timeline bar */}
+    <div className="gantt-timeline">
+      <div className="gantt-markers">
+        <span>Aug 1<br/>2025</span>
+        <span>Nov<br/>2025</span>
+        <span>Mid Feb<br/>2026</span>
+        <span>Apr 28<br/>2026</span>
       </div>
-
-      <div className="flex flex-col gap-8">
-        
-        <div className="flex items-center text-lg">
-          <span className="w-1/4 font-bold text-gray-700">Zwiz Testing</span>
-          <div className="w-3/4 bg-gray-100 h-10 rounded-r-full rounded-l-md overflow-hidden shadow-inner">
-            <motion.div initial={{width: 0}} animate={{width: "35%"}} transition={{duration: 0.8, delay: 0.1}} className="bg-gray-400 h-full flex items-center px-4 text-white text-sm font-bold">Phase 1</motion.div>
-          </div>
+      <div className="gantt-track">
+        <div className="gantt-dots"><span/><span/><span/><span/></div>
+        <div className="gantt-bars">
+          <motion.div initial={{scaleX:0}} animate={{scaleX:1}} transition={{duration:0.8, delay:0.2}} style={{originX:0}} className="gantt-bar gantt-phase1" >
+            <strong>PHASE 1 — QA TESTING</strong><br/>Zwiz Network
+          </motion.div>
+          <motion.div initial={{scaleX:0}} animate={{scaleX:1}} transition={{duration:0.8, delay:0.5}} style={{originX:0}} className="gantt-bar gantt-phase2">
+            <strong>PHASE 2 — TIVOLT TESTING + BA</strong><br/>Tivolt Testing & BA Transition
+          </motion.div>
+          <motion.div initial={{scaleX:0}} animate={{scaleX:1}} transition={{duration:0.8, delay:0.8}} style={{originX:0}} className="gantt-bar gantt-phase3">
+            <strong>PHASE 3 — FULL BA ROLE</strong><br/>Iris Network CMS
+          </motion.div>
         </div>
-        
-        <div className="flex items-center text-lg">
-          <span className="w-1/4 font-bold text-gray-700">Tivolt + BA Work</span>
-          <div className="w-3/4 bg-gray-100 h-10 rounded-full overflow-hidden flex shadow-inner">
-            <div className="w-[35%]"></div>
-            <motion.div initial={{width: 0}} animate={{width: "35%"}} transition={{duration: 0.8, delay: 0.3}} className="bg-[#00B0B0] opacity-60 h-full flex items-center px-4 text-white text-sm font-bold">Phase 2</motion.div>
-          </div>
-        </div>
-        
-        <div className="flex items-center text-lg">
-          <span className="w-1/4 font-bold text-[#00B0B0]">Full BA Role</span>
-          <div className="w-3/4 bg-gray-100 h-10 rounded-l-full rounded-r-md overflow-hidden flex shadow-inner border border-gray-200">
-            <div className="w-[70%]"></div>
-            <motion.div initial={{width: 0}} animate={{width: "30%"}} transition={{duration: 0.8, delay: 0.5}} className="bg-[#00B0B0] h-full flex items-center px-4 text-white text-sm font-bold shadow-md">Phase 3</motion.div>
-          </div>
-        </div>
-
       </div>
+    </div>
+    {/* Activities */}
+    <div className="gantt-activities">
+      <span className="gantt-act-label">Activities</span>
+      <div className="gantt-act-tags">
+        {['Sprint Planning','Daily Scrums','Req. Gathering','Stakeholder Discussions','Jira Stories + AC','Feature Analysis'].map((t,i) => (
+          <motion.span key={i} initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} transition={{delay:0.1*i+1}} className="gantt-act-tag">{t}</motion.span>
+        ))}
+      </div>
+    </div>
+    {/* Stats */}
+    <div className="gantt-stats">
+      <div><span className="gantt-stat-num">9 mo</span><span className="gantt-stat-lbl">as Business Analyst</span></div>
+      <div><span className="gantt-stat-num">2 mo</span><span className="gantt-stat-lbl">as QA Engineer</span></div>
+      <div><span className="gantt-stat-num">2</span><span className="gantt-stat-lbl">products supported</span></div>
+      <div><span className="gantt-stat-num">6+</span><span className="gantt-stat-lbl">features delivered</span></div>
     </div>
   </div>
 );
@@ -449,25 +450,25 @@ const Badge = ({ text, delay }) => (
 
 const slides = [
   { id: "intro" },
-  
+
+  // Q1: What have you learnt? Outcomes delivered?
   {
     id: "learning",
     title: "1. Learning Journey & Transition",
     content: <Slide1Learning />
   },
-
   {
     id: "outcomes",
     title: "1.1 Outcomes Delivered",
     content: <Slide1Outcomes />
   },
 
+  // Q2: Professional highpoints / accomplishments?
   {
     id: "key-contributions",
     title: "2. Key Contributions",
     content: <Slide2Contributions />
   },
-
   {
     id: "req-analysis",
     title: "2.1 Requirement Analysis",

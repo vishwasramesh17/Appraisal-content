@@ -665,3 +665,168 @@
   transform: none !important;
   box-shadow: none !important;
 }
+
+/* ===================== */
+/* Gantt Chart Slide      */
+/* ===================== */
+.gantt-slide {
+  background: #0a1628;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  color: white;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.gantt-header {
+  color: #00E5C0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.gantt-timeline {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gantt-markers {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #8b9dc3;
+  padding: 0 0.25rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.gantt-track {
+  position: relative;
+  background: #1a2744;
+  border-radius: 8px;
+  padding: 0.75rem;
+  min-height: 110px;
+}
+
+.gantt-dots {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0.25rem;
+  right: 0.25rem;
+  bottom: 0;
+  align-items: flex-start;
+  padding-top: 0.5rem;
+  pointer-events: none;
+}
+
+.gantt-dots span {
+  width: 2px;
+  height: 100%;
+  background: rgba(255,255,255,0.08);
+}
+
+.gantt-bars {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.gantt-bar {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.gantt-bar strong {
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.gantt-phase1 {
+  background: #e05555;
+  width: 28%;
+}
+
+.gantt-phase2 {
+  background: #7c6cdb;
+  width: 40%;
+  margin-left: 28%;
+}
+
+.gantt-phase3 {
+  background: #5a90f0;
+  width: 32%;
+  margin-left: 68%;
+}
+
+.gantt-activities {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.gantt-act-label {
+  font-size: 0.7rem;
+  color: #8b9dc3;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-top: 0.35rem;
+  flex-shrink: 0;
+}
+
+.gantt-act-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.gantt-act-tag {
+  background: #1a2744;
+  border: 1px solid #2a3a5c;
+  color: #c8d6e5;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.gantt-stats {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #1a2744;
+  padding-top: 1rem;
+}
+
+.gantt-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.gantt-stat-num {
+  color: #00E5C0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.gantt-stat-lbl {
+  color: #8b9dc3;
+  font-size: 0.75rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
