@@ -1,0 +1,563 @@
+/* App.css */
+.app-container {
+  width: 100%;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.bg-decor-1 {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background-color: #4facfe;
+  opacity: 0.03;
+  filter: blur(100px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-decor-2 {
+  position: absolute;
+  top: 60%;
+  right: -10%;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-color: #00f2fe;
+  opacity: 0.03;
+  filter: blur(100px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.header {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  height: 6rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-mark {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+}
+
+.logo-text h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 1.125rem;
+}
+
+.logo-text p {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.slide-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  height: 0.5rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dot.active {
+  width: 2rem;
+  background-color: #00f2fe;
+}
+
+.dot.inactive {
+  width: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dot.inactive:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 4rem 5rem 4rem;
+  z-index: 10;
+  position: relative;
+  height: calc(100vh - 6rem);
+}
+
+.slide-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-header {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+}
+
+.slide-title h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.slide-subtitle {
+  color: #00f2fe;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.slide-body {
+  flex-grow: 1;
+  position: relative;
+}
+
+/* Intro Slide */
+.intro-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.intro-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+.intro-subtitle {
+  font-size: 1.75rem;
+  color: #d1d5db;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.intro-divider {
+  width: 6rem;
+  height: 0.25rem;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  border-radius: 9999px;
+  margin-top: 1rem;
+}
+
+/* Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  height: 100%;
+  padding: 1rem;
+}
+
+.card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s;
+}
+
+.card:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #4facfe;
+}
+
+.card ul {
+  padding-left: 1.25rem;
+  color: #d1d5db;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.card li {
+  margin-bottom: 0.5rem;
+}
+
+/* Outcomes Slide */
+.outcomes-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+.outcome-row {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: default;
+}
+
+.outcome-icon {
+  padding: 0.75rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.2), rgba(0, 242, 254, 0.2));
+  color: #00f2fe;
+}
+
+.outcome-text h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.outcome-text p {
+  color: #9ca3af;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* High Points Slide */
+.highpoints-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.highpoints-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 64rem;
+}
+
+.highlight-box {
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-number {
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  user-select: none;
+  transition: color 0.3s;
+}
+
+.highlight-box:hover .highlight-number {
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.highlight-text {
+  position: relative;
+  z-index: 10;
+  font-size: 1.25rem;
+  color: #e5e7eb;
+  font-weight: 500;
+  padding-right: 2rem;
+}
+
+/* Evaluation Slide */
+.eval-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 56rem;
+  margin: 0 auto;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.eval-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.eval-header h3 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 3rem;
+  row-gap: 1.5rem;
+}
+
+.score-bar {
+  width: 100%;
+}
+
+.score-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.score-label {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #e5e7eb;
+}
+
+.score-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #00f2fe;
+}
+
+.score-max {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.score-track {
+  height: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  border-radius: 9999px;
+}
+
+/* Support Slide */
+.support-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  align-content: center;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.badge {
+  padding: 1rem 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.badge:hover {
+  background: linear-gradient(90deg, rgba(79, 172, 254, 0.2), rgba(0, 242, 254, 0.2));
+}
+
+/* Aspirations Slide */
+.aspirations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  height: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  align-content: center;
+}
+
+.aspiration-card {
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s;
+}
+
+.aspiration-card:hover {
+  box-shadow: 0 0 30px rgba(79, 172, 254, 0.15);
+}
+
+.aspiration-card h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  transition: color 0.3s;
+}
+
+.aspiration-card:hover h4 {
+  color: #4facfe;
+}
+
+.aspiration-card p {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Closing Slide */
+.closing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.closing-box {
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.25rem;
+  height: 100%;
+  background: linear-gradient(180deg, #4facfe, #00f2fe);
+}
+
+.closing-text {
+  font-size: 1.5rem;
+  line-height: 1.625;
+  color: #e5e7eb;
+  font-style: italic;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.closing-icon {
+  position: absolute;
+  bottom: -1rem;
+  right: -1rem;
+  opacity: 0.1;
+  transform: rotate(12deg);
+  transition: transform 0.7s;
+}
+
+.closing-box:hover .closing-icon {
+  transform: rotate(0deg);
+}
+
+/* Nav Controls */
+.nav-controls {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  z-index: 20;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-btn {
+  padding: 1rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.nav-btn.prev {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.nav-btn.prev:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn.next {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  color: white;
+}
+
+.nav-btn.next:hover:not(:disabled) {
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.slide-counter {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2rem;
+  z-index: 20;
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+@media (min-width: 768px) {
+  .nav-controls { right: 4rem; }
+  .slide-counter { left: 4rem; }
+  .intro-title { font-size: 6rem; }
+  .intro-subtitle { font-size: 2.25rem; }
+}
