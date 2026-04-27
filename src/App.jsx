@@ -44,10 +44,7 @@ const IntroSlideTemplate = ({ currentSlide }) => (
     <div className="intro-top">
       <div className="intro-text-container">
         <motion.div initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}>
-          <img src={`${import.meta.env.BASE_URL}iris-logo.png`} alt="iris" style={{height: '110px', objectFit: 'contain', display: 'block', marginBottom: '0.5rem'}} />
-          <div style={{fontFamily: '"Varela Round", sans-serif', fontSize: '4.5rem', lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '1rem'}}>
-            <span style={{color: '#00F5D4'}}>ırI</span><span style={{color: '#00BFFF'}}>S</span>
-          </div>
+          <img src={`${import.meta.env.BASE_URL}iris-logo.png`} alt="iris" style={{height: '130px', objectFit: 'contain', display: 'block', marginBottom: '1.5rem'}} />
         </motion.div>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
@@ -447,7 +444,7 @@ const slides = [
     id: "req-analysis",
     title: "2.1 Requirement Analysis",
     content: (
-      <LayoutSplit 
+      <LayoutTimeline 
         skills={["Product Thinking", "Analytical Problem Solving", "Technical Depth"]}
         content={<p>Applied product-first thinking by analyzing requirements from both <strong>end-user and CPO operational perspectives</strong>, ensuring real-world usability and scalability.</p>}
         applied={[
@@ -523,7 +520,7 @@ const slides = [
     id: "resolving-complexity",
     title: "2.4 Handling Clients & Complexity",
     content: (
-      <LayoutSplit 
+      <LayoutHorizontal 
         skills={["Stakeholder Management", "Analytical Problem Solving", "Technical Depth"]}
         content={<p>Actively handling 7+ clients and resolving day-to-day operational issues for 4+ clients directly.</p>}
         applied={[
