@@ -193,7 +193,7 @@ const slides = [
           <ScoreBar label="Attention to Detail" score={9.5} max={10} delay={0.3} />
           <ScoreBar label="Smart Storytelling" score={8} max={10} delay={0.4} />
           <ScoreBar label="Positive Attitude" score={8.5} max={10} delay={0.5} />
-          <ScoreBar label="Life Outside Work" score={7} max={10} delay={0.6} />
+          <ScoreBar label="Life Outside Work" score={7.5} max={10} delay={0.6} />
         </div>
       </div>
     )
