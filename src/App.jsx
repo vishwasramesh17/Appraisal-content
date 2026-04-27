@@ -2,28 +2,117 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ChevronRight, ChevronLeft, Target, BarChart, HeartHandshake, 
-  Rocket, Lightbulb, Zap, TrendingUp, Presentation, Briefcase, 
-  BrainCircuit, ShieldAlert, Award, Compass, MessagesSquare, Users, 
-  LineChart, CheckCircle, Database, Activity, Globe, Car, Settings, Star
+  Rocket, Briefcase, BrainCircuit, ShieldAlert, Award, 
+  CheckCircle, Database, Settings, Star, Zap, TrendingUp, Compass
 } from 'lucide-react';
 import './App.css';
 import './index.css';
 
-// Helper Components
-const Card = ({ title, icon, children, delay }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay, duration: 0.5 }}
-    className="card"
-  >
-    {icon && <div className="card-icon">{icon}</div>}
-    <h3>{title}</h3>
-    <div>{children}</div>
-  </motion.div>
+// SVG Background Pattern
+const Waves = () => (
+  <div className="wave-container">
+    {[...Array(20)].map((_, i) => (
+      <div 
+        key={i} 
+        className="wave-circle" 
+        style={{
+          width: `${30 + i * 8}%`, 
+          height: `${30 + i * 8}%`, 
+          top: `-${15 + i * 4}%`, 
+          right: `-${15 + i * 4}%`,
+          opacity: 1 - (i * 0.04)
+        }} 
+      />
+    ))}
+  </div>
 );
 
-const ImpactSlide = ({ skills, content, applied, impact, whyItMatters }) => (
+// Steam-A Logo
+const SteamLogo = ({ dark }) => (
+  <div className={`steam-logo ${dark ? 'dark-logo' : ''}`}>
+    Powered by <span style={{fontWeight: 'bold'}}>steam<span style={{color: '#00B0B0', fontWeight: 'bold'}}>a</span></span>
+  </div>
+);
+
+// --- Layout Templates ---
+
+const IntroSlideTemplate = ({ currentSlide, slidesLength }) => (
+  <div className="slide intro-layout">
+    <Waves />
+    <SteamLogo />
+    <div className="intro-top">
+      <div className="intro-text-container">
+        <motion.h1 
+          initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}
+          className="iris-title"
+        >
+          iris
+        </motion.h1>
+        <motion.p 
+          initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
+          className="iris-subtitle"
+        >
+          Making EV charging reliable with our AI enabled <br/><span style={{color: '#00B0B0'}}>digital twin</span>
+        </motion.p>
+      </div>
+    </div>
+    <div className="intro-bottom">
+      <motion.h2 
+        initial={{opacity: 0, y: 20}} animate={{opacity: 1, y:0}} transition={{delay: 0.4}}
+        className="intro-main-title"
+      >
+        Performance Review – Vishwas R
+      </motion.h2>
+    </div>
+    <div className="footer dark-footer">
+      <span>28-Apr-26</span>
+      <span>www.iris.steam-a.com</span>
+      <span>{currentSlide + 1}</span>
+    </div>
+  </div>
+);
+
+const OutroSlideTemplate = ({ currentSlide, slidesLength }) => (
+  <div className="slide outro-layout">
+    <Waves />
+    <SteamLogo />
+    <div className="outro-content">
+      <motion.h1 
+        initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}
+        className="thank-you"
+      >
+        Thank you
+      </motion.h1>
+    </div>
+    <div className="footer dark-footer">
+      <span>28-Apr-26</span>
+      <span>www.iris.steam-a.com</span>
+      <span>{currentSlide + 1}</span>
+    </div>
+  </div>
+);
+
+const ContentSlideTemplate = ({ title, children, currentSlide, slidesLength }) => (
+  <div className="slide content-layout">
+    <SteamLogo dark />
+    <div className="content-header">
+      <div className="cyan-block"></div>
+      <h2 className="slide-title">{title}</h2>
+    </div>
+    <div className="content-body">
+      {children}
+    </div>
+    <div className="footer cyan-footer">
+      <span>28-Apr-26</span>
+      <span>www.iris.steam-a.com</span>
+      <span>{currentSlide + 1}</span>
+    </div>
+  </div>
+);
+
+// --- Component Blocks ---
+
+const ImpactSlide = ({ skills, content, applied, impact, strategicAlignment }) => (
   <div className="impact-grid">
     <div className="impact-left">
       <div className="skill-tags">
@@ -43,21 +132,21 @@ const ImpactSlide = ({ skills, content, applied, impact, whyItMatters }) => (
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="content-box text-lg text-gray-300 leading-relaxed"
+        className="content-box"
       >
-        {content}
+        <div className="text-lg leading-relaxed">{content}</div>
       </motion.div>
       
-      {whyItMatters && (
+      {strategicAlignment && (
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
           className="why-box"
         >
-          <div className="box-title"><Star size={20} /> Why it Matters to Steam-A</div>
+          <div className="box-title"><Compass size={20} /> Strategic Alignment</div>
           <ul className="box-list">
-            {whyItMatters.map((item, idx) => <li key={idx}>{item}</li>)}
+            {strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}
           </ul>
         </motion.div>
       )}
@@ -128,27 +217,14 @@ const Badge = ({ text, delay }) => (
   </motion.div>
 );
 
-const slides = [
-  // Intro Slide
-  {
-    id: "intro",
-    title: "",
-    subtitle: "",
-    content: (
-      <div className="intro-slide">
-        <h1 className="intro-title text-gradient">Performance Appraisal</h1>
-        <p className="intro-subtitle">Vishwas R • Graduate Analyst (Business) • Steam-A • 2025–2026</p>
-        <div className="intro-divider"></div>
-      </div>
-    )
-  },
+// --- Content ---
 
-  // Slide 1
+const slides = [
+  { id: "intro" },
+  
   {
     id: "req-analysis",
     title: "1. Requirement Analysis",
-    subtitle: "Translating Product Thinking into Scalable Outcomes",
-    icon: <Target size={40} color="#00f2fe" />,
     content: (
       <ImpactSlide 
         skills={["Product Thinking", "Analytical Problem Solving", "Technical Depth"]}
@@ -164,7 +240,7 @@ const slides = [
           "Improved decision-making for users and operators",
           "Increased system efficiency and reliability"
         ]}
-        whyItMatters={[
+        strategicAlignment={[
           "Strengthens platform scalability for growing CPO networks",
           "Improves customer experience while reducing operational cost"
         ]}
@@ -172,12 +248,9 @@ const slides = [
     )
   },
 
-  // Slide 2
   {
     id: "ownership",
     title: "2. Ownership Beyond Role",
-    subtitle: "Enabling Clarity Across Teams",
-    icon: <Award size={40} color="#00f2fe" />,
     content: (
       <ImpactSlide 
         skills={["Ownership & Leadership", "Stakeholder Management"]}
@@ -192,7 +265,7 @@ const slides = [
           "Enabled smoother collaboration and reduced execution friction",
           "Strengthened product understanding internally and externally"
         ]}
-        whyItMatters={[
+        strategicAlignment={[
           "Improves team efficiency and reduces communication gaps as teams scale",
           "Builds stronger product positioning with external stakeholders"
         ]}
@@ -200,12 +273,9 @@ const slides = [
     )
   },
 
-  // Slide 3
   {
     id: "req-clarity",
     title: "3. Requirement Quality",
-    subtitle: "Driving Predictable Delivery",
-    icon: <CheckCircle size={40} color="#00f2fe" />,
     content: (
       <ImpactSlide 
         skills={["Analytical Problem Solving", "Ownership"]}
@@ -219,7 +289,7 @@ const slides = [
           "Smoother QA cycles with fewer iterations",
           "Enabled consistent monthly production releases"
         ]}
-        whyItMatters={[
+        strategicAlignment={[
           "Improves delivery predictability and release confidence",
           "Reduces engineering effort spent on rework"
         ]}
@@ -227,12 +297,9 @@ const slides = [
     )
   },
 
-  // Slide 4
   {
     id: "resolving-complexity",
     title: "4. Handling Complex Stakeholder Scenarios",
-    subtitle: "Resolving Complexity with Data",
-    icon: <ShieldAlert size={40} color="#4facfe" />,
     content: (
       <ImpactSlide 
         skills={["Stakeholder Management", "Analytical Problem Solving", "Technical Depth"]}
@@ -247,7 +314,7 @@ const slides = [
           "Prevented misaligned decisions and unnecessary escalations",
           "Improved clarity in financial and operational workflows"
         ]}
-        whyItMatters={[
+        strategicAlignment={[
           "Builds trust with clients and partners",
           "Ensures faster and more accurate issue resolution in production environments"
         ]}
@@ -255,12 +322,9 @@ const slides = [
     )
   },
 
-  // Slide 5
   {
     id: "workflows",
     title: "5. Process & Workflow Improvements",
-    subtitle: "Structuring Workflows for Scale",
-    icon: <Settings size={40} color="#4facfe" />,
     content: (
       <ImpactSlide 
         skills={["Product Thinking", "Systems Thinking", "Ownership"]}
@@ -277,7 +341,7 @@ const slides = [
           "Improved cross-team alignment and faster decision-making",
           "Enabled clearer client onboarding and communication"
         ]}
-        whyItMatters={[
+        strategicAlignment={[
           "Supports scaling operations without increasing complexity",
           "Improves internal efficiency and external clarity"
         ]}
@@ -285,12 +349,9 @@ const slides = [
     )
   },
 
-  // Slide 6
   {
     id: "data-truth",
     title: "6. Data-Driven Decision Making",
-    subtitle: "Data as Ground Truth → Ensuring Product Reliability",
-    icon: <Database size={40} color="#4facfe" />,
     content: (
       <ImpactSlide 
         skills={["Analytical Problem Solving", "Technical Depth"]}
@@ -305,7 +366,7 @@ const slides = [
           "Improved reliability of AI-driven features",
           "Reduced potential confusion and escalations"
         ]}
-        whyItMatters={[
+        strategicAlignment={[
           "Protects product credibility, especially in new AI capabilities",
           "Ensures decisions made by CPOs are based on accurate data"
         ]}
@@ -313,12 +374,9 @@ const slides = [
     )
   },
 
-  // Slide 7
   {
     id: "business-impact",
     title: "7. Business Impact",
-    subtitle: "Linking Product to Business Outcomes",
-    icon: <TrendingUp size={40} color="#00f2fe" />,
     content: (
       <ImpactSlide 
         skills={["Product Thinking", "Analytical Modelling", "Ownership"]}
@@ -333,7 +391,7 @@ const slides = [
           "Improved visibility into revenue vs cost trade-offs",
           "Supported focus on high-potential clients"
         ]}
-        whyItMatters={[
+        strategicAlignment={[
           "Strengthens business decision-making",
           "Aligns product growth with financial sustainability"
         ]}
@@ -341,50 +399,26 @@ const slides = [
     )
   },
 
-  // Slide 8 - The 6 Qualities
   {
     id: "evaluation",
     title: "8. The 6 Qualities of a Steam-A Professional",
-    subtitle: "Self Evaluation: 8.7/10 Overall",
-    icon: <BarChart size={40} color="#4facfe" />,
     content: (
       <div className="eval-container">
         <div className="score-grid">
-          <ScoreBar 
-            label="Courage to Promise" score={9} max={10} delay={0.1} 
-            text={<>Realistic estimation backed by <span className="highlight-text">cross-team alignment</span>.</>}
-          />
-          <ScoreBar 
-            label="Commitment to Deliver" score={9} max={10} delay={0.2} 
-            text={<>Continuous tracking and proactive blocker resolution.</>}
-          />
-          <ScoreBar 
-            label="Attention to Detail" score={9.5} max={10} delay={0.3} 
-            text={<>Caught edge cases pre-prod. Validated AI against <span className="highlight-text">raw logs</span>.</>}
-          />
-          <ScoreBar 
-            label="Smart Storytelling" score={8} max={10} delay={0.4} 
-            text={<>Translated complex OCPP flows into <span className="highlight-text">clear narratives</span>.</>}
-          />
-          <ScoreBar 
-            label="Positive Attitude" score={8.5} max={10} delay={0.5} 
-            text={<>Calm under pressure, prioritizing <span className="highlight-text">solutions over problems</span>.</>}
-          />
-          <ScoreBar 
-            label="Life Outside Work" score={7.5} max={10} delay={0.6} 
-            text={<>Maintaining energy through <span className="highlight-text">dancing and travel</span>.</>}
-          />
+          <ScoreBar label="Courage to Promise" score={9} max={10} delay={0.1} text={<>Realistic estimation backed by <span className="highlight-text">cross-team alignment</span>.</>} />
+          <ScoreBar label="Commitment to Deliver" score={9} max={10} delay={0.2} text={<>Continuous tracking and proactive blocker resolution.</>} />
+          <ScoreBar label="Attention to Detail" score={9.5} max={10} delay={0.3} text={<>Caught edge cases pre-prod. Validated AI against <span className="highlight-text">raw logs</span>.</>} />
+          <ScoreBar label="Smart Storytelling" score={8} max={10} delay={0.4} text={<>Translated complex OCPP flows into <span className="highlight-text">clear narratives</span>.</>} />
+          <ScoreBar label="Positive Attitude" score={8.5} max={10} delay={0.5} text={<>Calm under pressure, prioritizing <span className="highlight-text">solutions over problems</span>.</>} />
+          <ScoreBar label="Life Outside Work" score={7.5} max={10} delay={0.6} text={<>Maintaining energy through <span className="highlight-text">dancing and travel</span>.</>} />
         </div>
       </div>
     )
   },
 
-  // Slide 9 - Support Required
   {
     id: "support",
     title: "9. Support Required to Reach 10/10",
-    subtitle: "Empowerment & Skill Growth",
-    icon: <HeartHandshake size={40} color="#00f2fe" />,
     content: (
       <div className="support-container">
         <Badge text="End-to-End Ownership Opportunities" delay={0.1} />
@@ -396,12 +430,9 @@ const slides = [
     )
   },
 
-  // Slide 10 - Professional Direction
   {
     id: "direction",
     title: "10. Professional Direction",
-    subtitle: "Transitioning Towards Product Ownership",
-    icon: <Rocket size={40} color="#4facfe" />,
     content: (
       <ImpactSlide 
         skills={["Product Thinking", "Ownership", "Stakeholder Influence"]}
@@ -416,7 +447,7 @@ const slides = [
           "Drive decisions based on user value and business outcomes, not just requirements",
           "Transform execution into measurable business success"
         ]}
-        whyItMatters={[
+        strategicAlignment={[
           "Enables stronger product direction and innovation",
           "Bridges gap between execution and strategy"
         ]}
@@ -424,12 +455,9 @@ const slides = [
     )
   },
 
-  // Slide 11 - Synthesis
   {
     id: "synthesis",
     title: "11. Synthesis: Overall Contribution",
-    subtitle: "From Execution to Product Impact",
-    icon: <BrainCircuit size={40} color="#00f2fe" />,
     content: (
       <div className="synthesis-grid">
         <div className="synthesis-col">
@@ -439,9 +467,9 @@ const slides = [
             transition={{ delay: 0.1, duration: 0.5 }}
             className="synthesis-card"
           >
-            <h3 className="text-xl font-bold text-[#4facfe] mb-3 flex items-center gap-2"><Settings size={20}/> Integrated Capability</h3>
-            <p className="text-gray-300 leading-relaxed mb-3">Progressed from requirement execution to <strong>product-oriented thinking</strong>.</p>
-            <p className="text-gray-300 leading-relaxed">Consistently applied product, analytical, and stakeholder skills across problem spaces to enable improvements across efficiency, reliability, and business decision-making.</p>
+            <h3 className="text-xl font-bold text-[#008b8b] mb-3 flex items-center gap-2"><Settings size={20}/> Integrated Capability</h3>
+            <p className="leading-relaxed mb-3">Progressed from requirement execution to <strong>product-oriented thinking</strong>.</p>
+            <p className="leading-relaxed">Consistently applied product, analytical, and stakeholder skills across problem spaces to enable improvements across efficiency, reliability, and business decision-making.</p>
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -450,10 +478,10 @@ const slides = [
             className="synthesis-highlight"
           >
             <h3><Briefcase size={24}/> Strategic Positioning</h3>
-            <p className="text-lg text-white font-medium leading-relaxed">Operating with a mindset that connects product decisions to business outcomes.</p>
-            <p className="text-[#00f2fe] mt-3 font-semibold tracking-wide">Ready to take on broader product ownership and strategic responsibility.</p>
-            <div className="mt-4 pt-4 border-t border-[rgba(0,242,254,0.2)]">
-              <p className="text-gray-400 italic font-light">"Translating Product Thinking into Scalable Outcomes."</p>
+            <p className="highlight-main">Operating with a mindset that connects product decisions to business outcomes.</p>
+            <p className="highlight-sub">Ready to take on broader product ownership and strategic responsibility.</p>
+            <div className="mt-4 pt-4 border-t border-[#00B0B0] border-opacity-20">
+              <p className="text-gray-500 italic font-light">"Translating Product Thinking into Scalable Outcomes."</p>
             </div>
           </motion.div>
         </div>
@@ -465,7 +493,7 @@ const slides = [
             transition={{ delay: 0.2, duration: 0.5 }}
             className="synthesis-card h-full"
           >
-            <h3 className="text-xl font-bold text-[#4facfe] mb-4 flex items-center gap-2"><Target size={20}/> Key Outcomes</h3>
+            <h3 className="text-xl font-bold text-[#008b8b] mb-4 flex items-center gap-2"><Target size={20}/> Key Outcomes</h3>
             <ul className="box-list">
               <li><strong>Reduced operational effort</strong> through automation and workflow design.</li>
               <li><strong>Improved delivery predictability</strong> and system reliability.</li>
@@ -476,7 +504,9 @@ const slides = [
         </div>
       </div>
     )
-  }
+  },
+  
+  { id: "outro" }
 ];
 
 function App() {
@@ -503,58 +533,27 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Decorative Background Elements */}
-      <div className="bg-decor-1"></div>
-      <div className="bg-decor-2"></div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="slide-container-full"
+        >
+          {slide.id === 'intro' ? (
+            <IntroSlideTemplate currentSlide={currentSlide} slidesLength={slides.length} />
+          ) : slide.id === 'outro' ? (
+            <OutroSlideTemplate currentSlide={currentSlide} slidesLength={slides.length} />
+          ) : (
+            <ContentSlideTemplate title={slide.title} currentSlide={currentSlide} slidesLength={slides.length}>
+              {slide.content}
+            </ContentSlideTemplate>
+          )}
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Header */}
-      <header className="header">
-        <div className="logo-container">
-          <div className="logo-mark">V</div>
-          <div className="logo-text">
-            <h2>Vishwas R</h2>
-          </div>
-        </div>
-        <div className="slide-dots">
-          {slides.map((_, idx) => (
-            <button 
-              key={idx}
-              onClick={() => setCurrentSlide(idx)}
-              className={`dot ${idx === currentSlide ? 'active' : 'inactive'}`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
-        </div>
-      </header>
-
-      {/* Main Content Area */}
-      <main className="main-content">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="slide-container"
-          >
-            {slide.title && slide.id !== "intro" && (
-              <div className="slide-header">
-                {slide.icon && <div>{slide.icon}</div>}
-                <div className="slide-title">
-                  <h2>{slide.title}</h2>
-                  {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
-                </div>
-              </div>
-            )}
-            <div className="slide-body">
-               {slide.content}
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </main>
-
-      {/* Navigation Controls */}
       <div className="nav-controls">
         <button 
           onClick={prevSlide}
@@ -572,11 +571,6 @@ function App() {
         >
           <ChevronRight size={24} />
         </button>
-      </div>
-      
-      {/* Footer / Slide Info */}
-      <div className="slide-counter">
-        {currentSlide + 1} / {slides.length}
       </div>
     </div>
   );
