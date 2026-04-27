@@ -47,7 +47,7 @@ const IntroSlideTemplate = ({ currentSlide }) => (
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}
           className="iris-title"
         >
-          IRIS
+          <span style={{color: '#00F5D4'}}>IrI</span><span style={{color: '#00BFFF'}}>S</span>
         </motion.h1>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
@@ -113,7 +113,197 @@ const ContentSlideTemplate = ({ title, children, currentSlide }) => (
   </div>
 );
 
-// --- Visual Storytelling Components ---
+// --- New Visual Storytelling Components ---
+
+const Slide1Learning = () => (
+  <div className="flex flex-col gap-6 h-full">
+    <div className="flex gap-4 mb-2">
+      <span className="skill-tag">Product Thinking</span>
+      <span className="skill-tag">Technical Depth</span>
+      <span className="skill-tag">Ownership</span>
+    </div>
+    
+    {/* Timeline Arc */}
+    <div className="flex justify-between items-center relative py-4">
+      <div className="absolute left-0 right-0 h-1 bg-gray-200 top-1/2 -z-10"></div>
+      {['Aug 2025', 'Nov 2025', 'Feb 2026', 'Apr 2026'].map((date, i) => (
+        <div key={i} className="flex flex-col items-center bg-white px-4">
+          <div className="w-4 h-4 rounded-full bg-[#00B0B0] mb-2 border-2 border-white shadow-sm"></div>
+          <span className="font-bold text-gray-600 text-sm">{date}</span>
+        </div>
+      ))}
+    </div>
+    
+    <div className="grid grid-cols-3 gap-6">
+      <div className="content-box border-t-4 border-t-[#00B0B0]">
+        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 1: Zwiz Testing<br/><span className="text-xs text-gray-400 font-normal">(Aug–Nov)</span></h4>
+        <p className="text-sm text-gray-600">Built strong foundation in testing, edge case thinking, and system validation</p>
+      </div>
+      <div className="content-box border-t-4 border-t-[#00B0B0]">
+        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 2: Tivolt + BA<br/><span className="text-xs text-gray-400 font-normal">(Nov–Feb)</span></h4>
+        <p className="text-sm text-gray-600">Started contributing to requirement understanding, workflows, and client discussions</p>
+      </div>
+      <div className="content-box border-t-4 border-t-[#00B0B0]">
+        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 3: Full BA Role<br/><span className="text-xs text-gray-400 font-normal">(Feb–Apr)</span></h4>
+        <p className="text-sm text-gray-600">Took ownership of Network module, backlog, and client-facing responsibilities</p>
+      </div>
+    </div>
+
+    <div className="flex gap-8 mt-4 flex-1">
+      <div className="flex-1 content-box bg-gray-50 flex flex-col justify-center">
+        <h3 className="box-title mb-6"><BarChart size={20}/> Journey Gantt</h3>
+        <div className="flex flex-col gap-6">
+          <div className="flex items-center text-sm">
+            <span className="w-1/3 font-semibold text-gray-600">Zwiz Testing</span>
+            <div className="w-2/3 bg-gray-200 h-6 rounded-full overflow-hidden">
+              <div className="bg-gray-400 h-full w-[40%]"></div>
+            </div>
+          </div>
+          <div className="flex items-center text-sm">
+            <span className="w-1/3 font-semibold text-gray-600">Tivolt Testing + BA</span>
+            <div className="w-2/3 bg-gray-200 h-6 rounded-full overflow-hidden flex">
+              <div className="w-[30%]"></div>
+              <div className="bg-[#00B0B0] opacity-50 h-full w-[40%] rounded-full"></div>
+            </div>
+          </div>
+          <div className="flex items-center text-sm">
+            <span className="w-1/3 font-semibold text-gray-600">Full BA Role</span>
+            <div className="w-2/3 bg-gray-200 h-6 rounded-full overflow-hidden flex">
+              <div className="w-[60%]"></div>
+              <div className="bg-[#00B0B0] h-full w-[40%] rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex-1 impact-box-highlight rounded-xl p-8 flex flex-col justify-center shadow-lg">
+        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3"><Rocket size={28}/> Outcomes Delivered</h3>
+        <ul className="box-list text-white space-y-3">
+          <li className="text-white before:text-white font-medium">Owned <strong>9 sprints</strong> in Network as BA</li>
+          <li className="text-white before:text-white font-medium">Worked on 40+ stories | Created 30+ stories</li>
+          <li className="text-white before:text-white font-medium">Delivered <strong>25+ stories</strong> to production (stable)</li>
+          <li className="text-white before:text-white font-medium">Reported 35+ critical bugs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+);
+
+const Slide2Contributions = () => (
+  <div className="flex flex-col gap-6 h-full">
+    <div className="flex gap-4 mb-2">
+      <span className="skill-tag">Ownership</span>
+      <span className="skill-tag">Product Thinking</span>
+      <span className="skill-tag">Stakeholder Management</span>
+    </div>
+    
+    <div className="grid grid-cols-3 gap-6 flex-1">
+      <div className="content-box flex flex-col gap-4 border-t-4 border-t-blue-400">
+        <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+          <Database size={24}/>
+        </div>
+        <h3 className="font-bold text-xl text-gray-800">Product Contributions</h3>
+        <ul className="box-list text-sm space-y-2 mt-2">
+          <li>Smart Charging Profile</li>
+          <li>Dynamic Tariff</li>
+          <li>Auto Closure of Sessions</li>
+          <li>AI Failure Session Analytics</li>
+        </ul>
+      </div>
+      <div className="content-box flex flex-col gap-4 border-t-4 border-t-purple-400">
+        <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-500">
+          <Settings size={24}/>
+        </div>
+        <h3 className="font-bold text-xl text-gray-800">Process & System</h3>
+        <ul className="box-list text-sm space-y-2 mt-2">
+          <li>BPMN for Tivolt Payment</li>
+          <li>Session Flow & OCPP Flow Diagrams</li>
+          <li>SOPs & structured workflows</li>
+          <li>Commercial Models (OCPP & OCPI)</li>
+        </ul>
+      </div>
+      <div className="content-box flex flex-col gap-4 border-t-4 border-t-[#00B0B0]">
+        <div className="w-12 h-12 rounded-full bg-[#00B0B0] bg-opacity-10 flex items-center justify-center text-[#00B0B0]">
+          <HeartHandshake size={24}/>
+        </div>
+        <h3 className="font-bold text-xl text-gray-800">Client & Execution</h3>
+        <ul className="box-list text-sm space-y-2 mt-2">
+          <li>Owned Network backlog + service support</li>
+          <li>Acted as Scrum Master (daily tracking)</li>
+          <li>Handled 7+ clients | resolved 4+ daily</li>
+          <li>Delivered Network Demo for Flex Energy</li>
+          <li>OEM integrations (ACS Energy, Cubenz)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div className="impact-box bg-gray-50 border-l-4 border-[#00B0B0] mt-2">
+      <h3 className="font-bold text-[#00B0B0] mb-4 flex items-center gap-2 text-lg"><TrendingUp size={24}/> Direct Impact Delivered</h3>
+      <div className="grid grid-cols-3 gap-6">
+        <div className="font-medium text-gray-700 bg-white p-3 rounded shadow-sm">→ Improved operational efficiency & clarity</div>
+        <div className="font-medium text-gray-700 bg-white p-3 rounded shadow-sm">→ Strengthened client trust and engagement</div>
+        <div className="font-medium text-gray-700 bg-white p-3 rounded shadow-sm">→ Enabled scalable product workflows</div>
+      </div>
+    </div>
+  </div>
+);
+
+const Slide6Synthesis = () => (
+  <div className="flex flex-col gap-6 h-full">
+    <div className="grid grid-cols-3 gap-6 flex-1">
+      <div className="content-box text-center flex flex-col items-center justify-center gap-4 hover:border-blue-300">
+        <div className="w-20 h-20 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mb-2"><Briefcase size={40}/></div>
+        <h3 className="font-bold text-2xl text-gray-800">What I Did</h3>
+        <ul className="text-gray-600 space-y-3 text-base text-left list-disc list-inside mt-4">
+          <li>Owned Network module</li>
+          <li>Delivered features</li>
+          <li>Built workflows</li>
+          <li>Managed clients</li>
+        </ul>
+      </div>
+      <div className="content-box text-center flex flex-col items-center justify-center gap-4 hover:border-purple-300">
+        <div className="w-20 h-20 rounded-full bg-purple-50 text-purple-500 flex items-center justify-center mb-2"><BrainCircuit size={40}/></div>
+        <h3 className="font-bold text-2xl text-gray-800">How I Did It</h3>
+        <ul className="text-gray-600 space-y-3 text-base text-left list-disc list-inside mt-4">
+          <li>Product thinking</li>
+          <li>Data-driven decisions</li>
+          <li>Strong stakeholder alignment</li>
+        </ul>
+      </div>
+      <div className="content-box border-2 border-[#00B0B0] text-center flex flex-col items-center justify-center gap-4 relative overflow-hidden shadow-md">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00B0B0] opacity-10 rounded-bl-full"></div>
+        <div className="w-20 h-20 rounded-full bg-[#00B0B0] text-white flex items-center justify-center mb-2 z-10"><Target size={40}/></div>
+        <h3 className="font-bold text-2xl text-[#00B0B0] z-10">Impact</h3>
+        <ul className="text-gray-800 space-y-3 text-base text-left font-medium mt-4 z-10">
+          <li className="flex items-start gap-3"><CheckCircle size={20} className="text-[#00B0B0] mt-0.5 shrink-0"/> Reduced effort (75%–100%)</li>
+          <li className="flex items-start gap-3"><CheckCircle size={20} className="text-[#00B0B0] mt-0.5 shrink-0"/> Improved predictability</li>
+          <li className="flex items-start gap-3"><CheckCircle size={20} className="text-[#00B0B0] mt-0.5 shrink-0"/> Strengthened reliability</li>
+          <li className="flex items-start gap-3"><CheckCircle size={20} className="text-[#00B0B0] mt-0.5 shrink-0"/> Better business decisions</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div className="flex gap-6 mt-4">
+      <div className="flex-1 bg-gradient-to-r from-[#00B0B0] to-[#008b8b] rounded-xl p-6 flex items-center justify-between text-white shadow-lg">
+        <div className="text-center px-6 border-r border-white border-opacity-30">
+          <div className="text-4xl font-bold mb-1">100%</div>
+          <div className="text-sm uppercase tracking-wider opacity-90 font-medium">Effort Reduction</div>
+        </div>
+        <div className="text-center px-6 border-r border-white border-opacity-30">
+          <div className="text-4xl font-bold mb-1">25+</div>
+          <div className="text-sm uppercase tracking-wider opacity-90 font-medium">Prod Stories</div>
+        </div>
+        <div className="text-center px-6 border-r border-white border-opacity-30">
+          <div className="text-4xl font-bold mb-1">9</div>
+          <div className="text-sm uppercase tracking-wider opacity-90 font-medium">Sprints Owned</div>
+        </div>
+        <div className="text-center px-6">
+          <div className="text-4xl font-bold mb-1">75%</div>
+          <div className="text-sm uppercase tracking-wider opacity-90 font-medium">Less Manual Work</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const LayoutSplit = ({ skills, content, applied, impact, strategicAlignment }) => (
   <div className="layout-split">
@@ -258,8 +448,20 @@ const slides = [
   { id: "intro" },
   
   {
+    id: "learning-outcomes",
+    title: "1. Learning to Impact",
+    content: <Slide1Learning />
+  },
+
+  {
+    id: "key-contributions",
+    title: "2. Key Contributions",
+    content: <Slide2Contributions />
+  },
+
+  {
     id: "req-analysis",
-    title: "1. Requirement Analysis",
+    title: "2.1 Requirement Analysis",
     content: (
       <LayoutSplit 
         skills={["Product Thinking", "Analytical Problem Solving", "Technical Depth"]}
@@ -285,7 +487,7 @@ const slides = [
 
   {
     id: "ownership",
-    title: "2. Ownership Beyond Role",
+    title: "2.2 Ownership Beyond Role",
     content: (
       <LayoutTimeline 
         skills={["Ownership & Leadership", "Stakeholder Management"]}
@@ -310,7 +512,7 @@ const slides = [
 
   {
     id: "req-clarity",
-    title: "3. Requirement Quality",
+    title: "2.3 Requirement Quality",
     content: (
       <LayoutCards 
         skills={["Analytical Problem Solving", "Ownership"]}
@@ -334,7 +536,7 @@ const slides = [
 
   {
     id: "resolving-complexity",
-    title: "4. Handling Complex Stakeholder Scenarios",
+    title: "2.4 Handling Complexity",
     content: (
       <LayoutSplit 
         skills={["Stakeholder Management", "Analytical Problem Solving", "Technical Depth"]}
@@ -359,7 +561,7 @@ const slides = [
 
   {
     id: "workflows",
-    title: "5. Process & Workflow Improvements",
+    title: "2.5 Process Improvements",
     content: (
       <LayoutHorizontal 
         skills={["Product Thinking", "Systems Thinking", "Ownership"]}
@@ -386,7 +588,7 @@ const slides = [
 
   {
     id: "data-truth",
-    title: "6. Data-Driven Decision Making",
+    title: "2.6 Data-Driven Decisions",
     content: (
       <LayoutCards 
         skills={["Analytical Problem Solving", "Technical Depth"]}
@@ -411,7 +613,7 @@ const slides = [
 
   {
     id: "business-impact",
-    title: "7. Business Impact",
+    title: "2.7 Business Impact",
     content: (
       <LayoutHorizontal 
         skills={["Product Thinking", "Analytical Modelling", "Ownership"]}
@@ -436,7 +638,7 @@ const slides = [
 
   {
     id: "evaluation",
-    title: "8. The 6 Qualities of a Steam-A Professional",
+    title: "3. The 6 Qualities of a Steam-A Professional",
     content: (
       <div className="eval-container">
         <div className="flex justify-between items-center mb-2 pb-4 border-b border-gray-100">
@@ -457,7 +659,7 @@ const slides = [
 
   {
     id: "support",
-    title: "9. Support Required to Reach 10/10",
+    title: "4. Support Required to Reach 10/10",
     content: (
       <div className="support-container">
         <Badge text="End-to-End Ownership Opportunities" delay={0.1} />
@@ -471,7 +673,7 @@ const slides = [
 
   {
     id: "direction",
-    title: "10. Professional Direction",
+    title: "5. Professional Aspirations",
     content: (
       <LayoutTimeline 
         skills={["Product Thinking", "Ownership", "Stakeholder Influence"]}
@@ -496,53 +698,8 @@ const slides = [
 
   {
     id: "synthesis",
-    title: "11. Synthesis: Overall Contribution",
-    content: (
-      <div className="synthesis-grid">
-        <div className="synthesis-col">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="synthesis-card"
-          >
-            <h3 className="text-xl font-bold text-[#008b8b] mb-3 flex items-center gap-2"><Settings size={20}/> Integrated Capability</h3>
-            <p className="leading-relaxed mb-3">Progressed from requirement execution to <strong>product-oriented thinking</strong>.</p>
-            <p className="leading-relaxed">Consistently applied product, analytical, and stakeholder skills across problem spaces to enable improvements across efficiency, reliability, and business decision-making.</p>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="synthesis-highlight"
-          >
-            <h3><Briefcase size={24}/> Strategic Positioning</h3>
-            <p className="highlight-main">Operating with a mindset that connects product decisions to business outcomes.</p>
-            <p className="highlight-sub">Ready to take on broader product ownership and strategic responsibility.</p>
-            <div className="mt-4 pt-4 border-t border-[#00B0B0] border-opacity-20">
-              <p className="text-gray-500 italic font-light">"Translating Product Thinking into Scalable Outcomes."</p>
-            </div>
-          </motion.div>
-        </div>
-        
-        <div className="synthesis-col">
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="synthesis-card h-full"
-          >
-            <h3 className="text-xl font-bold text-[#008b8b] mb-4 flex items-center gap-2"><Target size={20}/> Key Outcomes</h3>
-            <ul className="box-list">
-              <li><strong>Reduced operational effort</strong> through automation and workflow design.</li>
-              <li><strong>Improved delivery predictability</strong> and system reliability.</li>
-              <li><strong>Strengthened stakeholder trust</strong> through data-driven clarity.</li>
-              <li><strong>Contributed to revenue awareness</strong> and scalable product design.</li>
-            </ul>
-          </motion.div>
-        </div>
-      </div>
-    )
+    title: "6. Synthesis: Overall Contribution",
+    content: <Slide6Synthesis />
   },
   
   { id: "outro" }
