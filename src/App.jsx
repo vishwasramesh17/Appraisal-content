@@ -684,24 +684,33 @@ const slides = [
   },
 
   {
-    id: "my-brand-1",
+    id: "my-brand-1a",
+    title: "My Brand – Manager Appreciation",
+    content: (
+      <div className="brand-layout">
+        <motion.div className="brand-email-zoom" initial={{opacity:0,scale:0.95}} animate={{opacity:1,scale:1}} transition={{delay:0.1,duration:0.5}}>
+          <img src={`${import.meta.env.BASE_URL}brand-8.png`} alt="Manager appreciation email from Ramya Baskaran" />
+        </motion.div>
+      </div>
+    )
+  },
+
+  {
+    id: "my-brand-1b",
     title: "My Brand – Manager Recognition",
     content: (
       <div className="brand-layout">
         <div className="brand-grid">
-          <motion.div className="brand-item brand-item-wide brand-item-tall" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
-            <img src={`${import.meta.env.BASE_URL}brand-8.png`} alt="Manager appreciation email from Ramya Baskaran" />
-          </motion.div>
-          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.2}}>
+          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
             <img src={`${import.meta.env.BASE_URL}brand-2.png`} alt="Ramya - Good one Vishwas" />
           </motion.div>
-          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.3}}>
+          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.2}}>
             <img src={`${import.meta.env.BASE_URL}brand-3.png`} alt="Ramya - Have reviewed it" />
           </motion.div>
-          <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.4}}>
+          <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.3}}>
             <img src={`${import.meta.env.BASE_URL}brand-4.png`} alt="Ramya - Zeon Site Visit Good insights" />
           </motion.div>
-          <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.5}}>
+          <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.4}}>
             <img src={`${import.meta.env.BASE_URL}brand-5.png`} alt="Ramya - Nice analysis, nice to see you being noticed" />
           </motion.div>
         </div>
