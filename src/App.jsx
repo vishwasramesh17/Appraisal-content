@@ -47,7 +47,7 @@ const IntroSlideTemplate = ({ currentSlide }) => (
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}
           className="iris-title"
         >
-          iris
+          IRIS
         </motion.h1>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
@@ -58,12 +58,14 @@ const IntroSlideTemplate = ({ currentSlide }) => (
       </div>
     </div>
     <div className="intro-bottom">
-      <motion.h2 
+      <motion.div 
         initial={{opacity: 0, y: 20}} animate={{opacity: 1, y:0}} transition={{delay: 0.4}}
-        className="intro-main-title"
+        className="intro-title-wrapper"
       >
-        Performance Review – Vishwas R
-      </motion.h2>
+        <h2 className="intro-main-title">
+          Performance Review – Vishwas R
+        </h2>
+      </motion.div>
     </div>
     <div className="footer dark-footer">
       <span>28-Apr-26</span>
@@ -437,7 +439,11 @@ const slides = [
     title: "8. The 6 Qualities of a Steam-A Professional",
     content: (
       <div className="eval-container">
-        <div className="score-grid">
+        <div className="flex justify-between items-center mb-2 pb-4 border-b border-gray-100">
+           <div className="text-gray-500 font-semibold uppercase tracking-wider">Self Evaluation</div>
+           <div className="text-4xl font-bold text-[#00B0B0]">8.7<span className="text-xl text-gray-400 font-normal"> / 10 Overall</span></div>
+        </div>
+        <div className="score-grid mt-4">
           <ScoreBar label="Courage to Promise" score={9} max={10} delay={0.1} text={<>Realistic estimation backed by <span className="highlight-text">cross-team alignment</span>.</>} />
           <ScoreBar label="Commitment to Deliver" score={9} max={10} delay={0.2} text={<>Continuous tracking and proactive blocker resolution.</>} />
           <ScoreBar label="Attention to Detail" score={9.5} max={10} delay={0.3} text={<>Caught edge cases pre-prod. Validated AI against <span className="highlight-text">raw logs</span>.</>} />
