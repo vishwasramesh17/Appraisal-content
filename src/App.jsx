@@ -149,33 +149,31 @@ const Slide1Learning = () => (
     </div>
     {/* Stats */}
     <div className="gantt-stats">
-      <div><span className="gantt-stat-num">9 mo</span><span className="gantt-stat-lbl">as Business Analyst</span></div>
-      <div><span className="gantt-stat-num">2 mo</span><span className="gantt-stat-lbl">as QA Engineer</span></div>
-      <div><span className="gantt-stat-num">2</span><span className="gantt-stat-lbl">products supported</span></div>
-      <div><span className="gantt-stat-num">6+</span><span className="gantt-stat-lbl">features delivered</span></div>
+      <div><span className="gantt-stat-num">5 mo</span><span className="gantt-stat-lbl">as Business Analyst</span></div>
+      <div><span className="gantt-stat-num">4 mo</span><span className="gantt-stat-lbl">as QA Engineer</span></div>
     </div>
   </div>
 );
 
 const Slide1Outcomes = () => (
-  <div className="flex flex-col justify-center h-full max-w-4xl mx-auto gap-6">
-    <div className="impact-box-highlight rounded-2xl p-12 flex flex-col justify-center shadow-2xl">
-      <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-4 border-b border-white border-opacity-20 pb-6"><Rocket size={40}/> Key Outcomes Delivered</h3>
-      <ul className="space-y-8 text-2xl font-light">
-        <motion.li initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.1}} className="text-white flex items-center gap-6">
-          <div className="bg-white bg-opacity-20 p-2 rounded-full"><CheckCircle size={32} className="text-cyan-200"/></div>
+  <div className="outcomes-wrap">
+    <div className="outcomes-card">
+      <h3><Rocket size={32}/> Key Outcomes Delivered</h3>
+      <ul className="outcomes-list">
+        <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1}}>
+          <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
           <span>Been a BA in Network for <strong>9 sprints</strong> (owned)</span>
         </motion.li>
-        <motion.li initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.2}} className="text-white flex items-center gap-6">
-          <div className="bg-white bg-opacity-20 p-2 rounded-full"><CheckCircle size={32} className="text-cyan-200"/></div>
+        <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.2}}>
+          <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
           <span><strong>Worked on 40+</strong> Stories &nbsp;|&nbsp; <strong>Created 30+</strong> Stories</span>
         </motion.li>
-        <motion.li initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.3}} className="text-white flex items-center gap-6">
-          <div className="bg-white bg-opacity-20 p-2 rounded-full"><CheckCircle size={32} className="text-cyan-200"/></div>
-          <span><strong>25+ Stories</strong> have been moved to production and are working fine</span>
+        <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.3}}>
+          <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
+          <span><strong>25+ Stories</strong> moved to production and working fine</span>
         </motion.li>
-        <motion.li initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.4}} className="text-white flex items-center gap-6">
-          <div className="bg-white bg-opacity-20 p-2 rounded-full"><CheckCircle size={32} className="text-cyan-200"/></div>
+        <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.4}}>
+          <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
           <span>Reported <strong>35+ bugs</strong> in Network</span>
         </motion.li>
       </ul>
@@ -184,40 +182,32 @@ const Slide1Outcomes = () => (
 );
 
 const Slide2Contributions = () => (
-  <div className="flex flex-col gap-6 h-full">
-    <div className="grid grid-cols-3 gap-8 flex-1">
-      <div className="content-box flex flex-col gap-4 border-t-4 border-t-blue-400 items-start text-left">
-        <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mb-2">
-          <Database size={28}/>
-        </div>
-        <h3 className="font-bold text-xl text-gray-800 w-full border-b pb-2">Product</h3>
-        <ul className="list-disc list-outside ml-5 text-base space-y-3 mt-2 text-gray-700">
+  <div className="contrib-wrap">
+    <div className="contrib-grid">
+      <div className="contrib-card contrib-card-blue">
+        <div className="contrib-icon contrib-icon-blue"><Database size={22}/></div>
+        <h4 className="contrib-title">Product</h4>
+        <ul className="contrib-list">
           <li>Smart Charging Profile</li>
           <li>Dynamic Tariff</li>
           <li>Auto Closure of Sessions</li>
           <li>AI Failure Session Analytics</li>
         </ul>
       </div>
-      
-      <div className="content-box flex flex-col gap-4 border-t-4 border-t-purple-400 items-start text-left">
-        <div className="w-14 h-14 rounded-full bg-purple-50 flex items-center justify-center text-purple-500 mb-2">
-          <Settings size={28}/>
-        </div>
-        <h3 className="font-bold text-xl text-gray-800 w-full border-b pb-2">Process & System</h3>
-        <ul className="list-disc list-outside ml-5 text-base space-y-3 mt-2 text-gray-700">
+      <div className="contrib-card contrib-card-purple">
+        <div className="contrib-icon contrib-icon-purple"><Settings size={22}/></div>
+        <h4 className="contrib-title">Process & System</h4>
+        <ul className="contrib-list">
           <li>BPMN for Tivolt Payment</li>
           <li>Session Flow & OCPP Flow Diagrams</li>
           <li>SOPs & structured workflows</li>
           <li>Commercial Models (OCPP & OCPI)</li>
         </ul>
       </div>
-      
-      <div className="content-box flex flex-col gap-4 border-t-4 border-t-[#00B0B0] items-start text-left">
-        <div className="w-14 h-14 rounded-full bg-[#00B0B0] bg-opacity-10 flex items-center justify-center text-[#00B0B0] mb-2">
-          <HeartHandshake size={28}/>
-        </div>
-        <h3 className="font-bold text-xl text-gray-800 w-full border-b pb-2">Client & Execution</h3>
-        <ul className="list-disc list-outside ml-5 text-base space-y-3 mt-2 text-gray-700">
+      <div className="contrib-card contrib-card-teal">
+        <div className="contrib-icon contrib-icon-teal"><HeartHandshake size={22}/></div>
+        <h4 className="contrib-title">Client & Execution</h4>
+        <ul className="contrib-list">
           <li>Owned Network backlog + service support</li>
           <li>Acted as Scrum Master (daily tracking)</li>
           <li>Handled 7+ clients | resolved 4+ daily</li>
@@ -226,79 +216,60 @@ const Slide2Contributions = () => (
         </ul>
       </div>
     </div>
-    
-    <div className="impact-box bg-gray-50 border-l-4 border-[#00B0B0] mt-4 p-6">
-      <h3 className="font-bold text-[#00B0B0] mb-4 flex items-center gap-2 text-xl"><TrendingUp size={24}/> Direct Impact Delivered</h3>
-      <div className="grid grid-cols-3 gap-6">
-        <div className="font-medium text-gray-700 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center"><span className="text-[#00B0B0] mr-2">→</span> Improved operational efficiency & clarity</div>
-        <div className="font-medium text-gray-700 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center"><span className="text-[#00B0B0] mr-2">→</span> Strengthened client trust and engagement</div>
-        <div className="font-medium text-gray-700 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center"><span className="text-[#00B0B0] mr-2">→</span> Enabled scalable product workflows</div>
+    <div className="contrib-impact">
+      <h3><TrendingUp size={20}/> Direct Impact Delivered</h3>
+      <div className="contrib-impact-grid">
+        <div className="contrib-impact-item">→ Improved operational efficiency & clarity</div>
+        <div className="contrib-impact-item">→ Strengthened client trust and engagement</div>
+        <div className="contrib-impact-item">→ Enabled scalable product workflows</div>
       </div>
     </div>
   </div>
 );
 
 const Slide6Synthesis = () => (
-  <div className="flex flex-col gap-6 h-full">
-    <div className="grid grid-cols-3 gap-8 flex-1">
-      <div className="content-box flex flex-col items-start text-left gap-4 hover:border-blue-300 transition-colors">
-        <div className="flex items-center gap-4 mb-2 w-full border-b pb-4">
-          <div className="w-14 h-14 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center shrink-0"><Briefcase size={28}/></div>
-          <h3 className="font-bold text-2xl text-gray-800">What I Did</h3>
+  <div className="synth-layout">
+    <div className="synth-stats">
+      <div className="synth-stat"><span className="synth-stat-num">100%</span><span className="synth-stat-lbl2">Effort Reduction</span></div>
+      <div className="synth-stat"><span className="synth-stat-num">25+</span><span className="synth-stat-lbl2">Prod Stories</span></div>
+      <div className="synth-stat"><span className="synth-stat-num">9</span><span className="synth-stat-lbl2">Sprints Owned</span></div>
+      <div className="synth-stat"><span className="synth-stat-num">75%</span><span className="synth-stat-lbl2">Less Manual Work</span></div>
+    </div>
+    <div className="synth-cards">
+      <div className="synth-card">
+        <div className="synth-card-header">
+          <div className="synth-card-icon" style={{background:'#eff6ff',color:'#3b82f6'}}><Briefcase size={22}/></div>
+          <h3>What I Did</h3>
         </div>
-        <ul className="list-disc list-outside ml-6 text-gray-700 space-y-3 text-lg">
+        <ul>
           <li>Owned Network module</li>
           <li>Delivered features</li>
           <li>Built workflows</li>
           <li>Managed clients</li>
         </ul>
       </div>
-      
-      <div className="content-box flex flex-col items-start text-left gap-4 hover:border-purple-300 transition-colors">
-        <div className="flex items-center gap-4 mb-2 w-full border-b pb-4">
-          <div className="w-14 h-14 rounded-full bg-purple-50 text-purple-500 flex items-center justify-center shrink-0"><BrainCircuit size={28}/></div>
-          <h3 className="font-bold text-2xl text-gray-800">How I Did It</h3>
+      <div className="synth-card">
+        <div className="synth-card-header">
+          <div className="synth-card-icon" style={{background:'#f5f3ff',color:'#8b5cf6'}}><BrainCircuit size={22}/></div>
+          <h3>How I Did It</h3>
         </div>
-        <ul className="list-disc list-outside ml-6 text-gray-700 space-y-3 text-lg">
+        <ul>
           <li>Product thinking</li>
           <li>Data-driven decisions</li>
           <li>Strong stakeholder alignment</li>
         </ul>
       </div>
-      
-      <div className="content-box border-2 border-[#00B0B0] flex flex-col items-start text-left gap-4 relative overflow-hidden shadow-md">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00B0B0] opacity-5 rounded-bl-full pointer-events-none"></div>
-        <div className="flex items-center gap-4 mb-2 w-full border-b border-[#00B0B0] border-opacity-20 pb-4 z-10">
-          <div className="w-14 h-14 rounded-full bg-[#00B0B0] text-white flex items-center justify-center shrink-0"><Target size={28}/></div>
-          <h3 className="font-bold text-2xl text-[#00B0B0]">Impact</h3>
+      <div className="synth-card synth-card-accent">
+        <div className="synth-card-header">
+          <div className="synth-card-icon" style={{background:'#00B0B0',color:'white'}}><Target size={22}/></div>
+          <h3>Impact</h3>
         </div>
-        <ul className="space-y-4 text-gray-800 font-medium text-lg z-10 w-full mt-2">
-          <li className="flex items-start gap-3"><CheckCircle size={24} className="text-[#00B0B0] shrink-0 mt-0.5"/> <span>Reduced effort (75%–100%)</span></li>
-          <li className="flex items-start gap-3"><CheckCircle size={24} className="text-[#00B0B0] shrink-0 mt-0.5"/> <span>Improved predictability</span></li>
-          <li className="flex items-start gap-3"><CheckCircle size={24} className="text-[#00B0B0] shrink-0 mt-0.5"/> <span>Strengthened reliability</span></li>
-          <li className="flex items-start gap-3"><CheckCircle size={24} className="text-[#00B0B0] shrink-0 mt-0.5"/> <span>Better business decisions</span></li>
+        <ul className="synth-check-list">
+          <li className="synth-check-item"><CheckCircle size={18} color="#00B0B0"/> Reduced effort (75%–100%)</li>
+          <li className="synth-check-item"><CheckCircle size={18} color="#00B0B0"/> Improved predictability</li>
+          <li className="synth-check-item"><CheckCircle size={18} color="#00B0B0"/> Strengthened reliability</li>
+          <li className="synth-check-item"><CheckCircle size={18} color="#00B0B0"/> Better business decisions</li>
         </ul>
-      </div>
-    </div>
-    
-    <div className="flex gap-6 mt-4">
-      <div className="flex-1 bg-gradient-to-r from-[#00B0B0] to-[#008b8b] rounded-xl p-8 flex items-center justify-between text-white shadow-xl">
-        <div className="text-center px-8 border-r border-white border-opacity-30">
-          <div className="text-5xl font-bold mb-2">100%</div>
-          <div className="text-sm uppercase tracking-wider opacity-90 font-semibold">Effort Reduction</div>
-        </div>
-        <div className="text-center px-8 border-r border-white border-opacity-30">
-          <div className="text-5xl font-bold mb-2">25+</div>
-          <div className="text-sm uppercase tracking-wider opacity-90 font-semibold">Prod Stories</div>
-        </div>
-        <div className="text-center px-8 border-r border-white border-opacity-30">
-          <div className="text-5xl font-bold mb-2">9</div>
-          <div className="text-sm uppercase tracking-wider opacity-90 font-semibold">Sprints Owned</div>
-        </div>
-        <div className="text-center px-8">
-          <div className="text-5xl font-bold mb-2">75%</div>
-          <div className="text-sm uppercase tracking-wider opacity-90 font-semibold">Less Manual Work</div>
-        </div>
       </div>
     </div>
   </div>
