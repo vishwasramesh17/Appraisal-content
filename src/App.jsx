@@ -682,7 +682,33 @@ const slides = [
     title: "6. Synthesis: Overall Contribution",
     content: <Slide6Synthesis />
   },
-  
+
+  {
+    id: "my-brand",
+    title: "My Brand",
+    content: (
+      <div className="brand-layout">
+        <div className="brand-grid">
+          <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
+            <img src={`${import.meta.env.BASE_URL}brand-1.png`} alt="Appreciation from Vishwanath Surendiran" />
+          </motion.div>
+          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.2}}>
+            <img src={`${import.meta.env.BASE_URL}brand-2.png`} alt="Appreciation from Ramya Baskaran" />
+          </motion.div>
+          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.3}}>
+            <img src={`${import.meta.env.BASE_URL}brand-3.png`} alt="Review appreciation from Ramya Baskaran" />
+          </motion.div>
+          <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.4}}>
+            <img src={`${import.meta.env.BASE_URL}brand-4.png`} alt="Zeon Site Visit feedback from Ramya Baskaran" />
+          </motion.div>
+          <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.5}}>
+            <img src={`${import.meta.env.BASE_URL}brand-5.png`} alt="Recognition from Ramya Baskaran" />
+          </motion.div>
+        </div>
+      </div>
+    )
+  },
+
   { id: "outro" }
 ];
 

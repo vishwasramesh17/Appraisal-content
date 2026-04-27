@@ -889,3 +889,12 @@
 .synth-stat:last-child { border-right:none; }
 .synth-stat-num { font-size:2.25rem; font-weight:800; line-height:1.1; display:block; }
 .synth-stat-lbl2 { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; opacity:0.9; display:block; margin-top:0.25rem; }
+
+/* My Brand Slide */
+.brand-layout { display:flex; flex-direction:column; height:100%; }
+.brand-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; flex:1; align-content:center; }
+.brand-item { background:#1a1d23; border-radius:12px; overflow:hidden; border:1px solid #2a2d33; box-shadow:0 4px 16px rgba(0,0,0,0.15); }
+.brand-item img { width:100%; height:100%; object-fit:contain; display:block; }
+.brand-item-wide { grid-column:span 2; }
+.brand-item-wide img { max-height:140px; width:auto; margin:0 auto; }
+.brand-item:not(.brand-item-wide) img { max-height:120px; width:auto; margin:0 auto; padding:0.25rem; }
