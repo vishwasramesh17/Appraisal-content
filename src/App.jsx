@@ -43,13 +43,9 @@ const IntroSlideTemplate = ({ currentSlide }) => (
     <SteamLogo />
     <div className="intro-top">
       <div className="intro-text-container">
-        <motion.h1 
-          initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}
-          className="iris-title"
-          style={{ fontFamily: '"Varela Round", sans-serif', letterSpacing: '-0.02em', fontSize: '7.5rem' }}
-        >
-          <span style={{color: '#00F5D4'}}>ırI</span><span style={{color: '#00BFFF'}}>S</span>
-        </motion.h1>
+        <motion.div initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}>
+          <img src="/iris-logo.png" alt="IrIS Logo" className="h-[120px] object-contain mb-6" style={{marginLeft: '-10px'}} />
+        </motion.div>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
           className="iris-subtitle"
@@ -117,78 +113,70 @@ const ContentSlideTemplate = ({ title, children, currentSlide }) => (
 // --- New Visual Storytelling Components ---
 
 const Slide1Learning = () => (
-  <div className="flex flex-col gap-6 h-full">
-    <div className="flex gap-4 mb-2">
-      <span className="skill-tag">Product Thinking</span>
-      <span className="skill-tag">Technical Depth</span>
-      <span className="skill-tag">Ownership</span>
-    </div>
+  <div className="flex flex-col gap-6 h-full w-full max-w-5xl mx-auto justify-center">
     
-    {/* Timeline Arc */}
-    <div className="flex justify-between items-center relative py-4">
-      <div className="absolute left-0 right-0 h-1 bg-gray-200 top-1/2 -z-10"></div>
-      {['Aug 1 2025', 'Nov 2025', 'Mid Feb 2026', 'Apr 28 2026'].map((date, i) => (
-        <div key={i} className="flex flex-col items-center bg-white px-4">
-          <div className="w-4 h-4 rounded-full bg-[#00B0B0] mb-2 border-2 border-white shadow-sm"></div>
-          <span className="font-bold text-gray-600 text-sm">{date}</span>
-        </div>
-      ))}
-    </div>
-    
-    <div className="grid grid-cols-3 gap-6">
-      <div className="content-box border-t-4 border-t-[#00B0B0]">
-        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 1: Zwiz Testing<br/><span className="text-xs text-gray-400 font-normal">(Aug 1 2025 – Nov 2025)</span></h4>
-        <p className="text-sm text-gray-600">Built strong foundation in testing, edge case thinking, and system validation</p>
+    <div className="content-box bg-white flex flex-col justify-center border-l-8 border-[#00B0B0] shadow-xl p-10 h-[60%]">
+      <h3 className="text-2xl font-bold text-gray-800 mb-10 flex items-center gap-3 border-b pb-4"><BarChart size={28} className="text-[#00B0B0]"/> Role Transition Gantt Chart (Aug '25 - Apr '26)</h3>
+      
+      {/* Timeline Labels */}
+      <div className="flex justify-between text-sm font-bold text-gray-500 mb-4 px-2">
+        <span>Aug 1, 2025</span>
+        <span>Nov 2025</span>
+        <span>Mid Feb 2026</span>
+        <span>Apr 28, 2026</span>
       </div>
-      <div className="content-box border-t-4 border-t-[#00B0B0]">
-        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 2: Tivolt Testing + BA<br/><span className="text-xs text-gray-400 font-normal">(Nov 2025 – Mid Feb 2026)</span></h4>
-        <p className="text-sm text-gray-600">Started contributing to requirement understanding, workflows, and client discussions</p>
-      </div>
-      <div className="content-box border-t-4 border-t-[#00B0B0]">
-        <h4 className="font-bold text-[#00B0B0] mb-3 text-lg">Phase 3: Full-Fledged BA Work<br/><span className="text-xs text-gray-400 font-normal">(Mid Feb 2026 – Apr 2026)</span></h4>
-        <p className="text-sm text-gray-600">Took complete ownership of Network module, backlog, and client-facing responsibilities</p>
-      </div>
-    </div>
 
-    <div className="flex gap-8 mt-4 flex-1">
-      <div className="flex-1 content-box bg-gray-50 flex flex-col justify-center border-l-4 border-[#00B0B0]">
-        <h3 className="box-title mb-6 text-xl"><BarChart size={24}/> Journey Gantt Chart</h3>
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center text-sm">
-            <span className="w-1/3 font-semibold text-gray-600">Zwiz Testing</span>
-            <div className="w-2/3 bg-gray-200 h-6 rounded-full overflow-hidden">
-              <div className="bg-gray-400 h-full w-[40%]"></div>
-            </div>
-          </div>
-          <div className="flex items-center text-sm">
-            <span className="w-1/3 font-semibold text-gray-600">Tivolt Testing + BA</span>
-            <div className="w-2/3 bg-gray-200 h-6 rounded-full overflow-hidden flex">
-              <div className="w-[30%]"></div>
-              <div className="bg-[#00B0B0] opacity-50 h-full w-[40%] rounded-full"></div>
-            </div>
-          </div>
-          <div className="flex items-center text-sm">
-            <span className="w-1/3 font-semibold text-gray-600">Full BA Role</span>
-            <div className="w-2/3 bg-gray-200 h-6 rounded-full overflow-hidden flex">
-              <div className="w-[60%]"></div>
-              <div className="bg-[#00B0B0] h-full w-[40%] rounded-full"></div>
-            </div>
+      <div className="flex flex-col gap-8">
+        
+        <div className="flex items-center text-lg">
+          <span className="w-1/4 font-bold text-gray-700">Zwiz Testing</span>
+          <div className="w-3/4 bg-gray-100 h-10 rounded-r-full rounded-l-md overflow-hidden shadow-inner">
+            <motion.div initial={{width: 0}} animate={{width: "35%"}} transition={{duration: 0.8, delay: 0.1}} className="bg-gray-400 h-full flex items-center px-4 text-white text-sm font-bold">Phase 1</motion.div>
           </div>
         </div>
+        
+        <div className="flex items-center text-lg">
+          <span className="w-1/4 font-bold text-gray-700">Tivolt + BA Work</span>
+          <div className="w-3/4 bg-gray-100 h-10 rounded-full overflow-hidden flex shadow-inner">
+            <div className="w-[35%]"></div>
+            <motion.div initial={{width: 0}} animate={{width: "35%"}} transition={{duration: 0.8, delay: 0.3}} className="bg-[#00B0B0] opacity-60 h-full flex items-center px-4 text-white text-sm font-bold">Phase 2</motion.div>
+          </div>
+        </div>
+        
+        <div className="flex items-center text-lg">
+          <span className="w-1/4 font-bold text-[#00B0B0]">Full BA Role</span>
+          <div className="w-3/4 bg-gray-100 h-10 rounded-l-full rounded-r-md overflow-hidden flex shadow-inner border border-gray-200">
+            <div className="w-[70%]"></div>
+            <motion.div initial={{width: 0}} animate={{width: "30%"}} transition={{duration: 0.8, delay: 0.5}} className="bg-[#00B0B0] h-full flex items-center px-4 text-white text-sm font-bold shadow-md">Phase 3</motion.div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 );
 
 const Slide1Outcomes = () => (
-  <div className="flex flex-col justify-center h-full max-w-4xl mx-auto gap-6 mt-8">
-    <div className="impact-box-highlight rounded-xl p-10 flex flex-col justify-center shadow-lg">
-      <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3"><Rocket size={36}/> Outcomes Delivered</h3>
-      <ul className="box-list text-white space-y-6 text-xl">
-        <li className="text-white before:text-white font-medium flex items-center gap-4"><CheckCircle size={28} className="shrink-0 text-cyan-200"/> Been a BA in Network for <strong>9 sprints</strong> (owned)</li>
-        <li className="text-white before:text-white font-medium flex items-center gap-4"><CheckCircle size={28} className="shrink-0 text-cyan-200"/> <strong>Worked on 40+</strong> Stories | <strong>Created 30+</strong> Stories</li>
-        <li className="text-white before:text-white font-medium flex items-center gap-4"><CheckCircle size={28} className="shrink-0 text-cyan-200"/> <strong>25+ Stories</strong> have been moved to production and are working fine currently</li>
-        <li className="text-white before:text-white font-medium flex items-center gap-4"><CheckCircle size={28} className="shrink-0 text-cyan-200"/> Reported <strong>35+ bugs</strong> in Network</li>
+  <div className="flex flex-col justify-center h-full max-w-4xl mx-auto gap-6">
+    <div className="impact-box-highlight rounded-2xl p-12 flex flex-col justify-center shadow-2xl">
+      <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-4 border-b border-white border-opacity-20 pb-6"><Rocket size={40}/> Key Outcomes Delivered</h3>
+      <ul className="space-y-8 text-2xl font-light">
+        <motion.li initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.1}} className="text-white flex items-center gap-6">
+          <div className="bg-white bg-opacity-20 p-2 rounded-full"><CheckCircle size={32} className="text-cyan-200"/></div>
+          <span>Been a BA in Network for <strong>9 sprints</strong> (owned)</span>
+        </motion.li>
+        <motion.li initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.2}} className="text-white flex items-center gap-6">
+          <div className="bg-white bg-opacity-20 p-2 rounded-full"><CheckCircle size={32} className="text-cyan-200"/></div>
+          <span><strong>Worked on 40+</strong> Stories &nbsp;|&nbsp; <strong>Created 30+</strong> Stories</span>
+        </motion.li>
+        <motion.li initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.3}} className="text-white flex items-center gap-6">
+          <div className="bg-white bg-opacity-20 p-2 rounded-full"><CheckCircle size={32} className="text-cyan-200"/></div>
+          <span><strong>25+ Stories</strong> have been moved to production and are working fine</span>
+        </motion.li>
+        <motion.li initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.4}} className="text-white flex items-center gap-6">
+          <div className="bg-white bg-opacity-20 p-2 rounded-full"><CheckCircle size={32} className="text-cyan-200"/></div>
+          <span>Reported <strong>35+ bugs</strong> in Network</span>
+        </motion.li>
       </ul>
     </div>
   </div>
@@ -196,43 +184,39 @@ const Slide1Outcomes = () => (
 
 const Slide2Contributions = () => (
   <div className="flex flex-col gap-6 h-full">
-    <div className="flex gap-4 mb-2">
-      <span className="skill-tag">Ownership</span>
-      <span className="skill-tag">Product Thinking</span>
-      <span className="skill-tag">Stakeholder Management</span>
-    </div>
-    
-    <div className="grid grid-cols-3 gap-6 flex-1">
-      <div className="content-box flex flex-col gap-4 border-t-4 border-t-blue-400">
-        <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
-          <Database size={24}/>
+    <div className="grid grid-cols-3 gap-8 flex-1">
+      <div className="content-box flex flex-col gap-4 border-t-4 border-t-blue-400 items-start text-left">
+        <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mb-2">
+          <Database size={28}/>
         </div>
-        <h3 className="font-bold text-xl text-gray-800">Product Contributions</h3>
-        <ul className="box-list text-sm space-y-2 mt-2">
+        <h3 className="font-bold text-xl text-gray-800 w-full border-b pb-2">Product</h3>
+        <ul className="list-disc list-outside ml-5 text-base space-y-3 mt-2 text-gray-700">
           <li>Smart Charging Profile</li>
           <li>Dynamic Tariff</li>
           <li>Auto Closure of Sessions</li>
           <li>AI Failure Session Analytics</li>
         </ul>
       </div>
-      <div className="content-box flex flex-col gap-4 border-t-4 border-t-purple-400">
-        <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-500">
-          <Settings size={24}/>
+      
+      <div className="content-box flex flex-col gap-4 border-t-4 border-t-purple-400 items-start text-left">
+        <div className="w-14 h-14 rounded-full bg-purple-50 flex items-center justify-center text-purple-500 mb-2">
+          <Settings size={28}/>
         </div>
-        <h3 className="font-bold text-xl text-gray-800">Process & System</h3>
-        <ul className="box-list text-sm space-y-2 mt-2">
+        <h3 className="font-bold text-xl text-gray-800 w-full border-b pb-2">Process & System</h3>
+        <ul className="list-disc list-outside ml-5 text-base space-y-3 mt-2 text-gray-700">
           <li>BPMN for Tivolt Payment</li>
           <li>Session Flow & OCPP Flow Diagrams</li>
           <li>SOPs & structured workflows</li>
           <li>Commercial Models (OCPP & OCPI)</li>
         </ul>
       </div>
-      <div className="content-box flex flex-col gap-4 border-t-4 border-t-[#00B0B0]">
-        <div className="w-12 h-12 rounded-full bg-[#00B0B0] bg-opacity-10 flex items-center justify-center text-[#00B0B0]">
-          <HeartHandshake size={24}/>
+      
+      <div className="content-box flex flex-col gap-4 border-t-4 border-t-[#00B0B0] items-start text-left">
+        <div className="w-14 h-14 rounded-full bg-[#00B0B0] bg-opacity-10 flex items-center justify-center text-[#00B0B0] mb-2">
+          <HeartHandshake size={28}/>
         </div>
-        <h3 className="font-bold text-xl text-gray-800">Client & Execution</h3>
-        <ul className="box-list text-sm space-y-2 mt-2">
+        <h3 className="font-bold text-xl text-gray-800 w-full border-b pb-2">Client & Execution</h3>
+        <ul className="list-disc list-outside ml-5 text-base space-y-3 mt-2 text-gray-700">
           <li>Owned Network backlog + service support</li>
           <li>Acted as Scrum Master (daily tracking)</li>
           <li>Handled 7+ clients | resolved 4+ daily</li>
@@ -242,12 +226,12 @@ const Slide2Contributions = () => (
       </div>
     </div>
     
-    <div className="impact-box bg-gray-50 border-l-4 border-[#00B0B0] mt-2">
-      <h3 className="font-bold text-[#00B0B0] mb-4 flex items-center gap-2 text-lg"><TrendingUp size={24}/> Direct Impact Delivered</h3>
+    <div className="impact-box bg-gray-50 border-l-4 border-[#00B0B0] mt-4 p-6">
+      <h3 className="font-bold text-[#00B0B0] mb-4 flex items-center gap-2 text-xl"><TrendingUp size={24}/> Direct Impact Delivered</h3>
       <div className="grid grid-cols-3 gap-6">
-        <div className="font-medium text-gray-700 bg-white p-3 rounded shadow-sm">→ Improved operational efficiency & clarity</div>
-        <div className="font-medium text-gray-700 bg-white p-3 rounded shadow-sm">→ Strengthened client trust and engagement</div>
-        <div className="font-medium text-gray-700 bg-white p-3 rounded shadow-sm">→ Enabled scalable product workflows</div>
+        <div className="font-medium text-gray-700 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center"><span className="text-[#00B0B0] mr-2">→</span> Improved operational efficiency & clarity</div>
+        <div className="font-medium text-gray-700 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center"><span className="text-[#00B0B0] mr-2">→</span> Strengthened client trust and engagement</div>
+        <div className="font-medium text-gray-700 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center"><span className="text-[#00B0B0] mr-2">→</span> Enabled scalable product workflows</div>
       </div>
     </div>
   </div>
@@ -255,56 +239,64 @@ const Slide2Contributions = () => (
 
 const Slide6Synthesis = () => (
   <div className="flex flex-col gap-6 h-full">
-    <div className="grid grid-cols-3 gap-6 flex-1">
-      <div className="content-box text-center flex flex-col items-center justify-center gap-4 hover:border-blue-300">
-        <div className="w-20 h-20 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mb-2"><Briefcase size={40}/></div>
-        <h3 className="font-bold text-2xl text-gray-800">What I Did</h3>
-        <ul className="text-gray-600 space-y-3 text-base text-left list-disc list-inside mt-4">
+    <div className="grid grid-cols-3 gap-8 flex-1">
+      <div className="content-box flex flex-col items-start text-left gap-4 hover:border-blue-300 transition-colors">
+        <div className="flex items-center gap-4 mb-2 w-full border-b pb-4">
+          <div className="w-14 h-14 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center shrink-0"><Briefcase size={28}/></div>
+          <h3 className="font-bold text-2xl text-gray-800">What I Did</h3>
+        </div>
+        <ul className="list-disc list-outside ml-6 text-gray-700 space-y-3 text-lg">
           <li>Owned Network module</li>
           <li>Delivered features</li>
           <li>Built workflows</li>
           <li>Managed clients</li>
         </ul>
       </div>
-      <div className="content-box text-center flex flex-col items-center justify-center gap-4 hover:border-purple-300">
-        <div className="w-20 h-20 rounded-full bg-purple-50 text-purple-500 flex items-center justify-center mb-2"><BrainCircuit size={40}/></div>
-        <h3 className="font-bold text-2xl text-gray-800">How I Did It</h3>
-        <ul className="text-gray-600 space-y-3 text-base text-left list-disc list-inside mt-4">
+      
+      <div className="content-box flex flex-col items-start text-left gap-4 hover:border-purple-300 transition-colors">
+        <div className="flex items-center gap-4 mb-2 w-full border-b pb-4">
+          <div className="w-14 h-14 rounded-full bg-purple-50 text-purple-500 flex items-center justify-center shrink-0"><BrainCircuit size={28}/></div>
+          <h3 className="font-bold text-2xl text-gray-800">How I Did It</h3>
+        </div>
+        <ul className="list-disc list-outside ml-6 text-gray-700 space-y-3 text-lg">
           <li>Product thinking</li>
           <li>Data-driven decisions</li>
           <li>Strong stakeholder alignment</li>
         </ul>
       </div>
-      <div className="content-box border-2 border-[#00B0B0] text-center flex flex-col items-center justify-center gap-4 relative overflow-hidden shadow-md">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00B0B0] opacity-10 rounded-bl-full"></div>
-        <div className="w-20 h-20 rounded-full bg-[#00B0B0] text-white flex items-center justify-center mb-2 z-10"><Target size={40}/></div>
-        <h3 className="font-bold text-2xl text-[#00B0B0] z-10">Impact</h3>
-        <ul className="text-gray-800 space-y-3 text-base text-left font-medium mt-4 z-10">
-          <li className="flex items-start gap-3"><CheckCircle size={20} className="text-[#00B0B0] mt-0.5 shrink-0"/> Reduced effort (75%–100%)</li>
-          <li className="flex items-start gap-3"><CheckCircle size={20} className="text-[#00B0B0] mt-0.5 shrink-0"/> Improved predictability</li>
-          <li className="flex items-start gap-3"><CheckCircle size={20} className="text-[#00B0B0] mt-0.5 shrink-0"/> Strengthened reliability</li>
-          <li className="flex items-start gap-3"><CheckCircle size={20} className="text-[#00B0B0] mt-0.5 shrink-0"/> Better business decisions</li>
+      
+      <div className="content-box border-2 border-[#00B0B0] flex flex-col items-start text-left gap-4 relative overflow-hidden shadow-md">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00B0B0] opacity-5 rounded-bl-full pointer-events-none"></div>
+        <div className="flex items-center gap-4 mb-2 w-full border-b border-[#00B0B0] border-opacity-20 pb-4 z-10">
+          <div className="w-14 h-14 rounded-full bg-[#00B0B0] text-white flex items-center justify-center shrink-0"><Target size={28}/></div>
+          <h3 className="font-bold text-2xl text-[#00B0B0]">Impact</h3>
+        </div>
+        <ul className="space-y-4 text-gray-800 font-medium text-lg z-10 w-full mt-2">
+          <li className="flex items-start gap-3"><CheckCircle size={24} className="text-[#00B0B0] shrink-0 mt-0.5"/> <span>Reduced effort (75%–100%)</span></li>
+          <li className="flex items-start gap-3"><CheckCircle size={24} className="text-[#00B0B0] shrink-0 mt-0.5"/> <span>Improved predictability</span></li>
+          <li className="flex items-start gap-3"><CheckCircle size={24} className="text-[#00B0B0] shrink-0 mt-0.5"/> <span>Strengthened reliability</span></li>
+          <li className="flex items-start gap-3"><CheckCircle size={24} className="text-[#00B0B0] shrink-0 mt-0.5"/> <span>Better business decisions</span></li>
         </ul>
       </div>
     </div>
     
     <div className="flex gap-6 mt-4">
-      <div className="flex-1 bg-gradient-to-r from-[#00B0B0] to-[#008b8b] rounded-xl p-6 flex items-center justify-between text-white shadow-lg">
-        <div className="text-center px-6 border-r border-white border-opacity-30">
-          <div className="text-4xl font-bold mb-1">100%</div>
-          <div className="text-sm uppercase tracking-wider opacity-90 font-medium">Effort Reduction</div>
+      <div className="flex-1 bg-gradient-to-r from-[#00B0B0] to-[#008b8b] rounded-xl p-8 flex items-center justify-between text-white shadow-xl">
+        <div className="text-center px-8 border-r border-white border-opacity-30">
+          <div className="text-5xl font-bold mb-2">100%</div>
+          <div className="text-sm uppercase tracking-wider opacity-90 font-semibold">Effort Reduction</div>
         </div>
-        <div className="text-center px-6 border-r border-white border-opacity-30">
-          <div className="text-4xl font-bold mb-1">25+</div>
-          <div className="text-sm uppercase tracking-wider opacity-90 font-medium">Prod Stories</div>
+        <div className="text-center px-8 border-r border-white border-opacity-30">
+          <div className="text-5xl font-bold mb-2">25+</div>
+          <div className="text-sm uppercase tracking-wider opacity-90 font-semibold">Prod Stories</div>
         </div>
-        <div className="text-center px-6 border-r border-white border-opacity-30">
-          <div className="text-4xl font-bold mb-1">9</div>
-          <div className="text-sm uppercase tracking-wider opacity-90 font-medium">Sprints Owned</div>
+        <div className="text-center px-8 border-r border-white border-opacity-30">
+          <div className="text-5xl font-bold mb-2">9</div>
+          <div className="text-sm uppercase tracking-wider opacity-90 font-semibold">Sprints Owned</div>
         </div>
-        <div className="text-center px-6">
-          <div className="text-4xl font-bold mb-1">75%</div>
-          <div className="text-sm uppercase tracking-wider opacity-90 font-medium">Less Manual Work</div>
+        <div className="text-center px-8">
+          <div className="text-5xl font-bold mb-2">75%</div>
+          <div className="text-sm uppercase tracking-wider opacity-90 font-semibold">Less Manual Work</div>
         </div>
       </div>
     </div>
@@ -443,7 +435,7 @@ const ScoreBar = ({ label, score, max, text, delay }) => {
 };
 
 const Badge = ({ text, delay }) => (
-  <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay, duration: 0.4 }} className="badge">
+  <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay, duration: 0.4 }} className="badge p-6 w-full text-center text-xl font-medium text-[#008b8b] bg-white rounded-xl shadow-sm border border-gray-100 mb-4">
     {text}
   </motion.div>
 );
@@ -675,12 +667,10 @@ const slides = [
     id: "support",
     title: "4. Support Required to Reach 10/10",
     content: (
-      <div className="support-container">
-        <Badge text="End-to-End Ownership Opportunities" delay={0.1} />
-        <Badge text="Deeper Product-Level Exposure" delay={0.2} />
-        <Badge text="Mentorship focused heavily on Strategic Product Thinking" delay={0.3} />
-        <Badge text="Faster feedback loops on deliverables" delay={0.4} />
-        <Badge text="Support for Advanced Skill Development (SQL, Analytics)" delay={0.5} />
+      <div className="support-container flex flex-col justify-center h-full max-w-4xl mx-auto items-center">
+        <Badge text="Ownership of end-to-end features" delay={0.1} />
+        <Badge text="Mentorship on product thinking" delay={0.2} />
+        <Badge text="Feedback on decision-making" delay={0.3} />
       </div>
     )
   },
