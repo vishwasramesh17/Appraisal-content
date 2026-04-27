@@ -4,7 +4,7 @@ import {
   ChevronRight, ChevronLeft, Target, BarChart, HeartHandshake, 
   Rocket, Lightbulb, Zap, TrendingUp, Presentation, Briefcase, 
   BrainCircuit, ShieldAlert, Award, Compass, MessagesSquare, Users, 
-  LineChart, CheckCircle, Database, Activity, Globe, Car
+  LineChart, CheckCircle, Database, Activity, Globe, Car, Settings
 } from 'lucide-react';
 import './App.css';
 import './index.css';
@@ -21,6 +21,60 @@ const Card = ({ title, icon, children, delay }) => (
     <h3>{title}</h3>
     <div>{children}</div>
   </motion.div>
+);
+
+const ImpactSlide = ({ skills, content, applied, impact }) => (
+  <div className="impact-grid">
+    <div className="impact-left">
+      <div className="skill-tags">
+        {skills.map((skill, idx) => (
+          <motion.span 
+            key={idx} 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 * idx, duration: 0.3 }}
+            className="skill-tag"
+          >
+            {skill}
+          </motion.span>
+        ))}
+      </div>
+      <motion.div 
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="content-box text-lg text-gray-300 leading-relaxed"
+      >
+        {content}
+      </motion.div>
+    </div>
+    
+    <div className="impact-right">
+      <motion.div 
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+        className="applied-box"
+      >
+        <div className="box-title"><Zap size={20} /> Applied Through</div>
+        <ul className="box-list">
+          {applied.map((item, idx) => <li key={idx}>{item}</li>)}
+        </ul>
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        className="impact-box"
+      >
+        <div className="box-title"><Target size={20} /> Impact</div>
+        <ul className="box-list">
+          {impact.map((item, idx) => <li key={idx}>{item}</li>)}
+        </ul>
+      </motion.div>
+    </div>
+  </div>
 );
 
 const OutcomeRow = ({ icon, title, desc, delay }) => (
@@ -77,7 +131,6 @@ const Badge = ({ text, delay }) => (
   </motion.div>
 );
 
-// Content structure mapping directly to the 5 requested sections
 const slides = [
   // Intro Slide
   {
@@ -101,87 +154,176 @@ const slides = [
     )
   },
 
-  // Q1a: Learnings
+  // --- SECTION 1: WHAT I HAVE LEARNT & OUTCOMES DELIVERED ---
+
   {
-    id: "learnings",
-    title: "1. What I've Learnt This Year",
-    subtitle: "The Dual Perspective: Business Analysis & QA Testing",
-    icon: <BrainCircuit size={40} color="#00f2fe" />,
+    id: "req-analysis",
+    title: "1. What I've Learnt: Requirement Analysis",
+    subtitle: "Driving Meaningful Product Outcomes",
+    icon: <Target size={40} color="#00f2fe" />,
     content: (
-      <div className="grid-2">
-        <Card title="Proactive QA & Edge Case Detection" icon={<ShieldAlert size={24} />} delay={0.1}>
-          <p>Learnt to validate critical flows against <span className="highlight-text">raw OCPP logs</span> (e.g., AI failure analytics validation).</p>
-          <p>Caught structural data gaps during app-less charging testing and ensured OCPP compatibility with OEMs like ACS Energy and Cubenz before prod.</p>
-        </Card>
-        <Card title="Translating Complexity (BA)" icon={<Presentation size={24} />} delay={0.2}>
-          <p>Learnt to create unified sources of truth. Designed <span className="highlight-text">BPMs and flowcharts</span> for Tivolt session & payment flows to eliminate ambiguity.</p>
-          <p>Refined user stories into highly detailed tickets with clear edge cases, enabling smoother delivery and zero guesswork.</p>
-        </Card>
-        <Card title="Commercial & Revenue Modeling" icon={<TrendingUp size={24} />} delay={0.3}>
-          <p>Learnt to project connector growth and break-even timelines by drafting <span className="highlight-text">OCPP/OCPI commercial models</span>.</p>
-          <p>This supported rapid, data-backed client qualification for the business.</p>
-        </Card>
-        <Card title="The Power of Proactive Monitoring" icon={<Activity size={24} />} delay={0.4}>
-          <p>A key learning came from a delayed detection of Tivolt dealer routing issues.</p>
-          <p>I learned the vital importance of <span className="highlight-text">early detection</span> and rigorous validation of high-impact financial and settlement flows.</p>
-        </Card>
-      </div>
+      <ImpactSlide 
+        skills={["Product Thinking", "Systems Thinking", "Technical Depth (EV/OCPP)"]}
+        content={<p>Approached requirement analysis from both <strong>end-user and CPO operational perspectives</strong>, ensuring practical usability and scalability from day one. Identified edge cases early, reducing downstream ambiguity and rework.</p>}
+        applied={[
+          "Introduced Bulk Closure of Interrupted Sessions → reduced manual effort by ~75%",
+          "Contributed to Automatic Session Closure via Boot Notification → eliminated manual intervention (~100% effort reduction)",
+          "Enabled Google-based station reviews → improved feedback loop for service quality",
+          "Worked on Smart Charging Profiles → optimized power usage, prevented EB penalties",
+          "Built Live SoC visibility → improved user decision-making & station transparency"
+        ]}
+        impact={[
+          "Reduced operational load for CPO teams",
+          "Improved charger utilization and user trust",
+          "Strengthened product’s ability to handle real-world scenarios at scale"
+        ]}
+      />
     )
   },
 
-  // Q1b: Outcomes Delivered
   {
-    id: "outcomes",
-    title: "Outcomes Delivered to Steam-A",
-    subtitle: "Focusing on Operational Efficiency & Revenue Enablement",
-    icon: <Target size={40} color="#4facfe" />,
+    id: "workflows",
+    title: "Structuring Workflows",
+    subtitle: "Reducing Ambiguity at Scale",
+    icon: <Settings size={40} color="#4facfe" />,
     content: (
-      <div className="outcomes-list">
-        <OutcomeRow 
-          icon={<HeartHandshake size={28} />} title="Eliminated Manual Overhead" 
-          desc="Initiated and delivered automatic & bulk closure of interrupted sessions, massively reducing manual CPO effort and improving data accuracy." delay={0.1} 
-        />
-        <OutcomeRow 
-          icon={<Zap size={28} />} title="Protected CPO Margins" 
-          desc="Delivered Smart Charging Profiles to optimize power distribution and prevent EB penalties, driving operational cost control." delay={0.2} 
-        />
-        <OutcomeRow 
-          icon={<TrendingUp size={28} />} title="Revenue Flexibility" 
-          desc="Implemented Dynamic Tariffs, empowering CPOs to adapt to demand patterns and maximize profitability." delay={0.3} 
-        />
-        <OutcomeRow 
-          icon={<BrainCircuit size={28} />} title="Secured Product Trust" 
-          desc="Validated the new AI Session Analytics feature against source logs, preventing 'AI hallucinations' from misguiding CPOs." delay={0.4} 
-        />
-      </div>
+      <ImpactSlide 
+        skills={["Systems Thinking", "Process Design", "Product Thinking"]}
+        content={<p>Focused on building <strong>structured workflows</strong> to reduce dependency on verbal explanations and eliminate confusion in edge-case handling.</p>}
+        applied={[
+          "Created Business Process Models (BPMs) for session flows",
+          "Designed payment flow diagrams for client clarity",
+          "Drafted SOPs for interrupted & suspicious sessions",
+          "Built OCPP operational documentation",
+          "Introduced session failure analysis guide",
+          "Performed RICE prioritization for Suite backlog"
+        ]}
+        impact={[
+          "Improved cross-team alignment and faster decision-making",
+          "Reduced confusion in edge-case handling",
+          "Enabled more structured client communication and onboarding"
+        ]}
+      />
     )
   },
 
-  // Q2: Highpoints
   {
-    id: "highpoints",
-    title: "2. Professional Highpoints & Accomplishments",
-    subtitle: "Taking Ownership & Driving Value",
+    id: "req-clarity",
+    title: "Requirement Clarity",
+    subtitle: "Predictable & Faster Delivery",
+    icon: <CheckCircle size={40} color="#00f2fe" />,
+    content: (
+      <ImpactSlide 
+        skills={["Analytical Problem Solving", "Execution Discipline"]}
+        content={<p>Focused on creating structured, complete, and unambiguous requirements <strong>before development kickoff</strong> to guarantee seamless execution.</p>}
+        applied={[
+          "Defined edge cases, expected behaviors, and scenarios within story tickets",
+          "Ensured complete alignment between Business and Technical teams before development kickoff"
+        ]}
+        impact={[
+          "Reduced requirement-related gaps and avoidable bugs",
+          "Enabled smoother QA testing cycles",
+          "Supported consistent monthly production releases with minimal rework"
+        ]}
+      />
+    )
+  },
+
+  {
+    id: "data-truth",
+    title: "Using Data as Ground Truth",
+    subtitle: "Ensuring Product Reliability",
+    icon: <Database size={40} color="#4facfe" />,
+    content: (
+      <ImpactSlide 
+        skills={["Data-Driven Thinking", "Technical Validation (QA/BA)"]}
+        content={<p>Used raw data as a definitive validation layer, not just for post-analysis but for <strong>ensuring technical correctness</strong> before features hit production.</p>}
+        applied={[
+          "Validated AI-based session failure analysis outputs against raw OCPP logs (source of truth)",
+          "Identified mismatches in AI failure reasons, timestamps, and formats",
+          "Collaborated hands-on with teams to correct logic issues pre-production"
+        ]}
+        impact={[
+          "Prevented inaccurate insights from reaching CPOs and clients",
+          "Protected the credibility of our very first AI-driven feature",
+          "Ensured critical operational decisions made by CPOs are based on reliable data"
+        ]}
+      />
+    )
+  },
+
+  // --- SECTION 2: PROFESSIONAL HIGHPOINTS ---
+
+  {
+    id: "business-impact",
+    title: "2. Professional Highpoints: Better Business Decisions",
+    subtitle: "Revenue & Cost Awareness",
+    icon: <TrendingUp size={40} color="#00f2fe" />,
+    content: (
+      <ImpactSlide 
+        skills={["Product Thinking", "Business Acumen", "Analytical Modelling"]}
+        content={<p>Contributed deeply to commercial decision-making frameworks, <strong>linking technical product capabilities directly to revenue outcomes</strong>.</p>}
+        applied={[
+          "Built comprehensive commercial models for OCPP & OCPI clients",
+          "Projected connector growth and revenue across extended timelines",
+          "Estimated break-even points and long-term resource requirements"
+        ]}
+        impact={[
+          "Enabled highly informed, data-backed client onboarding decisions",
+          "Improved management visibility into cost vs revenue trade-offs",
+          "Supported strategic focus on high-potential clients for sustainable growth"
+        ]}
+      />
+    )
+  },
+
+  {
+    id: "resolving-complexity",
+    title: "Resolving Complexity",
+    subtitle: "Data-Driven Stakeholder Alignment",
+    icon: <ShieldAlert size={40} color="#4facfe" />,
+    content: (
+      <ImpactSlide 
+        skills={["Stakeholder Management", "Analytical Problem Solving"]}
+        content={<p>Successfully navigated highly conflicting stakeholder scenarios through <strong>data-backed reasoning and structured communication</strong>.</p>}
+        applied={[
+          "Resolved Tivolt reconciliation issues by consolidating multiple data sources (CTR, Razorpay, settlements)",
+          "Identified root cause in MAK Controls escalation via deep OCPP log analysis + joint hands-on testing",
+          "Collaborated directly with OEMs and clients for real-world validation"
+        ]}
+        impact={[
+          "Reduced ambiguity in critical financial and operational tracking",
+          "Prevented misdirected escalations and unnecessary system changes",
+          "Significantly strengthened trust across both internal and external stakeholders"
+        ]}
+      />
+    )
+  },
+
+  {
+    id: "ownership",
+    title: "Ownership Beyond Role",
+    subtitle: "Enabling Team & Product Clarity",
     icon: <Award size={40} color="#00f2fe" />,
     content: (
-      <div className="grid-2">
-        <Card title="Predictable Delivery Pipeline" icon={<CheckCircle size={24} />} delay={0.1}>
-          <p>Led daily Scrum execution and rigorous QA sign-offs, ensuring <span className="highlight-text">consistent monthly production releases</span> for network clients without fail.</p>
-        </Card>
-        <Card title="Conflict Resolution via Data" icon={<Database size={24} />} delay={0.2}>
-          <p>Defused the MAK Controls escalation. Used <span className="highlight-text">raw OCPP log analysis</span> and hands-on testing to definitively prove the root cause was charger-side, protecting CMS credibility.</p>
-        </Card>
-        <Card title="Cross-Team Mentorship & KT" icon={<Users size={24} />} delay={0.3}>
-          <p>Stepped beyond BA limits to own internal KT sessions. Bridged the technical-business gap for Dev & QA teams, resulting in <span className="highlight-text">predictable execution</span> and drastically fewer rework cycles.</p>
-        </Card>
-        <Card title="Personal Brand & Industry Footprint" icon={<Globe size={24} />} delay={0.4}>
-          <p>Represented Steam-A at Smart Mobility Summit. Published a highly-received blog on <span className="highlight-text">EV Testing Reality</span> and shared Zeon Charging data on LinkedIn.</p>
-        </Card>
-      </div>
+      <ImpactSlide 
+        skills={["Ownership & Leadership", "Stakeholder Enablement"]}
+        content={<p>Stepped beyond the traditional Graduate Analyst scope by taking extreme ownership of <strong>team alignment, mentorship, and external knowledge flow</strong>.</p>}
+        applied={[
+          "Conducted extensive KT sessions for Dev & QA teams → improved initial understanding of use cases & edge conditions",
+          "Actively supported technical teams during execution → eliminated dependency bottlenecks",
+          "Represented the product passionately in external events & discussions → strengthened product communication"
+        ]}
+        impact={[
+          "Faster onboarding and drastically reduced repetitive clarifications",
+          "Smoother, friction-free collaboration between business and technical teams",
+          "Improved external visibility, personal branding, and stakeholder confidence"
+        ]}
+      />
     )
   },
 
-  // Q3: 6 Qualities
+  // --- SECTION 3: 6 QUALITIES ---
   {
     id: "evaluation",
     title: "3. The 6 Qualities of a Steam-A Professional",
@@ -219,7 +361,7 @@ const slides = [
     )
   },
 
-  // Q4: Support Required
+  // --- SECTION 4: SUPPORT REQUIRED ---
   {
     id: "support",
     title: "4. Support Required to Reach 10/10",
@@ -236,14 +378,14 @@ const slides = [
     )
   },
 
-  // Q5: Aspirations
+  // --- SECTION 5: ASPIRATIONS ---
   {
     id: "aspirations",
     title: "5. Professional Aspirations for 2026",
     subtitle: "The Next Horizon",
     icon: <Rocket size={40} color="#4facfe" />,
     content: (
-      <div className="grid-2">
+      <div className="grid-2 h-full items-center">
         <Card title="Role Evolution: Senior BA / PM" icon={<Briefcase size={24} />} delay={0.1}>
           <p>Transition from a strong execution-oriented Graduate Analyst role to a strategic, <span className="highlight-text">Product-driven role</span>.</p>
           <p>Dive deep into problem discovery, solution definition, and precise outcome measurement.</p>
