@@ -44,7 +44,10 @@ const IntroSlideTemplate = ({ currentSlide }) => (
     <div className="intro-top">
       <div className="intro-text-container">
         <motion.div initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}>
-          <img src={`${import.meta.env.BASE_URL}iris-logo.png`} alt="iris" style={{height: '110px', objectFit: 'contain', display: 'block', marginBottom: '1.5rem'}} />
+          <img src={`${import.meta.env.BASE_URL}iris-logo.png`} alt="iris" style={{height: '110px', objectFit: 'contain', display: 'block', marginBottom: '0.5rem'}} />
+          <div style={{fontFamily: '"Varela Round", sans-serif', fontSize: '4.5rem', lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '1rem'}}>
+            <span style={{color: '#00F5D4'}}>ırI</span><span style={{color: '#00BFFF'}}>S</span>
+          </div>
         </motion.div>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
@@ -210,7 +213,7 @@ const Slide2Contributions = () => (
         <ul className="contrib-list">
           <li>Owned Network backlog + service support</li>
           <li>Acted as Scrum Master (daily tracking)</li>
-          <li>Handled 7+ clients | resolved 4+ daily</li>
+          <li>Handled 7+ clients | Functioning Service Support for 4+ Clients</li>
           <li>Delivered Network Demo for Flex Energy</li>
           <li>OEM integrations (ACS Energy, Cubenz)</li>
         </ul>

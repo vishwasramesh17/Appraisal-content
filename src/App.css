@@ -103,6 +103,12 @@
   padding: 0 8%;
 }
 
+.intro-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
 .intro-bottom {
   flex: 1;
   background: white;
@@ -228,7 +234,14 @@
   overflow-y: auto;
   color: #374151;
   font-family: 'IBM Plex Sans', sans-serif;
-  min-height: 0; /* critical: allows flex child to shrink */
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-body > * {
+  flex: 1;
+  min-height: 0;
 }
 
 /* Thin elegant scrollbar */
