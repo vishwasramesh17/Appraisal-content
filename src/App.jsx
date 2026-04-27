@@ -685,24 +685,24 @@ const slides = [
 
   {
     id: "my-brand-1",
-    title: "My Brand – Peer Recognition",
+    title: "My Brand – Manager Recognition",
     content: (
       <div className="brand-layout">
         <div className="brand-grid">
-          <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
-            <img src={`${import.meta.env.BASE_URL}brand-1.png`} alt="Appreciation from Vishwanath Surendiran" />
+          <motion.div className="brand-item brand-item-wide brand-item-tall" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
+            <img src={`${import.meta.env.BASE_URL}brand-8.png`} alt="Manager appreciation email from Ramya Baskaran" />
           </motion.div>
           <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.2}}>
-            <img src={`${import.meta.env.BASE_URL}brand-2.png`} alt="Appreciation from Ramya Baskaran" />
+            <img src={`${import.meta.env.BASE_URL}brand-2.png`} alt="Ramya - Good one Vishwas" />
           </motion.div>
           <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.3}}>
-            <img src={`${import.meta.env.BASE_URL}brand-3.png`} alt="Review appreciation from Ramya Baskaran" />
+            <img src={`${import.meta.env.BASE_URL}brand-3.png`} alt="Ramya - Have reviewed it" />
           </motion.div>
           <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.4}}>
-            <img src={`${import.meta.env.BASE_URL}brand-4.png`} alt="Zeon Site Visit feedback from Ramya Baskaran" />
+            <img src={`${import.meta.env.BASE_URL}brand-4.png`} alt="Ramya - Zeon Site Visit Good insights" />
           </motion.div>
           <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.5}}>
-            <img src={`${import.meta.env.BASE_URL}brand-5.png`} alt="Recognition from Ramya Baskaran" />
+            <img src={`${import.meta.env.BASE_URL}brand-5.png`} alt="Ramya - Nice analysis, nice to see you being noticed" />
           </motion.div>
         </div>
       </div>
@@ -711,18 +711,18 @@ const slides = [
 
   {
     id: "my-brand-2",
-    title: "My Brand – Manager & Peer Feedback",
+    title: "My Brand – Peer Recognition",
     content: (
       <div className="brand-layout">
         <div className="brand-grid">
-          <motion.div className="brand-item brand-item-wide brand-item-tall" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
-            <img src={`${import.meta.env.BASE_URL}brand-8.png`} alt="Manager appreciation from Ramya Baskaran" />
+          <motion.div className="brand-item brand-item-wide" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
+            <img src={`${import.meta.env.BASE_URL}brand-1.png`} alt="Vishwanath - Clear analysis with MAK Controls" />
+          </motion.div>
+          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.2}}>
+            <img src={`${import.meta.env.BASE_URL}brand-6.png`} alt="Pratheep - I shared it to Pon, very useful" />
           </motion.div>
           <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.3}}>
-            <img src={`${import.meta.env.BASE_URL}brand-6.png`} alt="Appreciation from Pratheep Chinnasamy" />
-          </motion.div>
-          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.4}}>
-            <img src={`${import.meta.env.BASE_URL}brand-7.png`} alt="Feedback from Pratheep Chinnasamy" />
+            <img src={`${import.meta.env.BASE_URL}brand-7.png`} alt="Pratheep - Looks good da, this helps" />
           </motion.div>
         </div>
       </div>
@@ -734,14 +734,14 @@ const slides = [
     title: "My Brand – Blog & Community",
     content: (
       <div className="brand-layout">
-        <div className="brand-grid brand-grid-3">
-          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
+        <div className="brand-grid brand-grid-compact">
+          <motion.div className="brand-item brand-compact" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
             <img src={`${import.meta.env.BASE_URL}brand-9.png`} alt="Blog post - Testing EV Charging Sessions" />
           </motion.div>
-          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.2}}>
+          <motion.div className="brand-item brand-compact" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.2}}>
             <img src={`${import.meta.env.BASE_URL}brand-10.jpg`} alt="DevFest Coimbatore" />
           </motion.div>
-          <motion.div className="brand-item" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.3}}>
+          <motion.div className="brand-item brand-compact" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.3}}>
             <img src={`${import.meta.env.BASE_URL}brand-11.jpg`} alt="Community event" />
           </motion.div>
         </div>

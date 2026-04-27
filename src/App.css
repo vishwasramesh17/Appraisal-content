@@ -901,6 +901,8 @@
 
 /* Brand slide extras */
 .brand-item-tall img { max-height:280px !important; }
-.brand-grid-3 { grid-template-columns:1fr 1fr 1fr; }
-.brand-grid-3 .brand-item img { max-height:100%; height:100%; object-fit:cover; padding:0; }
-.brand-grid-3 .brand-item { min-height:280px; }
+/* Compact brand grid for blog/community slide */
+.brand-grid-compact { grid-template-columns:1fr 1fr 1fr; align-content:start; gap:1rem; }
+.brand-compact { max-height:320px; }
+.brand-compact img { max-height:300px !important; width:auto !important; margin:0 auto; object-fit:contain !important; padding:0.5rem !important; }
+
