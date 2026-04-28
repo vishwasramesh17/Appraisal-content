@@ -51,7 +51,12 @@ const IntroSlideTemplate = ({ currentSlide }) => (
                 <stop offset="100%" stopColor="#40CFCF" />
               </linearGradient>
             </defs>
-            <text fill="url(#irisGrad)" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="700" fontSize="52" x="0" y="42">IrIS</text>
+            <g fill="url(#irisGrad)" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="700" fontSize="52">
+              <text x="0" y="42">l</text>
+              <g transform="translate(0,42) scale(1,1.43) translate(0,-42)"><text x="18" y="42">r</text></g>
+              <text x="42" y="42">l</text>
+              <text x="58" y="42">S</text>
+            </g>
           </svg>
         </motion.div>
         <motion.p 
