@@ -44,20 +44,7 @@ const IntroSlideTemplate = ({ currentSlide }) => (
     <div className="intro-top">
       <div className="intro-text-container">
         <motion.div initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}>
-          <svg className="iris-logo-svg" viewBox="0 0 130 50" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="irisGrad" x1="0" y1="0" x2="130" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#009999" />
-                <stop offset="100%" stopColor="#40CFCF" />
-              </linearGradient>
-            </defs>
-            <g fill="url(#irisGrad)" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="700" fontSize="52">
-              <rect x="0" y="4" width="8" height="38" rx="0"/>
-              <g transform="translate(0,42) scale(1,1.43) translate(0,-42)"><text x="16" y="42">r</text></g>
-              <rect x="42" y="4" width="8" height="38" rx="0"/>
-              <text x="58" y="42">S</text>
-            </g>
-          </svg>
+          <img src={`${import.meta.env.BASE_URL}iris-logo.svg`} alt="IrIS" className="iris-logo-svg" />
         </motion.div>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
