@@ -44,22 +44,7 @@ const IntroSlideTemplate = ({ currentSlide }) => (
     <div className="intro-top">
       <div className="intro-text-container">
         <motion.div initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}>
-          <svg className="iris-logo-svg" viewBox="0 0 125 72" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="irisGrad" x1="0" y1="0" x2="125" y2="72" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#009999" />
-                <stop offset="100%" stopColor="#40CFCF" />
-              </linearGradient>
-            </defs>
-            <g fill="url(#irisGrad)" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="700" fontSize="68">
-              <text x="0" y="62">l</text>
-              <g transform="translate(0, 62) scale(1, 1.43) translate(0, -62)">
-                <text x="20" y="62">r</text>
-              </g>
-              <text x="48" y="62">l</text>
-              <text x="66" y="62">S</text>
-            </g>
-          </svg>
+          <img src={`${import.meta.env.BASE_URL}iris-logo.png`} alt="IrIS" className="iris-logo-svg" />
         </motion.div>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
@@ -291,7 +276,7 @@ const Slide6Synthesis = () => (
   </div>
 );
 
-const LayoutSplit = ({ skills, content, applied, impact, strategicAlignment }) => (
+const LayoutSplit = ({ skills, content, applied, impact }) => (
   <div className="layout-split">
     <div className="impact-left">
       <div className="skill-tags">
@@ -310,17 +295,11 @@ const LayoutSplit = ({ skills, content, applied, impact, strategicAlignment }) =
         <div className="box-title"><Target size={20} /> Impact</div>
         <ul className="box-list">{impact.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
       </motion.div>
-      {strategicAlignment && (
-        <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.6}} className="why-box">
-          <div className="box-title"><Compass size={20} /> Strategic Alignment</div>
-          <ul className="box-list">{strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
-        </motion.div>
-      )}
     </div>
   </div>
 );
 
-const LayoutHorizontal = ({ skills, content, applied, impact, strategicAlignment }) => (
+const LayoutHorizontal = ({ skills, content, applied, impact }) => (
   <div className="layout-horizontal">
     <div className="layout-horizontal-top">
       <motion.div initial={{opacity:0, y:-20}} animate={{opacity:1, y:0}} transition={{delay:0.1}} className="content-box">
@@ -339,17 +318,11 @@ const LayoutHorizontal = ({ skills, content, applied, impact, strategicAlignment
         <div className="box-title"><Target size={20} /> Impact</div>
         <ul className="box-list">{impact.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
       </motion.div>
-      {strategicAlignment && (
-        <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.4}} className="why-box">
-          <div className="box-title"><Compass size={20} /> Strategic Alignment</div>
-          <ul className="box-list">{strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
-        </motion.div>
-      )}
     </div>
   </div>
 );
 
-const LayoutCards = ({ skills, content, applied, impact, strategicAlignment }) => (
+const LayoutCards = ({ skills, content, applied, impact }) => (
   <div className="layout-cards">
     <motion.div initial={{opacity:0, scale:0.95}} animate={{opacity:1, scale:1}} transition={{delay:0.1}} className="layout-cards-top content-box">
       <div className="skill-tags">
@@ -361,22 +334,14 @@ const LayoutCards = ({ skills, content, applied, impact, strategicAlignment }) =
       <div className="box-title"><Zap size={20} /> How I Applied It</div>
       <ul className="box-list">{applied.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
     </motion.div>
-    <div className="flex flex-col gap-6">
-      <motion.div initial={{opacity:0, x:20}} animate={{opacity:1, x:0}} transition={{delay:0.3}} className="impact-box flex-1">
-        <div className="box-title"><Target size={20} /> Impact</div>
-        <ul className="box-list">{impact.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
-      </motion.div>
-      {strategicAlignment && (
-        <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.4}} className="why-box">
-          <div className="box-title"><Compass size={20} /> Strategic Alignment</div>
-          <ul className="box-list">{strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
-        </motion.div>
-      )}
-    </div>
+    <motion.div initial={{opacity:0, x:20}} animate={{opacity:1, x:0}} transition={{delay:0.3}} className="impact-box">
+      <div className="box-title"><Target size={20} /> Impact</div>
+      <ul className="box-list">{impact.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+    </motion.div>
   </div>
 );
 
-const LayoutTimeline = ({ skills, content, applied, impact, strategicAlignment }) => (
+const LayoutTimeline = ({ skills, content, applied, impact }) => (
   <div className="layout-timeline">
     <div className="timeline-left">
       <div className="skill-tags">
@@ -395,12 +360,6 @@ const LayoutTimeline = ({ skills, content, applied, impact, strategicAlignment }
         <div className="box-title"><Target size={20} /> Impact</div>
         <ul className="box-list">{impact.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
       </motion.div>
-      {strategicAlignment && (
-        <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.5}} className="why-box">
-          <div className="box-title"><Compass size={20} /> Strategic Alignment</div>
-          <ul className="box-list">{strategicAlignment.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
-        </motion.div>
-      )}
     </div>
   </div>
 );
@@ -461,22 +420,21 @@ const slides = [
     title: "2.1 Requirement Analysis",
     content: (
       <LayoutTimeline 
-        skills={["Product Thinking", "Analytical Problem Solving", "Technical Depth"]}
-        content={<p>Applied product-first thinking by analyzing requirements from both <strong>end-user and CPO operational perspectives</strong>, ensuring real-world usability and scalability.</p>}
+        skills={["Product Thinking", "Analytical Problem Solving", "Technical Depth", "Ownership"]}
+        content={<p>Applied product-first thinking by analyzing requirements from both <strong>end-user and CPO operational perspectives</strong>, ensuring structured, complete, and unambiguous requirements before development.</p>}
         applied={[
           "Drove Bulk Closure of Interrupted Sessions → reduced manual effort by ~75%",
           "Enabled Automatic Session Closure via Boot Notification → eliminated manual intervention (~100% effort reduction)",
           "Built Live SoC visibility & Google-based reviews → improved transparency and feedback loops",
-          "Implemented Smart Charging Profiles → optimized power usage and prevented EB penalties"
+          "Implemented Smart Charging Profiles → optimized power usage and prevented EB penalties",
+          "Defined edge cases, expected behaviors, and failure scenarios within story tickets",
+          "Aligned teams early to eliminate interpretation gaps"
         ]}
         impact={[
           "Reduced operational overhead and repetitive workflows",
-          "Improved decision-making for users and operators",
+          "Noticeable reduction in requirement-related bugs and rework",
+          "Smoother QA cycles and consistent monthly production releases",
           "Increased system efficiency and reliability"
-        ]}
-        strategicAlignment={[
-          "Strengthens platform scalability for growing CPO networks",
-          "Improves customer experience while reducing operational cost"
         ]}
       />
     )
@@ -500,41 +458,13 @@ const slides = [
           "Enabled smoother collaboration and reduced execution friction",
           "Strengthened product understanding internally and externally"
         ]}
-        strategicAlignment={[
-          "Improves team efficiency and reduces communication gaps as teams scale",
-          "Builds stronger product positioning with external stakeholders"
-        ]}
-      />
-    )
-  },
-
-  {
-    id: "req-clarity",
-    title: "2.3 Requirement Quality",
-    content: (
-      <LayoutCards 
-        skills={["Analytical Problem Solving", "Ownership"]}
-        content={<p>Ensured requirements were structured, complete, and unambiguous <strong>before development</strong>.</p>}
-        applied={[
-          "Defined edge cases, expected behaviors, and failure scenarios within story tickets",
-          "Aligned teams early to eliminate interpretation gaps"
-        ]}
-        impact={[
-          "Noticeable reduction in requirement-related bugs and rework",
-          "Smoother QA cycles with fewer iterations",
-          "Enabled consistent monthly production releases"
-        ]}
-        strategicAlignment={[
-          "Improves delivery predictability and release confidence",
-          "Reduces engineering effort spent on rework"
-        ]}
       />
     )
   },
 
   {
     id: "resolving-complexity",
-    title: "2.4 Handling Clients & Complexity",
+    title: "2.3 Handling Clients & Complexity",
     content: (
       <LayoutHorizontal 
         skills={["Stakeholder Management", "Analytical Problem Solving", "Technical Depth"]}
@@ -550,17 +480,13 @@ const slides = [
           "Prevented misaligned decisions and unnecessary escalations",
           "Improved clarity in financial and operational workflows"
         ]}
-        strategicAlignment={[
-          "Builds trust with clients and partners",
-          "Ensures faster and more accurate issue resolution in production environments"
-        ]}
       />
     )
   },
 
   {
     id: "workflows",
-    title: "2.5 Process & Workflow",
+    title: "2.4 Process & Workflow",
     content: (
       <LayoutHorizontal 
         skills={["Product Thinking", "Systems Thinking", "Ownership"]}
@@ -577,17 +503,13 @@ const slides = [
           "Improved cross-team alignment and faster decision-making",
           "Enabled clearer client onboarding and communication"
         ]}
-        strategicAlignment={[
-          "Supports scaling operations without increasing complexity",
-          "Improves internal efficiency and external clarity"
-        ]}
       />
     )
   },
 
   {
     id: "data-truth",
-    title: "2.6 Data-Driven Decisions",
+    title: "2.5 Data-Driven Decisions",
     content: (
       <LayoutCards 
         skills={["Analytical Problem Solving", "Technical Depth"]}
@@ -602,17 +524,13 @@ const slides = [
           "Improved reliability of AI-driven features",
           "Reduced potential confusion and escalations"
         ]}
-        strategicAlignment={[
-          "Protects product credibility, especially in new AI capabilities",
-          "Ensures decisions made by CPOs are based on accurate data"
-        ]}
       />
     )
   },
 
   {
     id: "business-impact",
-    title: "2.7 Business Impact",
+    title: "2.6 Business Impact",
     content: (
       <LayoutHorizontal 
         skills={["Product Thinking", "Analytical Modelling", "Ownership"]}
@@ -627,30 +545,35 @@ const slides = [
           "Improved visibility into revenue vs cost trade-offs",
           "Supported focus on high-potential clients"
         ]}
-        strategicAlignment={[
-          "Strengthens business decision-making",
-          "Aligns product growth with financial sustainability"
-        ]}
       />
     )
   },
 
   {
     id: "domain-knowledge",
-    title: "2.8 Domain Knowledge",
+    title: "2.7 Domain Knowledge",
     content: (
-      <div className="contrib-wrap">
-        <div className="contrib-grid" style={{gridTemplateColumns: '1fr'}}>
-          <div className="contrib-card contrib-card-teal">
-            <div className="contrib-icon contrib-icon-teal"><BrainCircuit size={22}/></div>
-            <h4 className="contrib-title">Domain Knowledge & Technical Depth</h4>
-            <ul className="contrib-list">
-              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1}}>Conducted OCPP Compatibility Testing</motion.li>
-              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.2}}>Analyzed OCPP logs for session analysis</motion.li>
-              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.3}}>Performed First Level RCA for production issues using OCPP logs and session data</motion.li>
-              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.4}}>Provided insights in new implementations like UFC Home charger management and Riod Integration</motion.li>
-            </ul>
-          </div>
+      <div className="outcomes-wrap">
+        <div className="outcomes-card">
+          <h3><BrainCircuit size={32}/> Domain Knowledge & Technical Depth</h3>
+          <ul className="outcomes-list">
+            <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1}}>
+              <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
+              <span>Conducted OCPP Compatibility Testing</span>
+            </motion.li>
+            <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.2}}>
+              <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
+              <span>Analyzed OCPP logs for session analysis</span>
+            </motion.li>
+            <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.3}}>
+              <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
+              <span>Performed First Level RCA for production issues using OCPP logs and session data</span>
+            </motion.li>
+            <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.4}}>
+              <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
+              <span>Provided insights in new implementations like UFC Home charger management and Riod Integration</span>
+            </motion.li>
+          </ul>
         </div>
       </div>
     )
@@ -693,25 +616,27 @@ const slides = [
     id: "direction",
     title: "5. Professional Aspirations",
     content: (
-      <div className="contrib-wrap">
-        <div className="contrib-grid" style={{gridTemplateColumns: '1fr'}}>
-          <div className="contrib-card contrib-card-teal">
-            <div className="contrib-icon contrib-icon-teal"><Compass size={22}/></div>
-            <h4 className="contrib-title">Moving towards a Senior BA / Product-oriented role</h4>
-            <ul className="contrib-list">
-              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1}}>Strengthen understanding of user behavior, business impact, and product metrics</motion.li>
-              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.2}}>Contribute to problem discovery, solution definition, and outcome measurement</motion.li>
-              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.3}}>Identify high-impact features and differentiators (MVPs / wow factors)</motion.li>
-              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.4}}>Improve storytelling and client influence</motion.li>
-            </ul>
-          </div>
-        </div>
-        <div className="contrib-impact">
-          <h3><Rocket size={20}/> Goal</h3>
-          <div className="contrib-impact-grid" style={{gridTemplateColumns: '1fr 1fr'}}>
-            <div className="contrib-impact-item">→ Expand from execution to outcome ownership</div>
-            <div className="contrib-impact-item">→ Drive decisions based on user value and business outcomes</div>
-          </div>
+      <div className="outcomes-wrap">
+        <div className="outcomes-card">
+          <h3><Compass size={32}/> Moving towards a Senior BA / Product-oriented role</h3>
+          <ul className="outcomes-list">
+            <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1}}>
+              <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
+              <span>Strengthen understanding of user behavior, business impact, and product metrics</span>
+            </motion.li>
+            <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.2}}>
+              <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
+              <span>Contribute to problem discovery, solution definition, and outcome measurement</span>
+            </motion.li>
+            <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.3}}>
+              <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
+              <span>Identify high-impact features and differentiators (MVPs / wow factors)</span>
+            </motion.li>
+            <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.4}}>
+              <span className="outcomes-icon"><CheckCircle size={24} color="#a7f3d0"/></span>
+              <span>Improve storytelling and client influence</span>
+            </motion.li>
+          </ul>
         </div>
       </div>
     )
