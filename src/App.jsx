@@ -207,6 +207,7 @@ const Slide2Contributions = () => (
           <li>Dynamic Tariff</li>
           <li>Auto Closure of Sessions</li>
           <li>AI Failure Session Analytics</li>
+          <li>Tivolt Payment</li>
         </ul>
       </div>
       <div className="contrib-card contrib-card-purple">
@@ -227,7 +228,7 @@ const Slide2Contributions = () => (
           <li>Acted as Scrum Master (daily tracking)</li>
           <li>Handled 7+ clients | Functioning Service Support for 4+ Clients</li>
           <li>Delivered Network Demo for Flex Energy</li>
-          <li>OEM integrations (ACS Energy, Cubenz)</li>
+          <li>OCPP Compatibility Testing (ACS Energy, Cubenz)</li>
         </ul>
       </div>
     </div>
@@ -635,6 +636,27 @@ const slides = [
   },
 
   {
+    id: "domain-knowledge",
+    title: "2.8 Domain Knowledge",
+    content: (
+      <div className="contrib-wrap">
+        <div className="contrib-grid" style={{gridTemplateColumns: '1fr'}}>
+          <div className="contrib-card contrib-card-teal">
+            <div className="contrib-icon contrib-icon-teal"><BrainCircuit size={22}/></div>
+            <h4 className="contrib-title">Domain Knowledge & Technical Depth</h4>
+            <ul className="contrib-list">
+              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1}}>Conducted OCPP Compatibility Testing</motion.li>
+              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.2}}>Analyzed OCPP logs for session analysis</motion.li>
+              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.3}}>Performed First Level RCA for production issues using OCPP logs and session data</motion.li>
+              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.4}}>Provided insights in new implementations like UFC Home charger management and Riod Integration</motion.li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
+  },
+
+  {
     id: "evaluation",
     title: "3. The 6 Qualities of a Steam-A Professional",
     content: (
@@ -671,24 +693,27 @@ const slides = [
     id: "direction",
     title: "5. Professional Aspirations",
     content: (
-      <LayoutTimeline 
-        skills={["Product Thinking", "Ownership", "Stakeholder Influence"]}
-        content={<p>Moving towards a Senior BA / Product-oriented role, expanding from execution to <strong>outcome ownership</strong>.</p>}
-        applied={[
-          "Strengthen understanding of user behavior, business impact, and product metrics",
-          "Contribute to problem discovery, solution definition, and outcome measurement",
-          "Identify high-impact features and differentiators (MVPs / wow factors)",
-          "Improve storytelling and client influence"
-        ]}
-        impact={[
-          "Drive decisions based on user value and business outcomes, not just requirements",
-          "Transform execution into measurable business success"
-        ]}
-        strategicAlignment={[
-          "Enables stronger product direction and innovation",
-          "Bridges gap between execution and strategy"
-        ]}
-      />
+      <div className="contrib-wrap">
+        <div className="contrib-grid" style={{gridTemplateColumns: '1fr'}}>
+          <div className="contrib-card contrib-card-teal">
+            <div className="contrib-icon contrib-icon-teal"><Compass size={22}/></div>
+            <h4 className="contrib-title">Moving towards a Senior BA / Product-oriented role</h4>
+            <ul className="contrib-list">
+              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1}}>Strengthen understanding of user behavior, business impact, and product metrics</motion.li>
+              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.2}}>Contribute to problem discovery, solution definition, and outcome measurement</motion.li>
+              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.3}}>Identify high-impact features and differentiators (MVPs / wow factors)</motion.li>
+              <motion.li initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.4}}>Improve storytelling and client influence</motion.li>
+            </ul>
+          </div>
+        </div>
+        <div className="contrib-impact">
+          <h3><Rocket size={20}/> Goal</h3>
+          <div className="contrib-impact-grid" style={{gridTemplateColumns: '1fr 1fr'}}>
+            <div className="contrib-impact-item">→ Expand from execution to outcome ownership</div>
+            <div className="contrib-impact-item">→ Drive decisions based on user value and business outcomes</div>
+          </div>
+        </div>
+      </div>
     )
   },
 
