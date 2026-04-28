@@ -44,7 +44,15 @@ const IntroSlideTemplate = ({ currentSlide }) => (
     <div className="intro-top">
       <div className="intro-text-container">
         <motion.div initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}>
-          <img src={`${import.meta.env.BASE_URL}iris-logo.png`} alt="IrIS" className="iris-logo-svg" />
+          <svg className="iris-logo-svg" viewBox="0 0 130 50" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="irisGrad" x1="0" y1="0" x2="130" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#009999" />
+                <stop offset="100%" stopColor="#40CFCF" />
+              </linearGradient>
+            </defs>
+            <text fill="url(#irisGrad)" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="700" fontSize="52" x="0" y="42">iris</text>
+          </svg>
         </motion.div>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
@@ -149,8 +157,8 @@ const Slide1Learning = () => (
     </div>
     {/* Stats */}
     <div className="gantt-stats">
-      <div><span className="gantt-stat-num">5 mo</span><span className="gantt-stat-lbl">as Business Analyst</span></div>
-      <div><span className="gantt-stat-num">4 mo</span><span className="gantt-stat-lbl">as QA Engineer</span></div>
+      <div><span className="gantt-stat-num">5 months</span><span className="gantt-stat-lbl">as Business Analyst</span></div>
+      <div><span className="gantt-stat-num">4 months</span><span className="gantt-stat-lbl">as QA Engineer</span></div>
     </div>
   </div>
 );
@@ -419,24 +427,32 @@ const slides = [
     id: "req-analysis",
     title: "2.1 Requirement Analysis",
     content: (
-      <LayoutTimeline 
-        skills={["Product Thinking", "Analytical Problem Solving", "Technical Depth", "Ownership"]}
-        content={<p>Applied product-first thinking by analyzing requirements from both <strong>end-user and CPO operational perspectives</strong>, ensuring structured, complete, and unambiguous requirements before development.</p>}
-        applied={[
-          "Drove Bulk Closure of Interrupted Sessions → reduced manual effort by ~75%",
-          "Enabled Automatic Session Closure via Boot Notification → eliminated manual intervention (~100% effort reduction)",
-          "Built Live SoC visibility & Google-based reviews → improved transparency and feedback loops",
-          "Implemented Smart Charging Profiles → optimized power usage and prevented EB penalties",
-          "Defined edge cases, expected behaviors, and failure scenarios within story tickets",
-          "Aligned teams early to eliminate interpretation gaps"
-        ]}
-        impact={[
-          "Reduced operational overhead and repetitive workflows",
-          "Noticeable reduction in requirement-related bugs and rework",
-          "Smoother QA cycles and consistent monthly production releases",
-          "Increased system efficiency and reliability"
-        ]}
-      />
+      <div className="contrib-wrap">
+        <div className="contrib-grid" style={{gridTemplateColumns: '1fr 1fr'}}>
+          <div className="contrib-card contrib-card-blue">
+            <div className="contrib-icon contrib-icon-blue"><Zap size={22}/></div>
+            <h4 className="contrib-title">How I Applied It</h4>
+            <ul className="contrib-list">
+              <li>Drove Bulk Closure of Interrupted Sessions → reduced manual effort by ~75%</li>
+              <li>Enabled Automatic Session Closure via Boot Notification → eliminated manual intervention</li>
+              <li>Built Live SoC visibility & Google-based reviews → improved transparency</li>
+              <li>Implemented Smart Charging Profiles → optimized power usage</li>
+              <li>Defined edge cases, expected behaviors, and failure scenarios within story tickets</li>
+              <li>Aligned teams early to eliminate interpretation gaps</li>
+            </ul>
+          </div>
+          <div className="contrib-card contrib-card-teal">
+            <div className="contrib-icon contrib-icon-teal"><Target size={22}/></div>
+            <h4 className="contrib-title">Impact</h4>
+            <ul className="contrib-list">
+              <li>Reduced operational overhead and repetitive workflows</li>
+              <li>Noticeable reduction in requirement-related bugs and rework</li>
+              <li>Smoother QA cycles and consistent monthly production releases</li>
+              <li>Increased system efficiency and reliability</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     )
   },
 
@@ -444,21 +460,29 @@ const slides = [
     id: "ownership",
     title: "2.2 Ownership & Leadership",
     content: (
-      <LayoutTimeline 
-        skills={["Ownership & Leadership", "Stakeholder Management", "Scrum Master"]}
-        content={<p>Took complete ownership of the Network module, feature backlog, and client-facing network service support.</p>}
-        applied={[
-          "Started acting as Scrum Master for execution tracking and alignment",
-          "Delivered Network Demo for Flex Energy to external stakeholders",
-          "Prepared scenario-wise PPTs to explain Tivolt payment flows directly to Tivolt",
-          "Conducted KT sessions for Dev & QA teams, resolving ambiguities in real-time"
-        ]}
-        impact={[
-          "Reduced dependency on repeated clarifications and improved onboarding speed",
-          "Enabled smoother collaboration and reduced execution friction",
-          "Strengthened product understanding internally and externally"
-        ]}
-      />
+      <div className="contrib-wrap">
+        <div className="contrib-grid" style={{gridTemplateColumns: '1fr 1fr'}}>
+          <div className="contrib-card contrib-card-purple">
+            <div className="contrib-icon contrib-icon-purple"><Zap size={22}/></div>
+            <h4 className="contrib-title">How I Applied It</h4>
+            <ul className="contrib-list">
+              <li>Started acting as Scrum Master for execution tracking and alignment</li>
+              <li>Delivered Network Demo for Flex Energy to external stakeholders</li>
+              <li>Prepared scenario-wise PPTs to explain Tivolt payment flows directly to Tivolt</li>
+              <li>Conducted KT sessions for Dev & QA teams, resolving ambiguities in real-time</li>
+            </ul>
+          </div>
+          <div className="contrib-card contrib-card-teal">
+            <div className="contrib-icon contrib-icon-teal"><Target size={22}/></div>
+            <h4 className="contrib-title">Impact</h4>
+            <ul className="contrib-list">
+              <li>Reduced dependency on repeated clarifications and improved onboarding speed</li>
+              <li>Enabled smoother collaboration and reduced execution friction</li>
+              <li>Strengthened product understanding internally and externally</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     )
   },
 
@@ -466,21 +490,29 @@ const slides = [
     id: "resolving-complexity",
     title: "2.3 Handling Clients & Complexity",
     content: (
-      <LayoutHorizontal 
-        skills={["Stakeholder Management", "Analytical Problem Solving", "Technical Depth"]}
-        content={<p>Actively handling 7+ clients and resolving day-to-day operational issues for 4+ clients directly.</p>}
-        applied={[
-          "Managed OCPP compatibility and integrations with OEMs like ACS Energy and Cubenz",
-          "Resolved Tivolt reconciliation issues by consolidating multiple financial data sources",
-          "Identified root cause in MAK Controls issue via deep OCPP log analysis + joint testing",
-          "Collaborated with OEMs and clients for real-world validation"
-        ]}
-        impact={[
-          "Reduced back-and-forth cycles and ambiguity across teams",
-          "Prevented misaligned decisions and unnecessary escalations",
-          "Improved clarity in financial and operational workflows"
-        ]}
-      />
+      <div className="contrib-wrap">
+        <div className="contrib-grid" style={{gridTemplateColumns: '1fr 1fr'}}>
+          <div className="contrib-card contrib-card-blue">
+            <div className="contrib-icon contrib-icon-blue"><Zap size={22}/></div>
+            <h4 className="contrib-title">How I Applied It</h4>
+            <ul className="contrib-list">
+              <li>Managed OCPP compatibility and integrations with OEMs like ACS Energy and Cubenz</li>
+              <li>Resolved Tivolt reconciliation issues by consolidating multiple financial data sources</li>
+              <li>Identified root cause in MAK Controls issue via deep OCPP log analysis + joint testing</li>
+              <li>Collaborated with OEMs and clients for real-world validation</li>
+            </ul>
+          </div>
+          <div className="contrib-card contrib-card-teal">
+            <div className="contrib-icon contrib-icon-teal"><Target size={22}/></div>
+            <h4 className="contrib-title">Impact</h4>
+            <ul className="contrib-list">
+              <li>Reduced back-and-forth cycles and ambiguity across teams</li>
+              <li>Prevented misaligned decisions and unnecessary escalations</li>
+              <li>Improved clarity in financial and operational workflows</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     )
   },
 
@@ -488,22 +520,30 @@ const slides = [
     id: "workflows",
     title: "2.4 Process & Workflow",
     content: (
-      <LayoutHorizontal 
-        skills={["Product Thinking", "Systems Thinking", "Ownership"]}
-        content={<p>Introduced structured workflows, flowcharts, and documentation to improve consistency and alignment.</p>}
-        applied={[
-          "Created Business Process Model Notation (BPMN) for Tivolt Payment",
-          "Built Flow charts for Tivolt session flow and OCPP message flow",
-          "Drafted SOPs for interrupted & suspicious sessions",
-          "Built OCPP operational documentation & failure analysis guide",
-          "Applied RICE prioritization for backlog"
-        ]}
-        impact={[
-          "Reduced ambiguity in operations and edge-case handling",
-          "Improved cross-team alignment and faster decision-making",
-          "Enabled clearer client onboarding and communication"
-        ]}
-      />
+      <div className="contrib-wrap">
+        <div className="contrib-grid" style={{gridTemplateColumns: '1fr 1fr'}}>
+          <div className="contrib-card contrib-card-purple">
+            <div className="contrib-icon contrib-icon-purple"><Zap size={22}/></div>
+            <h4 className="contrib-title">How I Applied It</h4>
+            <ul className="contrib-list">
+              <li>Created Business Process Model Notation (BPMN) for Tivolt Payment</li>
+              <li>Built Flow charts for Tivolt session flow and OCPP message flow</li>
+              <li>Drafted SOPs for interrupted & suspicious sessions</li>
+              <li>Built OCPP operational documentation & failure analysis guide</li>
+              <li>Applied RICE prioritization for backlog</li>
+            </ul>
+          </div>
+          <div className="contrib-card contrib-card-teal">
+            <div className="contrib-icon contrib-icon-teal"><Target size={22}/></div>
+            <h4 className="contrib-title">Impact</h4>
+            <ul className="contrib-list">
+              <li>Reduced ambiguity in operations and edge-case handling</li>
+              <li>Improved cross-team alignment and faster decision-making</li>
+              <li>Enabled clearer client onboarding and communication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     )
   },
 
@@ -511,20 +551,28 @@ const slides = [
     id: "data-truth",
     title: "2.5 Data-Driven Decisions",
     content: (
-      <LayoutCards 
-        skills={["Analytical Problem Solving", "Technical Depth"]}
-        content={<p>Used data not just for insights, but as a validation layer for system correctness.</p>}
-        applied={[
-          "Validated AI-based failure analysis against OCPP logs (source of truth)",
-          "Identified mismatches in failure reasons, timestamps, and formats",
-          "Worked with teams to correct issues before production"
-        ]}
-        impact={[
-          "Prevented incorrect insights from reaching clients",
-          "Improved reliability of AI-driven features",
-          "Reduced potential confusion and escalations"
-        ]}
-      />
+      <div className="contrib-wrap">
+        <div className="contrib-grid" style={{gridTemplateColumns: '1fr 1fr'}}>
+          <div className="contrib-card contrib-card-blue">
+            <div className="contrib-icon contrib-icon-blue"><Zap size={22}/></div>
+            <h4 className="contrib-title">How I Applied It</h4>
+            <ul className="contrib-list">
+              <li>Validated AI-based failure analysis against OCPP logs (source of truth)</li>
+              <li>Identified mismatches in failure reasons, timestamps, and formats</li>
+              <li>Worked with teams to correct issues before production</li>
+            </ul>
+          </div>
+          <div className="contrib-card contrib-card-teal">
+            <div className="contrib-icon contrib-icon-teal"><Target size={22}/></div>
+            <h4 className="contrib-title">Impact</h4>
+            <ul className="contrib-list">
+              <li>Prevented incorrect insights from reaching clients</li>
+              <li>Improved reliability of AI-driven features</li>
+              <li>Reduced potential confusion and escalations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     )
   },
 
@@ -532,20 +580,28 @@ const slides = [
     id: "business-impact",
     title: "2.6 Business Impact",
     content: (
-      <LayoutHorizontal 
-        skills={["Product Thinking", "Analytical Modelling", "Ownership"]}
-        content={<p>Connected product decisions with commercial viability and resource planning.</p>}
-        applied={[
-          "Built commercial models for both OCPP and OCPI clients",
-          "Projected connector growth, revenue, and break-even timelines",
-          "Estimated resource and lifecycle costs"
-        ]}
-        impact={[
-          "Enabled informed client onboarding decisions",
-          "Improved visibility into revenue vs cost trade-offs",
-          "Supported focus on high-potential clients"
-        ]}
-      />
+      <div className="contrib-wrap">
+        <div className="contrib-grid" style={{gridTemplateColumns: '1fr 1fr'}}>
+          <div className="contrib-card contrib-card-purple">
+            <div className="contrib-icon contrib-icon-purple"><Zap size={22}/></div>
+            <h4 className="contrib-title">How I Applied It</h4>
+            <ul className="contrib-list">
+              <li>Built commercial models for both OCPP and OCPI clients</li>
+              <li>Projected connector growth, revenue, and break-even timelines</li>
+              <li>Estimated resource and lifecycle costs</li>
+            </ul>
+          </div>
+          <div className="contrib-card contrib-card-teal">
+            <div className="contrib-icon contrib-icon-teal"><Target size={22}/></div>
+            <h4 className="contrib-title">Impact</h4>
+            <ul className="contrib-list">
+              <li>Enabled informed client onboarding decisions</li>
+              <li>Improved visibility into revenue vs cost trade-offs</li>
+              <li>Supported focus on high-potential clients</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     )
   },
 
