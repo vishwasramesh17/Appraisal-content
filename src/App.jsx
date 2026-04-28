@@ -52,9 +52,9 @@ const IntroSlideTemplate = ({ currentSlide }) => (
               </linearGradient>
             </defs>
             <g fill="url(#irisGrad)" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="700" fontSize="52">
-              <text x="0" y="42">l</text>
-              <g transform="translate(0,42) scale(1,1.43) translate(0,-42)"><text x="18" y="42">r</text></g>
-              <text x="42" y="42">l</text>
+              <rect x="0" y="4" width="8" height="38" rx="0"/>
+              <g transform="translate(0,42) scale(1,1.43) translate(0,-42)"><text x="16" y="42">r</text></g>
+              <rect x="42" y="4" width="8" height="38" rx="0"/>
               <text x="58" y="42">S</text>
             </g>
           </svg>
