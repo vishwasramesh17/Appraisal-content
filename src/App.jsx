@@ -44,7 +44,7 @@ const IntroSlideTemplate = ({ currentSlide }) => (
     <div className="intro-top">
       <div className="intro-text-container">
         <motion.div initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}}>
-          <img src={`${import.meta.env.BASE_URL}iris-logo.png`} alt="iris" style={{height: '130px', objectFit: 'contain', display: 'block', marginBottom: '1.5rem'}} />
+          <img src={`${import.meta.env.BASE_URL}iris-logo.png`} alt="iris" style={{height: '130px', objectFit: 'contain', display: 'block', marginBottom: '1.5rem', borderRadius: '12px'}} />
         </motion.div>
         <motion.p 
           initial={{opacity: 0, x: -20}} animate={{opacity: 1, x:0}} transition={{delay: 0.2}}
