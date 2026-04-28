@@ -260,16 +260,16 @@ const Slide6Synthesis = () => (
           <li>Strong stakeholder alignment</li>
         </ul>
       </div>
-      <div className="synth-card synth-card-accent">
+      <div className="synth-card">
         <div className="synth-card-header">
           <div className="synth-card-icon" style={{background:'#00B0B0',color:'white'}}><Target size={22}/></div>
           <h3>Impact</h3>
         </div>
-        <ul className="synth-check-list">
-          <li className="synth-check-item"><CheckCircle size={18} color="#00B0B0"/> Reduced effort (75%–100%)</li>
-          <li className="synth-check-item"><CheckCircle size={18} color="#00B0B0"/> Improved predictability</li>
-          <li className="synth-check-item"><CheckCircle size={18} color="#00B0B0"/> Strengthened reliability</li>
-          <li className="synth-check-item"><CheckCircle size={18} color="#00B0B0"/> Better business decisions</li>
+        <ul>
+          <li>Reduced effort (75%–100%)</li>
+          <li>Improved predictability</li>
+          <li>Strengthened reliability</li>
+          <li>Better business decisions</li>
         </ul>
       </div>
     </div>
@@ -638,7 +638,7 @@ const slides = [
         </div>
         <div className="score-grid">
           <ScoreBar label="Courage to Promise" score={9} max={10} delay={0.1} text={<>Realistic estimation backed by <span className="highlight-text">cross-team alignment</span>.</>} />
-          <ScoreBar label="Commitment to Deliver" score={9} max={10} delay={0.2} text={<>Continuous tracking and proactive blocker resolution.</>} />
+          <ScoreBar label="Commitment to Deliver" score={9} max={10} delay={0.2} text={<>Continuous tracking and <span className="highlight-text">proactive blocker resolution</span>.</>} />
           <ScoreBar label="Attention to Detail" score={9.5} max={10} delay={0.3} text={<>Caught edge cases pre-prod. Validated AI against <span className="highlight-text">raw logs</span>.</>} />
           <ScoreBar label="Smart Storytelling" score={8} max={10} delay={0.4} text={<>Translated complex OCPP flows into <span className="highlight-text">clear narratives</span>.</>} />
           <ScoreBar label="Positive Attitude" score={8.5} max={10} delay={0.5} text={<>Calm under pressure, prioritizing <span className="highlight-text">solutions over problems</span>.</>} />
